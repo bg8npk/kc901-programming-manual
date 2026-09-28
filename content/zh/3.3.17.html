@@ -1,0 +1,80 @@
+<section class="km-section" id="kc901-sec-3-3-17-zh" aria-labelledby="kc901-sec-3-3-17-heading-zh"><h4 id="kc901-sec-3-3-17-heading-zh" data-km-source="3309">3.3.17 获取场强测量参数（第三代KC901X）</h4>
+<p data-km-source="3310">注意：与此功能相关的参数还有：3.2.5 设置输出衰减。</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.17 获取场强测量参数（第三代KC901X） 参数表"><table>
+<caption>3.3.17 获取场强测量参数（第三代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="3311">命令</p></th>
+<th scope="col"><p data-km-source="3312">选项</p></th>
+<th scope="col"><p data-km-source="3313">参数1</p></th>
+<th scope="col"><p data-km-source="3314">参数2</p></th>
+<th scope="col"><p data-km-source="3315">参数3</p></th>
+</tr>
+<tr>
+<td rowspan="3">
+<p data-km-source="3316">field</p>
+
+</td>
+<td><p data-km-source="3317">init</p></td>
+<td rowspan="3">
+<p data-km-source="3318">lowlo</p>
+<p data-km-source="3319">highlo</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3320">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3321">**</p>
+
+</td>
+</tr>
+<tr><td><p data-km-source="3322">run</p></td></tr>
+<tr><td><p data-km-source="3323">stop</p></td></tr>
+</tbody>
+</table></div>
+<p data-km-source="3324">说明：</p>
+<p data-km-source="3325">1、选项：</p>
+<p data-km-source="3326">init-&gt;初始化FIELD功能（在使用FIELD前必须使用此命令）</p>
+<p data-km-source="3327">run-&gt;运行FIELD进行扫频采集</p>
+<p data-km-source="3328">stop-&gt;停止并关闭FIELD功能(在使用其他工作模式前必须使用此命令)</p>
+<p data-km-source="3329">2、参数1：</p>
+<p data-km-source="3330">lowlo-&gt;以低本振方式测试</p>
+<p data-km-source="3331">highlo-&gt;以高本振方式测试</p>
+<p data-km-source="3332">3、参数2：天线增益，以dBi为单位。</p>
+<p data-km-source="3333">天线增益范围：-100.00…+100.00dBi</p>
+<p data-km-source="3334">参数3：扫描单点频率以Hz为单位，可以精确到0.1Hz。</p>
+<p data-km-source="3335">根据设备的不同，频率可操作范围有所不同，如下表所示：</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.17 获取场强测量参数（第三代KC901X） 参数表"><table>
+<caption>3.3.17 获取场强测量参数（第三代KC901X） — 参数表</caption>
+<tbody>
+<tr><th scope="col" colspan="2"><p data-km-source="3336">频率范围</p></th></tr>
+<tr>
+<td><p data-km-source="3337">KC901M</p></td>
+<td><p data-km-source="3338">0Hz-10000000000Hz(10GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3339">KC901V</p></td>
+<td><p data-km-source="3340">0-7000000000Hz(7GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3341">KC901S+</p></td>
+<td><p data-km-source="3342">0-4100000000Hz(4.1GHz)</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="3343">5、例程：</p>
+<p data-km-source="3344">场强数据是循环扫描，所以每次接受到的数据都是一个单独的包，比如：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3345">$field,run,lowlo,10,100000000\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="3346">$start,field\n</span>
+<span class="km-code-line rx" data-km-source="3347">$100000000.0,-18.115,-121.917\n    ；依次为频率，场强，绝对强度(dBm)</span>
+<span class="km-code-line rx" data-km-source="3348">$end\n</span>
+<span class="km-code-line rx" data-km-source="3349">$start,field\n</span>
+<span class="km-code-line rx" data-km-source="3350">$100000000.0,-18.875,-122.337\n</span>
+<span class="km-code-line rx" data-km-source="3351">$end\n</span>
+<span class="km-code-line rx" data-km-source="3352">$start,field\n</span>
+<span class="km-code-line rx" data-km-source="3353">$100000000.0,-18.667,-122.087\n</span>
+<span class="km-code-line rx" data-km-source="3354">$end\n</span></code></pre></section>
+

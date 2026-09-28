@@ -1,0 +1,112 @@
+<section class="km-section" id="kc901-sec-3-3-10-zh" aria-labelledby="kc901-sec-3-3-10-heading-zh"><h4 id="kc901-sec-3-3-10-heading-zh" data-km-source="2694">3.3.10 列表S21测量参数（第四代KC901X）</h4>
+<p data-km-source="2695">注意：与此功能还有关联的参数还有：3.2.5 设置输出衰减</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.10 列表S21测量参数（第四代KC901X） 参数表"><table>
+<caption>3.3.10 列表S21测量参数（第四代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="2696">命令</p></th>
+<th scope="col"><p data-km-source="2697">选项</p></th>
+<th scope="col"><p data-km-source="2698">参数1</p></th>
+<th scope="col"><p data-km-source="2699">参数2</p></th>
+<th scope="col"><p data-km-source="2700">参数3</p></th>
+</tr>
+<tr>
+<td rowspan="3">
+<p data-km-source="2701">sweep_list_s21</p>
+
+</td>
+<td><p data-km-source="2702">init</p></td>
+<td rowspan="3">
+<p data-km-source="2703">rescal</p>
+<p data-km-source="2704">resisocal</p>
+<p data-km-source="2705">enrescal</p>
+<p data-km-source="2706">full2portcal</p>
+<p data-km-source="2707">syscal</p>
+<p data-km-source="2708">caloff</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2709">ri</p>
+<p data-km-source="2710">ma</p>
+<p data-km-source="2711">vswr</p>
+<p data-km-source="2712">series_z</p>
+<p data-km-source="2713">loss</p>
+<p data-km-source="2714">parallel_z</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2715">lowlo</p>
+<p data-km-source="2716">highlo</p>
+
+</td>
+</tr>
+<tr><td><p data-km-source="2717">run</p></td></tr>
+<tr><td><p data-km-source="2718">stop</p></td></tr>
+</tbody>
+</table></div>
+<p data-km-source="2719">说明：</p>
+<p data-km-source="2720">1、选项：</p>
+<p data-km-source="2721">init-&gt;初始化S21功能（在使用S21前必须使用此命令）</p>
+<p data-km-source="2722">run-&gt; 运行S21功能进行扫频采集</p>
+<p data-km-source="2723">stop-&gt;停止并关闭S21功能(在使用其他工作模式前必须使用此命令)</p>
+<p data-km-source="2724">2、参数1：</p>
+<p data-km-source="2725">rescal-&gt;打开响应校准</p>
+<p data-km-source="2726">resisocal-&gt;打开响应加隔离校准</p>
+<p data-km-source="2727">enrescal-&gt;打开增强响应校准</p>
+<p data-km-source="2728">full2portcal-&gt;打开全双端口校准</p>
+<p data-km-source="2729">syscal-&gt;打开系统校准</p>
+<p data-km-source="2730">caloff-&gt;关闭系统校准</p>
+<p data-km-source="2731">3、参数2：</p>
+<p data-km-source="2732">ri-&gt;以实部和虚部返回数据</p>
+<p data-km-source="2733">ma-&gt;以插损和相位返回数据</p>
+<p data-km-source="2734">vswr-&gt;以电压驻波比返回数据</p>
+<p data-km-source="2735">series_z-&gt;以串联阻抗返回z、r、x数据</p>
+<p data-km-source="2736">loss-&gt;以插入损耗（对数值）返回数据</p>
+<p data-km-source="2737">parallel_z-&gt;以并联阻抗返回z、r、x数据</p>
+<p data-km-source="2738">4、参数3：</p>
+<p data-km-source="2739">lowlo-&gt;以低本振方式扫描</p>
+<p data-km-source="2740">highlo-&gt;以高本振方式扫描</p>
+<p data-km-source="2741">5、例程：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2742">$sweep_list_s21,run,caloff,ri,lowlo\n</span>
+<span class="km-code-line rx" data-km-source="2743">$start,s21,ri\n</span>
+<span class="km-code-line rx" data-km-source="2744">100000000,2.1346e-04,-2.0138e-04\n  ;依次为频率，实部，虚部</span>
+<span class="km-code-line rx" data-km-source="2745">200000000,0.9841e-03,-1.4537e-04\n</span>
+<span class="km-code-line rx" data-km-source="2746">40000000,-1.7163e-01,-7.0879e-01\n</span>
+<span class="km-code-line rx" data-km-source="2747">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2748">$sweep_list_s21,run,caloff,ma,lowlo\n</span>
+<span class="km-code-line rx" data-km-source="2749">$start,s21,ma\n</span>
+<span class="km-code-line rx" data-km-source="2750">100000000,1.9744e-04,-137.7951\n;依次为频率，插损，相位</span>
+<span class="km-code-line rx" data-km-source="2751">200000000,2.0163e-04,-5.8243\n</span>
+<span class="km-code-line rx" data-km-source="2752">40000000,4.4581e-01,-98.9831\n</span>
+<span class="km-code-line rx" data-km-source="2753">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2754">$sweep_list_s21,run,caloff,vswr,lowlo\n</span>
+<span class="km-code-line rx" data-km-source="2755">$start,s21,vswr</span>
+<span class="km-code-line rx" data-km-source="2756">100000000,1.0011\n      ;依次为频率，电压驻波比</span>
+<span class="km-code-line rx" data-km-source="2757">200000000,1.0004\n</span>
+<span class="km-code-line rx" data-km-source="2758">40000000,-3.5587\n</span>
+<span class="km-code-line rx" data-km-source="2759">$end</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2760">$sweep_list_s21,run,caloff,series_z,lowlo\n</span>
+<span class="km-code-line rx" data-km-source="2761">$start,s21, series_z               ;依次为频率,阻抗的摸,电阻,电抗</span>
+<span class="km-code-line rx" data-km-source="2762">100000000,105.6595,-104.1509,-17.7909\n</span>
+<span class="km-code-line rx" data-km-source="2763">200000000,99.5815,-97.9082,-18.1789\n</span>
+<span class="km-code-line rx" data-km-source="2764">40000000,124.7573,-121.2535,29.3591\n</span>
+<span class="km-code-line rx" data-km-source="2765">$end</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2766">$sweep_list_s21,run,caloff,parallel_z,lowlo\n</span>
+<span class="km-code-line rx" data-km-source="2767">$start,s21,parallel_z;依次为频率,阻抗的摸,电阻,电抗</span>
+<span class="km-code-line rx" data-km-source="2768">100000000,23.5739,-23.2365,3.9740\n</span>
+<span class="km-code-line rx" data-km-source="2769">200000000,25.0008,-24.5743,4.5981\n</span>
+<span class="km-code-line rx" data-km-source="2770">40000000,26.8217,-26.3855,4.8173\n</span>
+<span class="km-code-line rx" data-km-source="2771">$end</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2772">$sweep_list_s21,run,caloff,loss,lowlo\n</span>
+<span class="km-code-line rx" data-km-source="2773">$start,s21,loss</span>
+<span class="km-code-line rx" data-km-source="2774">100000000,-116.1302    ;依次为频率，回拨损耗</span>
+<span class="km-code-line rx" data-km-source="2775">200000000,-102.0541</span>
+<span class="km-code-line rx" data-km-source="2776">40000000,-112.2253</span>
+<span class="km-code-line rx" data-km-source="2777">$end</span></code></pre>
+</section>
+

@@ -1,0 +1,62 @@
+<section class="km-section" id="kc901-sec-3-3-13-zh" aria-labelledby="kc901-sec-3-3-13-heading-zh"><h4 id="kc901-sec-3-3-13-heading-zh" data-km-source="2928">3.3.13 列表SPEC测量参数（第四代KC901X）</h4>
+<p data-km-source="2929">注意：与此功能还有关联的参数还有：设置频谱模式的参考电平 3.2.18。</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.13 列表SPEC测量参数（第四代KC901X） 参数表"><table>
+<caption>3.3.13 列表SPEC测量参数（第四代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="2930">命令</p></th>
+<th scope="col"><p data-km-source="2931">选项</p></th>
+<th scope="col"><p data-km-source="2932">参数1</p></th>
+<th scope="col"><p data-km-source="2933">参数2</p></th>
+<th scope="col"><p data-km-source="2934">参数3</p></th>
+</tr>
+<tr>
+<td rowspan="3">
+<p data-km-source="2935">sweep_list_spec</p>
+
+</td>
+<td><p data-km-source="2936">init</p></td>
+<td rowspan="3">
+<p data-km-source="2937">calon</p>
+<p data-km-source="2938">caloff</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2939">lowlo</p>
+<p data-km-source="2940">highlo</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2941">port1</p>
+<p data-km-source="2942">port2</p>
+
+</td>
+</tr>
+<tr><td><p data-km-source="2943">run</p></td></tr>
+<tr><td><p data-km-source="2944">stop</p></td></tr>
+</tbody>
+</table></div>
+<p data-km-source="2945">说明：</p>
+<p data-km-source="2946">1、选项：</p>
+<p data-km-source="2947">init-&gt;初始化SPEC功能（在使用SPEC前必须使用此命令）</p>
+<p data-km-source="2948">run-&gt;运行SPEC进行扫频采集</p>
+<p data-km-source="2949">stop-&gt;停止并关闭SPEC功能(在使用其他模式前必须使用此命令)</p>
+<p data-km-source="2950">2、参数1：</p>
+<p data-km-source="2951">calon-&gt;打开系统校准</p>
+<p data-km-source="2952">caloff-&gt;关闭系统校准</p>
+<p data-km-source="2953">3、参数2：</p>
+<p data-km-source="2954">lowlo-&gt;以低本振方式扫描</p>
+<p data-km-source="2955">highlo-&gt;以高本振方式扫描</p>
+<p data-km-source="2956">4、参数3:</p>
+<p data-km-source="2957">Port1-&gt;选择输入端口为端口1（PORT1）</p>
+<p data-km-source="2958">Port2-&gt;选择输入端口为端口2（PORT2）</p>
+<p data-km-source="2959">5、例程：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2960">$sweep_list_spec,run,caloff,lowlo,port1\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="2961">$start,spec\n</span>
+<span class="km-code-line rx" data-km-source="2962">100000000,2.331\n</span>
+<span class="km-code-line rx" data-km-source="2963">200000000,0.119\n</span>
+<span class="km-code-line rx" data-km-source="2964">40000000,-1.136\n</span>
+<span class="km-code-line rx" data-km-source="2965">$end\n</span></code></pre>
+</section>
+

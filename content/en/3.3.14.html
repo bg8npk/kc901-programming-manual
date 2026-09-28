@@ -1,0 +1,194 @@
+<section class="km-section" id="kc901-sec-3-3-14" aria-labelledby="kc901-sec-3-3-14-heading"><h4 id="kc901-sec-3-3-14-heading" data-km-source="2966">3.3.14 S11 Measurements (Third-Generation KC901X)</h4>
+<p data-km-source="2967">Related settings:</p>
+<p data-km-source="2968">Output Attenuation and Cable Compensation. The source cites 3.2.4 and 3.2.8; the corresponding sections in this edition are 3.2.5 and 3.2.9.</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.14 S11 Measurements (Third-Generation KC901X) table"><table>
+<caption>3.3.14 S11 Measurements (Third-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="2969">Command</p></th>
+<th scope="col"><p data-km-source="2970">Option</p></th>
+<th scope="col"><p data-km-source="2971">Parameter 1</p></th>
+<th scope="col"><p data-km-source="2972">Parameter 2</p></th>
+<th scope="col"><p data-km-source="2973">Parameter 3</p></th>
+<th scope="col"><p data-km-source="2974">Parameter 4</p></th>
+<th scope="col"><p data-km-source="2975">Parameter 5</p></th>
+<th scope="col"><p data-km-source="2976">Parameter 6</p></th>
+</tr>
+<tr>
+<td rowspan="3">
+<p data-km-source="2977">S11</p>
+
+</td>
+<td><p data-km-source="2978">init</p></td>
+<td rowspan="3">
+<p data-km-source="2979">caluser (not supported remotely)</p>
+<p data-km-source="2980">calsys</p>
+<p data-km-source="2981">calOff</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2982">ri</p>
+<p data-km-source="2983">ma</p>
+<p data-km-source="2984">vswr</p>
+<p data-km-source="2985">z</p>
+<p data-km-source="2986">loss</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2987">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2988">cs</p>
+<p data-km-source="2989">ss</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2990">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2991">**</p>
+
+</td>
+</tr>
+<tr><td><p data-km-source="2992">run</p></td></tr>
+<tr><td><p data-km-source="2993">stop</p></td></tr>
+</tbody>
+</table></div>
+<p data-km-source="2994">Description:</p>
+<p data-km-source="2995">Options:</p>
+<p data-km-source="2996">init -&gt; Initialize S11. Required before using S11.</p>
+<p data-km-source="2997">run -&gt; Run an S11 frequency sweep and acquire data.</p>
+<p data-km-source="2998">stop -&gt; Stop and close S11. Required before switching to another operating mode.</p>
+<p data-km-source="2999">Parameter 1:</p>
+<p data-km-source="3000">caluser -&gt; Not supported in remote-control mode on third-generation KC901X instruments.</p>
+<p data-km-source="3001">calsys -&gt; Enable system calibration.</p>
+<p data-km-source="3002">caloff -&gt; Disable system calibration.</p>
+<p data-km-source="3003">Third-generation KC901X instruments do not support user calibration in remote-control mode. Do not use caluser or the remote user calibration procedures previously listed in Sections 3.2.53 and 3.2.54. Any required user calibration algorithms must be implemented on the host.</p>
+<p data-km-source="3004">Parameter 2:</p>
+<p data-km-source="3005">ri -&gt; Return real and imaginary components.</p>
+<p data-km-source="3006">ma -&gt; Return reflection coefficient magnitude and phase angle.</p>
+<p data-km-source="3007">vswr -&gt; Return voltage standing wave ratio.</p>
+<p data-km-source="3008">z -&gt; Return impedance.</p>
+<p data-km-source="3009">loss -&gt; Return return loss (logarithmic value).</p>
+<p data-km-source="3010">Parameter 3 sets the number of sweep points. Up to 1001 points are supported. To sweep more than 1001 points, use multiple S11 commands to sweep separate segments.</p>
+<p data-km-source="3011">A single measurement point is allowed. In this case, measurement continues and the instrument continuously sends results at that frequency to the host.</p>
+<p data-km-source="3012">Parameter 4:</p>
+<p data-km-source="3013">cs -&gt; Specify the sweep range using cent and span.</p>
+<p data-km-source="3014">ss -&gt; Specify the sweep range using start and stop.</p>
+<p data-km-source="3015">If parameter 3 specifies a single frequency point, parameter 4 can be cs or ss. Only parameter 5 is required (cent or start); parameter 6 would be parsed as a new command by the KC901.</p>
+<p data-km-source="3016">Parameters 5 and 6 specify center frequency and span (cs), or start and stop frequencies (ss), in Hz. Use the format selected by parameter 4.</p>
+<p data-km-source="3017">The available frequency range depends on the instrument, as shown in the following table:</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.14 S11 Measurements (Third-Generation KC901X) table"><table>
+<caption>3.3.14 S11 Measurements (Third-Generation KC901X) — reference table</caption>
+<tbody>
+<tr><th scope="col" colspan="2"><p data-km-source="3018">Center frequency range</p></th></tr>
+<tr>
+<td><p data-km-source="3019">KC901M(RFMA)</p></td>
+<td><p data-km-source="3020">9500Hz-9999999500Hz(10GHz–500Hz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3021">KC901V</p></td>
+<td><p data-km-source="3022">5500Hz-6999999500Hz(7GHz–500Hz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3023">KC901S+</p></td>
+<td><p data-km-source="3024">5500Hz-4099999500Hz(4.1GHz – 500Hz)</p></td>
+</tr>
+<tr><td colspan="2"><p data-km-source="3025">Span range</p></td></tr>
+<tr>
+<td><p data-km-source="3026">KC901M</p></td>
+<td><p data-km-source="3027">1000Hz-9999991000Hz(10GHz–9KHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3028">KC901V</p></td>
+<td><p data-km-source="3029">1000Hz-6999995000Hz(7GHz–5KHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3030">KC901S+</p></td>
+<td><p data-km-source="3031">1000Hz-4099995000Hz(4.1GHz – 5KHz)</p></td>
+</tr>
+<tr><td colspan="2"><p data-km-source="3032">Start frequency range</p></td></tr>
+<tr>
+<td><p data-km-source="3033">KC901M</p></td>
+<td><p data-km-source="3034">9000Hz-9999999000Hz(10GHz–1KHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3035">KC901V</p></td>
+<td><p data-km-source="3036">5000Hz-6999999000Hz(7GHz–1KHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3037">KC901S+</p></td>
+<td><p data-km-source="3038">5000Hz-4099999000Hz(4.1GHz-1KHz)</p></td>
+</tr>
+<tr><td colspan="2"><p data-km-source="3039">Stop frequency range</p></td></tr>
+<tr>
+<td><p data-km-source="3040">KC901M</p></td>
+<td><p data-km-source="3041">10000Hz-10000000000Hz(10GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3042">KC901V</p></td>
+<td><p data-km-source="3043">6000Hz-7000000000Hz(7GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3044">KC901S+</p></td>
+<td><p data-km-source="3045">6000Hz-4100000000Hz(4.1GHz)</p></td>
+</tr>
+</tbody>
+</table></div>
+
+<p data-km-source="3046">7. Example:</p>
+<p data-km-source="3047">When the number of sweep points is greater than 1:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3048">$s11,run,caloff,ri,2,cs,100000000,50000000\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="3049">$start,s11,ri\n</span>
+<span class="km-code-line rx" data-km-source="3050">$75000000,0.528e0,-0.269e0\n  ; Frequency, real component, imaginary component.</span>
+<span class="km-code-line rx" data-km-source="3051">$100000000,0.471e0,-0.406e0\n</span>
+<span class="km-code-line rx" data-km-source="3052">$125000000,0.370e0,-0.475e0\n</span>
+<span class="km-code-line rx" data-km-source="3053">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3054">$s11,run,caloff,ma,2,cs,100000000,50000000\n</span>
+<span class="km-code-line rx" data-km-source="3055">$start,s11,ma\n</span>
+<span class="km-code-line rx" data-km-source="3056">$75000000,5.847e-2,-26.497\n ; Frequency, reflection coefficient magnitude, phase.</span>
+<span class="km-code-line rx" data-km-source="3057">$100000000,6.171e-1,-40.609\n</span>
+<span class="km-code-line rx" data-km-source="3058">$125000000,5.934e-2,-51.820\n</span>
+<span class="km-code-line rx" data-km-source="3059">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3060">$s11,run,caloff,vswr,2,cs,100000000,50000000\n</span>
+<span class="km-code-line rx" data-km-source="3061">$start,s11,vswr\n</span>
+<span class="km-code-line rx" data-km-source="3062">$75000000,3.7347\n   ; Frequency, voltage standing wave ratio.</span>
+<span class="km-code-line rx" data-km-source="3063">$100000000,4.1275\n</span>
+<span class="km-code-line rx" data-km-source="3064">$125000000,3.7658\n</span>
+<span class="km-code-line rx" data-km-source="3065">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3066">$s11,run,caloff,z,2,cs,100000000,50000000\n</span>
+<span class="km-code-line rx" data-km-source="3067">$start,s11,z\n</span>
+<span class="km-code-line rx" data-km-source="3068">$75000000,137.9871,109.6309,-83.7945\n   ; Frequency, impedance magnitude, resistance, reactance.</span>
+<span class="km-code-line rx" data-km-source="3069">$100000000,113.8715,70.5131,-89.4127\n</span>
+<span class="km-code-line rx" data-km-source="3070">$125000000,91.2070,52.7077,-74.4354\n</span>
+<span class="km-code-line rx" data-km-source="3071">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3072">$s11,run,caloff,loss,2,cs,100000000,50000000\n</span>
+<span class="km-code-line rx" data-km-source="3073">$start,s11,loss\n</span>
+<span class="km-code-line rx" data-km-source="3074">$75000000,-0.409\n; Frequency, return loss.</span>
+<span class="km-code-line rx" data-km-source="3075">$100000000,-0.499\n</span>
+<span class="km-code-line rx" data-km-source="3076">$125000000,-0.574\n</span>
+<span class="km-code-line rx" data-km-source="3077">$end</span></code></pre>
+<p data-km-source="3078">When the number of sweep points is 1:</p>
+<p data-km-source="3079">S11 performs repeated acquisition, with each acquisition returned in a separate packet, as shown below:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3080">$s11,run,caloff,ri,1,cs,100000000\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="3081">$start,s11,ri\n</span>
+<span class="km-code-line rx" data-km-source="3082">$100000000,0.456e0,-0.391e0\n</span>
+<span class="km-code-line rx" data-km-source="3083">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="3084">$start,s11,ri\n</span>
+<span class="km-code-line rx" data-km-source="3085">$100000000,0.458e0,-0.392e0\n</span>
+<span class="km-code-line rx" data-km-source="3086">$end\n</span></code></pre>
+
+
+
+
+</section>
+

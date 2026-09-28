@@ -1,0 +1,74 @@
+<section class="km-section" id="kc901-sec-3-2-55" aria-labelledby="kc901-sec-3-2-55-heading"><h4 id="kc901-sec-3-2-55-heading" data-km-source="1653">3.2.55 S11 System Calibration (Third-Generation KC901X)</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.55 S11 System Calibration (Third-Generation KC901X) table"><table>
+<caption>3.2.55 S11 System Calibration (Third-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="1654">Send command</p></th>
+<th scope="col"><p data-km-source="1655">Option</p></th>
+<th scope="col"><p data-km-source="1656">Description</p></th>
+</tr>
+<tr>
+<td><p data-km-source="1657">cal_s11</p></td>
+<td><p data-km-source="1658">None</p></td>
+<td><p data-km-source="1659">S11 system calibration</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="1660">Description:</p>
+<p data-km-source="1661">This command starts an interactive SOL calibration over the serial or Ethernet connection. The resulting calibration data is used by default in subsequent operation. Use the [Reset] command to restore factory calibration as the default. The procedure involves several exchanges. Host software only needs to identify packet header names; matching the message text is unnecessary.</p>
+<p data-km-source="1662">This calibration can be performed only once after each initialization. To recalibrate, run $S11,STOP\n and initialize again with $S11,INIT\n.</p>
+<p data-km-source="1663">The complete procedure follows:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1664">$cal_s11\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1665">$start,s11cal_confirm\n</span>
+<span class="km-code-line rx" data-km-source="1666">$******S11 calibration******\n       ; Wait for the user to confirm calibration.</span>
+<span class="km-code-line rx" data-km-source="1667">$ Do you want to calibrate the device?[Yes/no]\n</span>
+<span class="km-code-line rx" data-km-source="1668">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1669">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1670">$start,s11cal_wait\n                 ; Wait approximately 5 seconds for hardware warm-up. No data is returned during this time.</span>
+<span class="km-code-line rx" data-km-source="1671">$ waiting for the circuit to be stability...\n</span>
+<span class="km-code-line rx" data-km-source="1672">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1673">$start,s11cal_step\n                 ; Follow the steps below.</span>
+<span class="km-code-line rx" data-km-source="1674">$ start calibration, please follow these steps:\n</span>
+<span class="km-code-line rx" data-km-source="1675">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1676">$start,s11cal_short\n                ; Connect the short standard.</span>
+<span class="km-code-line rx" data-km-source="1677">$Step 1:Please connect the short module then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1678">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line " data-km-source="1679">$yes\n ; After confirmation, wait approximately 16 seconds for short calibration. No data is returned during this time.</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1680">$start,s11cal_open\n                ; Connect the open standard.</span>
+<span class="km-code-line rx" data-km-source="1681">$Step 2:Please connect the open module then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1682">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line " data-km-source="1683">$yes\n ; After confirmation, wait approximately 16 seconds for open calibration. No data is returned during this time.</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1684">$start,s11cal_load\n                ; Connect the load standard.</span>
+<span class="km-code-line rx" data-km-source="1685">$Step 3:Please connect the load module then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1686">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line " data-km-source="1687">$yes\n ; After confirmation, wait approximately 16 seconds for load calibration. No data is returned during this time.</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1688">$start,s11cal_process\n             ; Calculation in progress.</span>
+<span class="km-code-line rx" data-km-source="1689">$Step 4: processing (Wait please).\n</span>
+<span class="km-code-line rx" data-km-source="1690">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1691">$start,s11cal_save\n                ; Saving.</span>
+<span class="km-code-line rx" data-km-source="1692">$ saving(wait please) \n</span>
+<span class="km-code-line rx" data-km-source="1693">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1694">$start,s11cal_completed\n           ; Calibration complete.</span>
+<span class="km-code-line rx" data-km-source="1695">$Calibration completed!\n</span>
+<span class="km-code-line rx" data-km-source="1696">$end\n</span></code></pre>
+
+<p data-km-source="1697">While the instrument is waiting for confirmation from the host, the user can enter 'exit\n' to leave calibration mode, as shown below:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1698">$exit\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1699">$start,s11cal_exit\n</span>
+<span class="km-code-line rx" data-km-source="1700">$Exit calibration\n</span>
+<span class="km-code-line rx" data-km-source="1701">$end\n</span></code></pre></section>
+

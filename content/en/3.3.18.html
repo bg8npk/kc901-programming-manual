@@ -1,0 +1,157 @@
+<section class="km-section" id="kc901-sec-3-3-18" aria-labelledby="kc901-sec-3-3-18-heading"><h4 id="kc901-sec-3-3-18-heading" data-km-source="3355">3.3.18 RF Signal Source Output (Third-Generation KC901X)</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.18 RF Signal Source Output (Third-Generation KC901X) table"><table>
+<caption>3.3.18 RF Signal Source Output (Third-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="3356">Command</p></th>
+<th scope="col"><p data-km-source="3357">Option</p></th>
+<th scope="col"><p data-km-source="3358">Parameter 1</p></th>
+<th scope="col"><p data-km-source="3359">Parameter 2</p></th>
+<th scope="col"><p data-km-source="3360">Parameter 3</p></th>
+<th scope="col"><p data-km-source="3361">Parameter 4</p></th>
+<th scope="col"><p data-km-source="3362">Parameter 5</p></th>
+<th scope="col"><p data-km-source="3363">Parameter 6</p></th>
+</tr>
+<tr>
+<td rowspan="3">
+<p data-km-source="3364">rfSource</p>
+
+</td>
+<td><p data-km-source="3365">init</p></td>
+<td rowspan="3">
+<p data-km-source="3366">off</p>
+<p data-km-source="3367">ask</p>
+<p data-km-source="3368">fm</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3369">port1</p>
+<p data-km-source="3370">port2</p>
+<p data-km-source="3371">afout</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3372">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3373">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3374">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3375">**</p>
+
+</td>
+</tr>
+<tr><td><p data-km-source="3376">run</p></td></tr>
+<tr><td><p data-km-source="3377">stop</p></td></tr>
+</tbody>
+</table></div>
+<p data-km-source="3378">Description:</p>
+<p data-km-source="3379">1. Options:</p>
+<p data-km-source="3380">init -&gt; Initialize RfSource. Required before using RfSource.</p>
+<p data-km-source="3381">run -&gt; Run RfSource and output the signal.</p>
+<p data-km-source="3382">stop -&gt; Stop and close RfSource. Required before switching to another operating mode.</p>
+<p data-km-source="3383">2. Parameter 1:</p>
+<p data-km-source="3384">off -&gt; Disable modulation; parameters 4 and 5 need not be entered. [Source note: the parameter numbers are retained from the source; check the command table for this instrument generation.]</p>
+<p data-km-source="3385">ask -&gt; Enable ASK modulation.</p>
+<p data-km-source="3386">fm -&gt; Use FM modulation.</p>
+<p data-km-source="3387">3. Parameter 2:</p>
+<p data-km-source="3388">port1 -&gt; Select output port 1 (PORT 1).</p>
+<p data-km-source="3389">port2 -&gt; Select output port 2 (PORT 2).</p>
+<p data-km-source="3390">afout -&gt; Select audio output (AFOUT).</p>
+<p data-km-source="3391">3. Parameter 3:</p>
+<p data-km-source="3392">The available carrier frequency range depends on the instrument, as shown in the following table:</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.18 RF Signal Source Output (Third-Generation KC901X) table"><table>
+<caption>3.3.18 RF Signal Source Output (Third-Generation KC901X) — reference table</caption>
+<tbody>
+<tr><th scope="col" colspan="2"><p data-km-source="3393">Carrier frequency range</p></th></tr>
+<tr>
+<td><p data-km-source="3394">KC901M</p></td>
+<td><p data-km-source="3395">0Hz-10000000000Hz（10GHz）</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3396">KC901V</p></td>
+<td><p data-km-source="3397">0-7000000000Hz(7GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3398">KC901S+</p></td>
+<td><p data-km-source="3399">0-4100000000Hz(4.1GHz)</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="3400">When switched to audio output, the frequency range is 0-60000000Hz (60MHz).</p>
+<p data-km-source="3401">4. Parameter 4:</p>
+<p data-km-source="3402">Carrier output amplitude in dBm, with 1dB resolution.</p>
+<p data-km-source="3403">The available output amplitude depends on frequency.</p>
+<p data-km-source="3404">If the requested amplitude exceeds the available maximum, the instrument returns a warning and outputs the maximum amplitude.</p>
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="3405">$start,warn_gtr\n    ; Requested value exceeds the maximum.</span>
+<span class="km-code-line rx" data-km-source="3406">$warn:It is greater than the maximum output!\n</span>
+<span class="km-code-line rx" data-km-source="3407">$end\n</span></code></pre>
+<p data-km-source="3408">The source states that if the requested amplitude is below the available maximum, the instrument returns a warning and outputs the minimum. [Source note: "maximum" appears inconsistent with this lower-limit description; it has not been silently changed to "minimum".]</p>
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="3409">$start,warn_lt\n    ; The source comment says "requested value exceeds the maximum"; this conflicts with the lower-limit warning name.</span>
+<span class="km-code-line rx" data-km-source="3410">$warn:It is less than the minimum output!\n</span>
+<span class="km-code-line rx" data-km-source="3411">$end\n</span></code></pre>
+<p data-km-source="3412">For output port "port2", the approximate range is +10 to -30dBm.</p>
+<p data-km-source="3413">For output port "port1" with RF board version "1.0.5" or later, the range is +10 to -60dBm. Otherwise, it remains +10 to -30dBm.</p>
+<p data-km-source="3414">5. Parameter 5:</p>
+<p data-km-source="3415">Modulation frequency in Hz. Range: 0-3000Hz.</p>
+<p data-km-source="3416">6. Parameter 6:</p>
+<p data-km-source="3417">For ASK, the modulation depth has the following fixed values: 0, 5, 10, 15, 20, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90.</p>
+<p data-km-source="3418">For FM, the adjustable modulation depth varies with frequency, as shown below:</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.18 RF Signal Source Output (Third-Generation KC901X) table"><table>
+<caption>3.3.18 RF Signal Source Output (Third-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="3419">0-60M (excluding 60M)</p></th>
+<th scope="col"><p data-km-source="3420">0 - 10MHz</p></th>
+</tr>
+<tr>
+<td><p data-km-source="3421">60M-106.25M (excluding 106.25M)</p></td>
+<td><p data-km-source="3422">0 – 312.5KHz</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3423">106.25M-212.5M (excluding 212.5M)</p></td>
+<td><p data-km-source="3424">0 – 625KHz</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3425">212.5M-425M (excluding 425M)</p></td>
+<td><p data-km-source="3426">0 – 1.25MHz</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3427">425M-850M (excluding 850M)</p></td>
+<td><p data-km-source="3428">0 – 2.5MHz</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3429">850M-1700M (excluding 1700M)</p></td>
+<td><p data-km-source="3430">0 – 5MHz</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3431">1700M-3400M (excluding 3400M)</p></td>
+<td><p data-km-source="3432">0 – 10MHz</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3433">3400M – 7000M</p></td>
+<td><p data-km-source="3434">0 – 20MHz</p></td>
+</tr>
+</tbody>
+</table></div>
+
+<p data-km-source="3435">7. Example:</p>
+<p data-km-source="3436">Configure the RF signal source with modulation enabled, a 1GHz carrier, no output attenuation, a 1KHz modulation frequency, and 90% modulation depth.</p>
+<p data-km-source="3437">Step 1: Initialize RfSource:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3438">$rfsource,init\n</span></code></pre>
+<p data-km-source="3439">Step 2: Start operation and apply the settings:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3440">$rfsource,run,ask,port1,1000000000,0,1000,90\n</span></code></pre>
+<p data-km-source="3441">Step 3: Stop the RF signal source before using another function:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3442">$rfsource,stop\n</span></code></pre>
+<p data-km-source="3443">8. Behavior:</p>
+<p data-km-source="3444">(1) Init immediately initializes the circuits associated with the RF signal source.</p>
+<p data-km-source="3445">(2) STOP shuts down the circuits associated with the RF signal source.</p>
+<p data-km-source="3446">(3) RUN starts output using the specified settings.</p>
+<p data-km-source="3447">(4) While the source is outputting, other commands that do not explicitly require the source to stop leave the output running.</p></section>
+

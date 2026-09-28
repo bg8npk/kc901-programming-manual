@@ -1,0 +1,61 @@
+<section class="km-section" id="kc901-sec-3-2-33-zh" aria-labelledby="kc901-sec-3-2-33-heading-zh"><h4 id="kc901-sec-3-2-33-heading-zh" data-km-source="862">3.2.33 S12响应校准（第四代KC901X）</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.33 S12响应校准（第四代KC901X） 参数表"><table>
+<caption>3.2.33 S12响应校准（第四代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="863">发送命令</p></th>
+<th scope="col"><p data-km-source="864">参数1</p></th>
+<th scope="col"><p data-km-source="865">参数2</p></th>
+<th scope="col"><p data-km-source="866">参数3</p></th>
+<th scope="col"><p data-km-source="867">参数4</p></th>
+</tr>
+<tr>
+<td><p data-km-source="868">response_s12_cal</p></td>
+<td><p data-km-source="869">点数</p></td>
+<td><p data-km-source="870">频率方式</p></td>
+<td><p data-km-source="871">中心频率/起始频率</p></td>
+<td><p data-km-source="872">扫宽/终止频率</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="873">说明：</p>
+<p data-km-source="874">发送此命令后，KC901会通过串口或网口与用户交互实现T校准。以后的应用中，如果指定调用S12响应校准，则会默认调用此次校准数据，但如果频率范围超出校准的范围，则会调用系统校准。校准过程会有好几次交互，对于上位机编程而言也仅需要识别包头名即可，无需做内容字符串匹配。</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="875">$response_s12_cal,10,cs,901000000,10000000\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="876">$start,s12_Cal_confirm\n</span>
+<span class="km-code-line rx" data-km-source="877">$******S12 Response calibration******\n</span>
+<span class="km-code-line rx" data-km-source="878">$Do you want to calibrate the device?[Yes/no]\n</span>
+<span class="km-code-line rx" data-km-source="879">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="880">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="881">$start,s12_response_cal_wait\n</span>
+<span class="km-code-line rx" data-km-source="882">$ waiting for the circuit to be stability...\n</span>
+<span class="km-code-line rx" data-km-source="883">$end\n</span></code></pre>
+
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="884">$start,port_polarity\n</span>
+<span class="km-code-line rx" data-km-source="885">$Enter female,male or f_m to specify the polarity of the PORTS:\n</span>
+<span class="km-code-line rx" data-km-source="886">$end\n</span></code></pre>
+
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="887">$female\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="888">$start,cal_connect\n</span>
+<span class="km-code-line rx" data-km-source="889">$Step 1:Please connect PORT1 and PORT2 then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="890">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="891">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="892">$start,cal_completed\n</span>
+<span class="km-code-line rx" data-km-source="893">$Calibration completed!\n</span>
+<span class="km-code-line rx" data-km-source="894">$end\n</span></code></pre>
+
+<p data-km-source="895">在下位机等待上位机确认的过程中，用户可以输入’exit\n’，退出校准模式。如下所示：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="896">$exit\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="897">$start,exit\n</span>
+<span class="km-code-line rx" data-km-source="898">$Exit calibration\n</span>
+<span class="km-code-line rx" data-km-source="899">$end\n</span></code></pre>
+</section>
+

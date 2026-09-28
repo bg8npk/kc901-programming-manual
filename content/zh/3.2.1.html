@@ -1,0 +1,36 @@
+<section class="km-section" id="kc901-sec-3-2-1-zh" aria-labelledby="kc901-sec-3-2-1-heading-zh"><h4 id="kc901-sec-3-2-1-heading-zh" data-km-source="102">3.2.1系统时间</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.1系统时间 参数表"><table>
+<caption>3.2.1系统时间 — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="103">命令</p></th>
+<th scope="col"><p data-km-source="104">选项</p></th>
+<th scope="col"><p data-km-source="105">说明</p></th>
+</tr>
+<tr>
+<td rowspan="2">
+<p data-km-source="106">date</p>
+</td>
+<td><p data-km-source="107">get</p></td>
+<td><p data-km-source="108">获取时间</p></td>
+</tr>
+<tr>
+<td><p data-km-source="109">set</p></td>
+<td>
+<p data-km-source="110">设置时间，格式如下：</p>
+<p data-km-source="111">年 月 日 时 分 秒</p>
+<p data-km-source="112">XXXX-XX-XX, XX-XX-XX</p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="113">例程:</p>
+<p data-km-source="114">获取KC901系统时间：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="115">$date,get\n</span>
+<span class="km-code-line rx" data-km-source="116">$start,date\n</span>
+<span class="km-code-line rx" data-km-source="117">Date:2025-12-30 15:22:14  ;依次代表年月日时分秒</span>
+<span class="km-code-line rx" data-km-source="118">$end\n</span></code></pre>
+<p data-km-source="119">设置时间:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="120">$date,set,2016-4-22,13-51-00\n</span></code></pre>
+<p data-km-source="121">注意：输入年份应当在2000-2099之间。</p></section>
+

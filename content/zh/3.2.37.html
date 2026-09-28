@@ -1,0 +1,24 @@
+<section class="km-section" id="kc901-sec-3-2-37-zh" aria-labelledby="kc901-sec-3-2-37-heading-zh"><h4 id="kc901-sec-3-2-37-heading-zh" data-km-source="1062">3.2.37 获取系统警告信息</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.37 获取系统警告信息 参数表"><table>
+<caption>3.2.37 获取系统警告信息 — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="1063">发送命令</p></th>
+<th scope="col"><p data-km-source="1064">选项</p></th>
+<th scope="col"><p data-km-source="1065">说明</p></th>
+</tr>
+<tr>
+<td><p data-km-source="1066">getstatus</p></td>
+<td><p data-km-source="1067">无</p></td>
+<td><p data-km-source="1068">获取系统警告信息</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="1069">说明：</p>
+<p data-km-source="1070">发送此命令后，如有警告信息，KC901会通过串口或网口返回一次系统警告信息，无警告信息时无返回。</p>
+<p data-km-source="1071">例程：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1072">$getstatus\n</span>
+<span class="km-code-line rx" data-km-source="1073">$start,err_BatVolLow</span>
+<span class="km-code-line rx" data-km-source="1074">$error:Low battery!</span>
+<span class="km-code-line rx" data-km-source="1075">$end</span></code></pre></section>
+

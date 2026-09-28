@@ -1,0 +1,6 @@
+<section class="km-section" id="kc901-sec-2-6" aria-labelledby="kc901-sec-2-6-heading"><h3 id="kc901-sec-2-6-heading" data-km-source="82">2.6 Stopping Data Output</h3>
+<p data-km-source="83">To stop an operation while the KC901 is returning continuous data, send [Ctrl]+[C] from the host (hexadecimal 0x03). The KC901 stops executing the commands it has received, finishes transmitting all data already measured but not yet fully sent, and then stops returning data.</p>
+<p data-km-source="84">Note:</p>
+<p data-km-source="85">1. After data output is stopped, the KC901 returns fully to its initial state. For example, if [Ctrl]+[C] is sent while acquiring data with s11 RUN, send s11 init again before running s11 run.</p>
+<p data-km-source="86">2. When using SecureCRT, first click the data display window, then press [Ctrl]+[C].</p></section>
+

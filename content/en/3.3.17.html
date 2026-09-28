@@ -1,0 +1,80 @@
+<section class="km-section" id="kc901-sec-3-3-17" aria-labelledby="kc901-sec-3-3-17-heading"><h4 id="kc901-sec-3-3-17-heading" data-km-source="3309">3.3.17 Field Strength Measurements (Third-Generation KC901X)</h4>
+<p data-km-source="3310">Related setting: Output Attenuation. The source cites 3.2.4; the corresponding section in this edition is 3.2.5.</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.17 Field Strength Measurements (Third-Generation KC901X) table"><table>
+<caption>3.3.17 Field Strength Measurements (Third-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="3311">Command</p></th>
+<th scope="col"><p data-km-source="3312">Option</p></th>
+<th scope="col"><p data-km-source="3313">Parameter 1</p></th>
+<th scope="col"><p data-km-source="3314">Parameter 2</p></th>
+<th scope="col"><p data-km-source="3315">Parameter 3</p></th>
+</tr>
+<tr>
+<td rowspan="3">
+<p data-km-source="3316">field</p>
+
+</td>
+<td><p data-km-source="3317">init</p></td>
+<td rowspan="3">
+<p data-km-source="3318">lowlo</p>
+<p data-km-source="3319">highlo</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3320">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3321">**</p>
+
+</td>
+</tr>
+<tr><td><p data-km-source="3322">run</p></td></tr>
+<tr><td><p data-km-source="3323">stop</p></td></tr>
+</tbody>
+</table></div>
+<p data-km-source="3324">Description:</p>
+<p data-km-source="3325">1. Options:</p>
+<p data-km-source="3326">init -&gt; Initialize FIELD. Required before using FIELD.</p>
+<p data-km-source="3327">run -&gt; Run FIELD and acquire measurement data.</p>
+<p data-km-source="3328">stop -&gt; Stop and close FIELD. Required before switching to another operating mode.</p>
+<p data-km-source="3329">2. Parameter 1:</p>
+<p data-km-source="3330">lowlo -&gt; Measure using the low local-oscillator setting.</p>
+<p data-km-source="3331">highlo -&gt; Measure using the high local-oscillator setting.</p>
+<p data-km-source="3332">3. Parameter 2: Antenna gain, in dBi.</p>
+<p data-km-source="3333">Antenna gain range: -100.00 to +100.00dBi.</p>
+<p data-km-source="3334">Parameter 3: Single-point measurement frequency in Hz, with resolution down to 0.1Hz.</p>
+<p data-km-source="3335">The available frequency range depends on the instrument, as shown in the following table:</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.17 Field Strength Measurements (Third-Generation KC901X) table"><table>
+<caption>3.3.17 Field Strength Measurements (Third-Generation KC901X) — reference table</caption>
+<tbody>
+<tr><th scope="col" colspan="2"><p data-km-source="3336">Frequency range</p></th></tr>
+<tr>
+<td><p data-km-source="3337">KC901M</p></td>
+<td><p data-km-source="3338">0Hz-10000000000Hz(10GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3339">KC901V</p></td>
+<td><p data-km-source="3340">0-7000000000Hz(7GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3341">KC901S+</p></td>
+<td><p data-km-source="3342">0-4100000000Hz(4.1GHz)</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="3343">5. Example:</p>
+<p data-km-source="3344">Field strength is measured repeatedly, with each acquisition returned in a separate packet, for example:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3345">$field,run,lowlo,10,100000000\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="3346">$start,field\n</span>
+<span class="km-code-line rx" data-km-source="3347">$100000000.0,-18.115,-121.917\n    ; Frequency, field strength, absolute level (dBm).</span>
+<span class="km-code-line rx" data-km-source="3348">$end\n</span>
+<span class="km-code-line rx" data-km-source="3349">$start,field\n</span>
+<span class="km-code-line rx" data-km-source="3350">$100000000.0,-18.875,-122.337\n</span>
+<span class="km-code-line rx" data-km-source="3351">$end\n</span>
+<span class="km-code-line rx" data-km-source="3352">$start,field\n</span>
+<span class="km-code-line rx" data-km-source="3353">$100000000.0,-18.667,-122.087\n</span>
+<span class="km-code-line rx" data-km-source="3354">$end\n</span></code></pre></section>
+

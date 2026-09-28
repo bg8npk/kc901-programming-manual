@@ -1,0 +1,162 @@
+<section class="km-section" id="kc901-sec-3-3-16-zh" aria-labelledby="kc901-sec-3-3-16-heading-zh"><h4 id="kc901-sec-3-3-16-heading-zh" data-km-source="3210">3.3.16 获取频谱测量参数（第三代KC901X）</h4>
+<p data-km-source="3211">注意：与此功能相关的参数还有：3.2.18 设置频谱模式的参考电平。</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.16 获取频谱测量参数（第三代KC901X） 参数表"><table>
+<caption>3.3.16 获取频谱测量参数（第三代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="3212">命令</p></th>
+<th scope="col"><p data-km-source="3213">选项</p></th>
+<th scope="col"><p data-km-source="3214">参数1</p></th>
+<th scope="col"><p data-km-source="3215">参数2</p></th>
+<th scope="col"><p data-km-source="3216">参数3</p></th>
+<th scope="col"><p data-km-source="3217">参数4</p></th>
+<th scope="col"><p data-km-source="3218">参数5</p></th>
+<th scope="col"><p data-km-source="3219">参数6</p></th>
+</tr>
+<tr>
+<td rowspan="3">
+<p data-km-source="3220">spec</p>
+
+</td>
+<td><p data-km-source="3221">init</p></td>
+<td rowspan="3">
+<p data-km-source="3222">calon</p>
+<p data-km-source="3223">caloff</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3224">lowlo</p>
+<p data-km-source="3225">highlo</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3226">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3227">cs</p>
+<p data-km-source="3228">ss</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3229">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3230">**</p>
+
+</td>
+</tr>
+<tr><td><p data-km-source="3231">run</p></td></tr>
+<tr><td><p data-km-source="3232">stop</p></td></tr>
+</tbody>
+</table></div>
+<p data-km-source="3233">说明：</p>
+<p data-km-source="3234">1、选项：</p>
+<p data-km-source="3235">init-&gt;初始化SPEC功能（在使用SPEC前必须使用此命令）</p>
+<p data-km-source="3236">run-&gt;运行SPEC进行扫频采集</p>
+<p data-km-source="3237">stop-&gt;停止并关闭SPEC功能(在使用其他模式前必须使用此命令)</p>
+<p data-km-source="3238">2、参数1：</p>
+<p data-km-source="3239">calon-&gt;打开系统校准</p>
+<p data-km-source="3240">caloff-&gt;关闭系统校准</p>
+<p data-km-source="3241">3、参数2：</p>
+<p data-km-source="3242">lowlo-&gt;以低本振方式扫描</p>
+<p data-km-source="3243">highlo-&gt;以高本振方式扫描</p>
+<p data-km-source="3244">参数3用于设置扫描点数，第三代KC901最大支持1001点。需要超过该点数时，可以多次使用本指令。如果只需扫描1个频率，可以设置为1。与场强功能的区别是本模式可以指定参考电平，而场强功能不能指定参考电平。需要精确测量相对值时，建议指定参考电平。</p>
+<p data-km-source="3245">5、参数4：</p>
+<p data-km-source="3246">cs-&gt;以Cent和Span的方式确定扫频范围</p>
+<p data-km-source="3247">ss-&gt;以Start和Stop的方式确定扫频范围</p>
+<p data-km-source="3248">如果参数3设置为仅扫描1个频率点，则参数4应当设置为CS。</p>
+<p data-km-source="3249">参数5和6设置中心频率及扫宽，以Hz为单位</p>
+<p data-km-source="3250">根据设备的不同，频率可操作范围有所不同，如下表所示：</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.16 获取频谱测量参数（第三代KC901X） 参数表"><table>
+<caption>3.3.16 获取频谱测量参数（第三代KC901X） — 参数表</caption>
+<tbody>
+<tr><th scope="col" colspan="2"><p data-km-source="3251">中心频率范围</p></th></tr>
+<tr>
+<td><p data-km-source="3252">KC901M</p></td>
+<td><p data-km-source="3253">500Hz-9999999500Hz(10GHz–500Hz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3254">KC901V</p></td>
+<td><p data-km-source="3255">500Hz-6999999500Hz(7GHz–500Hz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3256">KC901S+</p></td>
+<td><p data-km-source="3257">500Hz-4099999500Hz(4.1GHz-500Hz)</p></td>
+</tr>
+<tr><td colspan="2"><p data-km-source="3258">扫宽范围</p></td></tr>
+<tr>
+<td><p data-km-source="3259">KC901M</p></td>
+<td><p data-km-source="3260">1000Hz-10000000000Hz(10GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3261">KC901V</p></td>
+<td><p data-km-source="3262">1000Hz-7000000000Hz(7GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3263">KC901S+</p></td>
+<td><p data-km-source="3264">1000Hz-4100000000Hz(4.1GHz)</p></td>
+</tr>
+<tr><td colspan="2"><p data-km-source="3265">起始频率范围</p></td></tr>
+<tr>
+<td><p data-km-source="3266">KC901M</p></td>
+<td><p data-km-source="3267">0-9999999000Hz(10GHz – 1KHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3268">KC901V</p></td>
+<td><p data-km-source="3269">0-6999999000Hz(7GHz – 1KHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3270">KC901S+</p></td>
+<td><p data-km-source="3271">0-4099999000Hz(4.1GHz – 1KHz)</p></td>
+</tr>
+<tr><td colspan="2"><p data-km-source="3272">终止频率范围</p></td></tr>
+<tr>
+<td><p data-km-source="3273">KC901M</p></td>
+<td><p data-km-source="3274">10000Hz-10000000000Hz(10GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3275">KC901V</p></td>
+<td><p data-km-source="3276">1000Hz-7000000000Hz(7GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3277">KC901S+</p></td>
+<td><p data-km-source="3278">1000Hz-4100000000Hz(4.1GHz)</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="3279">终止频率应当大于起始频率。</p>
+<p data-km-source="3280">如果参数3设置为仅扫描1个频率点，则参数4选择cs和ss都可以，且仅需要输入参数5就可以了（cent \ start均可），参数6会被KC901解析为新的命令。</p>
+<p data-km-source="3281">7、例程：</p>
+<p data-km-source="3282">当采样点数大于1时：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3283">$spec,run,caloff,lowlo,10,cs,100000000,50000000\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="3284">$start,spec\n</span>
+<span class="km-code-line rx" data-km-source="3285">$75000000,-74.166\n  ;依次为频率和幅度(dBm)</span>
+<span class="km-code-line rx" data-km-source="3286">$80000000,-74.385\n</span>
+<span class="km-code-line rx" data-km-source="3287">$85000000,-74.228\n</span>
+<span class="km-code-line rx" data-km-source="3288">$90000000,-74.249\n</span>
+<span class="km-code-line rx" data-km-source="3289">$95000000,-74.125\n</span>
+<span class="km-code-line rx" data-km-source="3290">$100000000,-74.456\n</span>
+<span class="km-code-line rx" data-km-source="3291">$105000000,-74.422\n</span>
+<span class="km-code-line rx" data-km-source="3292">$110000000,-74.147\n</span>
+<span class="km-code-line rx" data-km-source="3293">$115000000,-74.077\n</span>
+<span class="km-code-line rx" data-km-source="3294">$120000000,-74.295\n</span>
+<span class="km-code-line rx" data-km-source="3295">$125000000,-74.314\n</span>
+<span class="km-code-line rx" data-km-source="3296">$end\n</span></code></pre>
+<p data-km-source="3297">当扫描点数等于1时：</p>
+<p data-km-source="3298">SPEC属于循环采样，每次采样结果都为一个包，如下所示：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3299">$spec,run,caloff,lowlo,1,cs,100000000\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="3300">$start,spec\n</span>
+<span class="km-code-line rx" data-km-source="3301">$100000000,-74.307\n</span>
+<span class="km-code-line rx" data-km-source="3302">$end\n</span>
+<span class="km-code-line rx" data-km-source="3303">$start,spec\n</span>
+<span class="km-code-line rx" data-km-source="3304">$100000000,-74.540\n</span>
+<span class="km-code-line rx" data-km-source="3305">$end\n</span>
+<span class="km-code-line rx" data-km-source="3306">$start,spec\n</span>
+<span class="km-code-line rx" data-km-source="3307">$100000000,-74.310\n</span>
+<span class="km-code-line rx" data-km-source="3308">$end\n</span></code></pre>
+</section>
+

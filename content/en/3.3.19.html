@@ -1,0 +1,109 @@
+<section class="km-section" id="kc901-sec-3-3-19" aria-labelledby="kc901-sec-3-3-19-heading"><h4 id="kc901-sec-3-3-19-heading" data-km-source="3448">3.3.19 Audio Signal Source Output (Third-Generation KC901X)</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.19 Audio Signal Source Output (Third-Generation KC901X) table"><table>
+<caption>3.3.19 Audio Signal Source Output (Third-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="3449">Command</p></th>
+<th scope="col"><p data-km-source="3450">Option</p></th>
+<th scope="col"><p data-km-source="3451">Parameter 1</p></th>
+<th scope="col"><p data-km-source="3452">Parameter 2</p></th>
+<th scope="col"><p data-km-source="3453">Parameter 3</p></th>
+<th scope="col"><p data-km-source="3454">Parameter 4</p></th>
+<th scope="col"><p data-km-source="3455">Parameter 5</p></th>
+<th scope="col"><p data-km-source="3456">Parameter 6</p></th>
+</tr>
+<tr>
+<td rowspan="3">
+<p data-km-source="3457">afsource</p>
+
+</td>
+<td><p data-km-source="3458">init</p></td>
+<td rowspan="3">
+<p data-km-source="3459">off</p>
+<p data-km-source="3460">ask</p>
+<p data-km-source="3461">fm</p>
+<p data-km-source="3462">pm</p>
+
+</td>
+<td><p data-km-source="3463">afout</p></td>
+<td rowspan="3">
+<p data-km-source="3464">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3465">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3466">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3467">**</p>
+
+</td>
+</tr>
+<tr>
+<td><p data-km-source="3468">run</p></td>
+<td><p data-km-source="3469">port1</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3470">stop</p></td>
+<td><p data-km-source="3471">port2</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="3472">Description:</p>
+<p data-km-source="3473">1. Options:</p>
+<p data-km-source="3474">init -&gt; Initialize AfSource. Required before using AfSource.</p>
+<p data-km-source="3475">run -&gt; Run AfSource and output audio.</p>
+<p data-km-source="3476">stop -&gt; Stop and close AfSource. Required before switching to another operating mode.</p>
+<p data-km-source="3477">2. Parameter 1:</p>
+<p data-km-source="3478">off -&gt; Disable modulation; parameters 4 and 5 need not be entered. [Source note: the parameter numbers are retained from the source; check the command table for this instrument generation.]</p>
+<p data-km-source="3479">ask -&gt; ASK modulation.</p>
+<p data-km-source="3480">fm -&gt; FM modulation.</p>
+<p data-km-source="3481">pm -&gt; PM modulation.</p>
+<p data-km-source="3482">3. Parameter 2:</p>
+<p data-km-source="3483">afout -&gt; Select audio output (AF OUT).</p>
+<p data-km-source="3484">port1 -&gt; Select output port 1 (PORT 1).</p>
+<p data-km-source="3485">port2 -&gt; Select output port 2 (PORT 2).</p>
+<p data-km-source="3486">3. Parameter 3:</p>
+<p data-km-source="3487">Carrier frequency in Hz. Range: 0-2000000000Hz.</p>
+<p data-km-source="3488">4. Parameter 4:</p>
+<p data-km-source="3489">For output port "afout", amplitude is specified in mV peak-to-peak (VPP). Range: 0-3000mV.</p>
+<p data-km-source="3490">For output port "port1" or "pot2" (spelled this way in the source), this parameter is the carrier output amplitude in dBm, with 1dB resolution.</p>
+<p data-km-source="3491">The available output amplitude depends on frequency.</p>
+<p data-km-source="3492">If the requested amplitude exceeds the available maximum, the instrument returns a warning and outputs the maximum amplitude.</p>
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="3493">$start,warn_gtr\n    ; Requested value exceeds the maximum.</span>
+<span class="km-code-line rx" data-km-source="3494">$warn:It is greater than the maximum output!\n</span>
+<span class="km-code-line rx" data-km-source="3495">$end\n</span></code></pre>
+<p data-km-source="3496">The source states that if the requested amplitude is below the available maximum, the instrument returns a warning and outputs the minimum. [Source note: "maximum" appears inconsistent with this lower-limit description; it has not been silently changed to "minimum".]</p>
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="3497">$start,warn_lt\n    ; The source comment says "requested value exceeds the maximum"; this conflicts with the lower-limit warning name.</span>
+<span class="km-code-line rx" data-km-source="3498">$warn:It is less than the minimum output!\n</span>
+<span class="km-code-line rx" data-km-source="3499">$end\n</span></code></pre>
+<p data-km-source="3500">For output port "port2", the approximate range is +10 to -81dBm.</p>
+<p data-km-source="3501">For output port "port1" with RF board version "1.0.5" or later, the range is +10 to -111dBm. Otherwise, it remains +10 to -81dBm.</p>
+<p data-km-source="3502">5. Parameter 5:</p>
+<p data-km-source="3503">Modulation frequency in Hz.</p>
+<p data-km-source="3504">For ASK, the range is 0-3000Hz.</p>
+<p data-km-source="3505">For FM and PM, the range is 16-10000Hz.</p>
+<p data-km-source="3506">6. Parameter 6:</p>
+<p data-km-source="3507">Modulation depth / frequency deviation</p>
+<p data-km-source="3508">For ASK, modulation depth ranges from 0 to 100%.</p>
+<p data-km-source="3509">For FM, frequency deviation ranges from 0 to 1MHz.</p>
+<p data-km-source="3510">For PM, the phase deviation ranges from -180° to +180°.</p>
+<p data-km-source="3511">7. Example:</p>
+<p data-km-source="3512">Configure the audio signal source for ASK modulation, a 10MHz carrier, 1.3V peak-to-peak (VPP) output, a 1KHz modulation frequency, and 100% modulation depth.</p>
+<p data-km-source="3513">Step 1: Initialize AfSource:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3514">$afsource,init\n</span></code></pre>
+<p data-km-source="3515">Step 2: Start operation and apply the settings:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3516">$afsource,run,ask,afout,10000000,1300,1000,100\n</span></code></pre>
+<p data-km-source="3517">Step 3: Exit this mode before using another function.</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3518">$afsource,stop\n</span></code></pre>
+<p data-km-source="3519">8. Behavior:</p>
+<p data-km-source="3520">(1) Init immediately initializes the circuits associated with the audio signal source.</p>
+<p data-km-source="3521">(2) STOP immediately shuts down the circuits associated with the audio signal source.</p>
+<p data-km-source="3522">(3) RUN starts output using the specified settings.</p>
+<p data-km-source="3523">(4) While the source is outputting, other commands that do not explicitly require the source to stop leave the output running.</p>
+</section>
+

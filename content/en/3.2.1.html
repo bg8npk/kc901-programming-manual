@@ -1,0 +1,36 @@
+<section class="km-section" id="kc901-sec-3-2-1" aria-labelledby="kc901-sec-3-2-1-heading"><h4 id="kc901-sec-3-2-1-heading" data-km-source="102">3.2.1 System Time</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.1 System Time table"><table>
+<caption>3.2.1 System Time — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="103">Command</p></th>
+<th scope="col"><p data-km-source="104">Option</p></th>
+<th scope="col"><p data-km-source="105">Description</p></th>
+</tr>
+<tr>
+<td rowspan="2">
+<p data-km-source="106">date</p>
+</td>
+<td><p data-km-source="107">get</p></td>
+<td><p data-km-source="108">Read the time.</p></td>
+</tr>
+<tr>
+<td><p data-km-source="109">set</p></td>
+<td>
+<p data-km-source="110">Set the time using the following format:</p>
+<p data-km-source="111">Year Month Day Hour Minute Second</p>
+<p data-km-source="112">XXXX-XX-XX, XX-XX-XX</p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="113">Example:</p>
+<p data-km-source="114">Read the KC901 system time:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="115">$date,get\n</span>
+<span class="km-code-line rx" data-km-source="116">$start,date\n</span>
+<span class="km-code-line rx" data-km-source="117">Date:2025-12-30 15:22:14  ; Year, month, day, hour, minute, second, in that order.</span>
+<span class="km-code-line rx" data-km-source="118">$end\n</span></code></pre>
+<p data-km-source="119">Set the time:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="120">$date,set,2016-4-22,13-51-00\n</span></code></pre>
+<p data-km-source="121">The year must be between 2000 and 2099.</p></section>
+

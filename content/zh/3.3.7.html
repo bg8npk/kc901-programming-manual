@@ -1,0 +1,156 @@
+<section class="km-section" id="kc901-sec-3-3-7-zh" aria-labelledby="kc901-sec-3-3-7-heading-zh"><h4 id="kc901-sec-3-3-7-heading-zh" data-km-source="2470">3.3.7 控制射频信号源输出（第四代KC901X）</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.7 控制射频信号源输出（第四代KC901X） 参数表"><table>
+<caption>3.3.7 控制射频信号源输出（第四代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="2471">命令</p></th>
+<th scope="col"><p data-km-source="2472">选项</p></th>
+<th scope="col"><p data-km-source="2473">参数1</p></th>
+<th scope="col"><p data-km-source="2474">参数2</p></th>
+<th scope="col"><p data-km-source="2475">参数3</p></th>
+<th scope="col"><p data-km-source="2476">参数4</p></th>
+<th scope="col"><p data-km-source="2477">参数5</p></th>
+<th scope="col"><p data-km-source="2478">参数6</p></th>
+</tr>
+<tr>
+<td rowspan="3">
+<p data-km-source="2479">rfSource</p>
+
+</td>
+<td><p data-km-source="2480">init</p></td>
+<td rowspan="3">
+<p data-km-source="2481">off</p>
+<p data-km-source="2482">ask</p>
+<p data-km-source="2483">fm</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2484">port1</p>
+<p data-km-source="2485">port2</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2486">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2487">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2488">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2489">**</p>
+
+</td>
+</tr>
+<tr><td><p data-km-source="2490">run</p></td></tr>
+<tr><td><p data-km-source="2491">stop</p></td></tr>
+</tbody>
+</table></div>
+<p data-km-source="2492">说明：</p>
+<p data-km-source="2493">1、选项：</p>
+<p data-km-source="2494">init-&gt;初始化RfSource（在使用RfSource前必须使用此命令）</p>
+<p data-km-source="2495">run-&gt;运行RfSource并输出信号</p>
+<p data-km-source="2496">stop-&gt;停止并关闭RfSource功能(在使用其他工作模式前必须使用此命令)</p>
+<p data-km-source="2497">2、参数1：</p>
+<p data-km-source="2498">off-&gt;关闭调制功能，此时参数4和参数5不需要输入</p>
+<p data-km-source="2499">ask-&gt;打开ASK调制</p>
+<p data-km-source="2500">fm-&gt;使用FM调制</p>
+<p data-km-source="2501">3、参数2：（）</p>
+<p data-km-source="2502">port1-&gt;选择输出口为端口1输出(PORT 1)</p>
+<p data-km-source="2503">port2-&gt;选择输出口为端口2输出(PORT 2)</p>
+<p data-km-source="2504">3、参数3：</p>
+<p data-km-source="2505">根据设备的不同，载波频率可操作范围有所不同，如下表所示：</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.7 控制射频信号源输出（第四代KC901X） 参数表"><table>
+<caption>3.3.7 控制射频信号源输出（第四代KC901X） — 参数表</caption>
+<tbody>
+<tr><th scope="col" colspan="2"><p data-km-source="2506">载波频率范围</p></th></tr>
+<tr>
+<td><p data-km-source="2507">KC901R</p></td>
+<td><p data-km-source="2508">0-7000000000Hz(7GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="2509">KC901K</p></td>
+<td><p data-km-source="2510">0-4100000000Hz(4.1GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="2511">KC901J</p></td>
+<td><p data-km-source="2512">0-2100000000Hz(2.1GHz)</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="2513">但切换为音频输出时，频率范围为 0-60000000Hz(60MHz)</p>
+<p data-km-source="2514">4、参数4：</p>
+<p data-km-source="2515">载波输出幅度 单位dBm,精度 1dB</p>
+<p data-km-source="2516">端口的输出幅度根据频率不同而不同。</p>
+<p data-km-source="2517">当用户输入幅度高于实际可以输出的最大值时，下位机返回警告，并且以最大值输出。</p>
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="2518">$start,warn_gtr\n    ;用户输入大于最大值</span>
+<span class="km-code-line rx" data-km-source="2519">$warn:It is greater than the maximum output!\n</span>
+<span class="km-code-line rx" data-km-source="2520">$end\n</span></code></pre>
+<p data-km-source="2521">当用户输入幅度低于实际可以输出的最大值时，下位机返回警告，并且以最小值输出。</p>
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="2522">$start,warn_lt\n    ;用户输入大于最大值</span>
+<span class="km-code-line rx" data-km-source="2523">$warn:It is less than the minimum output!\n</span>
+<span class="km-code-line rx" data-km-source="2524">$end\n</span></code></pre>
+<p data-km-source="2525">当输出端口为“port2”时，大致取值范围：+10至-30dBm</p>
+<p data-km-source="2526">当输出端口为“port1”，且射频板版本不低于“1.0.5”时，取值范围：+10至-60dBm，否则取值范围依然为：+10至-30dBm</p>
+<p data-km-source="2527">5、参数5：</p>
+<p data-km-source="2528">调制频率 单位Hz 取值范围：0-3000Hz</p>
+<p data-km-source="2529">6、参数6：</p>
+<p data-km-source="2530">当为ASK调试时调制深度，仅有几个固定取值：0，5，10，15，20，30，35，40，45，50，55，60，65，70，75，80，85，90。</p>
+<p data-km-source="2531">当为FM调制时，其可调深度随频率而变化，如下表所示</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.7 控制射频信号源输出（第四代KC901X） 参数表"><table>
+<caption>3.3.7 控制射频信号源输出（第四代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="2532">0 – 60M(不包含60M)</p></th>
+<th scope="col"><p data-km-source="2533">0 - 10MHz</p></th>
+</tr>
+<tr>
+<td><p data-km-source="2534">60M – 106.25M(不含106.25M)</p></td>
+<td><p data-km-source="2535">0 – 312.5kHz</p></td>
+</tr>
+<tr>
+<td><p data-km-source="2536">106.25M – 212.5M(不含212.5M)</p></td>
+<td><p data-km-source="2537">0 – 625kHz</p></td>
+</tr>
+<tr>
+<td><p data-km-source="2538">212.5M – 425M(不含425M)</p></td>
+<td><p data-km-source="2539">0 – 1.25MHz</p></td>
+</tr>
+<tr>
+<td><p data-km-source="2540">425M – 850M(不含850M)</p></td>
+<td><p data-km-source="2541">0 – 2.5MHz</p></td>
+</tr>
+<tr>
+<td><p data-km-source="2542">850M – 1700M(不含1700M)</p></td>
+<td><p data-km-source="2543">0 – 5MHz</p></td>
+</tr>
+<tr>
+<td><p data-km-source="2544">1700M – 3400M(不含3400M)</p></td>
+<td><p data-km-source="2545">0 – 10MHz</p></td>
+</tr>
+<tr>
+<td><p data-km-source="2546">＞3400M</p></td>
+<td><p data-km-source="2547">0 – 20MHz</p></td>
+</tr>
+</tbody>
+</table></div>
+
+<p data-km-source="2548">7、例程：</p>
+<p data-km-source="2549">控制射频信号源输出，要求打开调制，载波频率1GHz，输出不衰减，调制频率1KHz，调制深度90%。</p>
+<p data-km-source="2550">第一步 初始化RfSource功能：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2551">$rfsource,init\n</span></code></pre>
+<p data-km-source="2552">第二步 开始运行和设置：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2553">$rfsource,run,ask,port1,1000000000,0,1000,90\n</span></code></pre>
+<p data-km-source="2554">第三步 如果需要使用其它功能，需先退出射频信号源：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2555">$rfsource,stop\n</span></code></pre>
+<p data-km-source="2556">8、处理：</p>
+<p data-km-source="2557">（1）当输入选项为Init时，KC901会立即初始化与射频信号源相关的电路。</p>
+<p data-km-source="2558">（2）当输入选项为STOP时，KC901会关闭与射频信号源相关的电路。</p>
+<p data-km-source="2559">（3）当输入选项为RUN时，此时KC901根据用户设置进行输出。</p>
+<p data-km-source="2560">（4）在信号源输出时，如果下发其它没有明确要求终止信号源输出的命令，信号源继续输出。</p>
+</section>
+

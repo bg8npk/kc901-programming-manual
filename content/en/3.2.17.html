@@ -1,0 +1,24 @@
+<section class="km-section" id="kc901-sec-3-2-17" aria-labelledby="kc901-sec-3-2-17-heading"><h4 id="kc901-sec-3-2-17-heading" data-km-source="367">3.2.17 Operating Time Statistics</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.17 Operating Time Statistics table"><table>
+<caption>3.2.17 Operating Time Statistics — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="368">Send command</p></th>
+<th scope="col"><p data-km-source="369">Option</p></th>
+<th scope="col"><p data-km-source="370">Data description</p></th>
+</tr>
+<tr>
+<td><p data-km-source="371">times</p></td>
+<td><p data-km-source="372">None</p></td>
+<td><p data-km-source="373">Returns the power-on count, current session duration, and total operating time, in that order.</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="374">Example:</p>
+<p data-km-source="375">Read the operating time statistics.</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="376">$times\n</span>
+<span class="km-code-line rx" data-km-source="377">$start,times\n</span>
+<span class="km-code-line rx" data-km-source="378">$1223,2,52,51,2,2,52,51\n  ; Power-on count, session duration (hours, minutes, seconds),</span>
+<span class="km-code-line rx" data-km-source="379">; Total operating time (days, hours, minutes, seconds).</span>
+<span class="km-code-line rx" data-km-source="380">$end\n</span></code></pre></section>
+

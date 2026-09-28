@@ -1,0 +1,42 @@
+<section class="km-section" id="kc901-sec-3-2-10-zh" aria-labelledby="kc901-sec-3-2-10-heading-zh"><h4 id="kc901-sec-3-2-10-heading-zh" data-km-source="237">3.2.10 S11系统校准件参数</h4>
+<p data-km-source="238">KC901K/RFMA 使用标准校准模型：</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.10 S11系统校准件参数 参数表"><table>
+<caption>3.2.10 S11系统校准件参数 — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="239">命令</p></th>
+<th scope="col"><p data-km-source="240">选项</p></th>
+<th scope="col"><p data-km-source="241">说明</p></th>
+</tr>
+<tr>
+<td><p data-km-source="242">kit_s11</p></td>
+<td>
+<p data-km-source="243">female</p>
+<p data-km-source="244">male</p>
+</td>
+<td>
+<p data-km-source="245">依次输入短路、开路校准件参数。</p>
+<p data-km-source="246">其中，短路件参数依次为：</p>
+<p data-km-source="247">L0,L1,L2,L3,单程电长度（mm），总损耗（GΩ/m）</p>
+<p data-km-source="248">开路校准件参数依次为：</p>
+<p data-km-source="249">C0,C1,C2,C3,单程电长度（mm），总损耗（GΩ/m）</p>
+<p data-km-source="250">取值范围：</p>
+<p data-km-source="251">L0~L3，C0~C3范围：-9999.999 - +9999.999,指数与仪器校准件设置界面显示相同，无需设置。</p>
+<p data-km-source="252">单程电长度范围：0 – 999.999</p>
+<p data-km-source="253">总损耗范围：0 – 9999.999</p>
+<p data-km-source="254">注意：此处设置的是系统校准的校准件数据，对应仪表界面上是在[系统设置]界面按下[SHIFT]+[7]进入的系统校准界面下的设置(而不是在[系统设置]本界面下的用户校准件设置)</p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="255">说明:</p>
+<p data-km-source="256">female参数用于设置阴性校准件参数，male参数用于设置阳性校准件参数;第三代KC901X没有female和male选项。</p>
+<p data-km-source="257">例程：</p>
+<p data-km-source="258">设置短路、开路校准件电长度依次为：5.25mm、5.26mm。负载校准件没有电长度设置。</p>
+<p data-km-source="259">//  L0,L1 , L2,L3,mm,GΩ/m     C0, C1, C2, C3, mm, GΩ/m</p>
+<p data-km-source="260">第四代KC901X示例：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="261">$kit_s11,female,10,125,-20,15,5.25,0.201,100,125,-800,15,5.26,0.200\n</span></code></pre>
+<p data-km-source="262">第三代KC901X示例：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="263">$kit_s11,10,125,-20,15,5.25,0.201,100,125,-800,15,5.26,0.200\n</span></code></pre>
+</section>
+

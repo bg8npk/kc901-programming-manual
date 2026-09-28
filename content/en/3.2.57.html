@@ -1,0 +1,36 @@
+<section class="km-section" id="kc901-sec-3-2-57" aria-labelledby="kc901-sec-3-2-57-heading"><h4 id="kc901-sec-3-2-57-heading" data-km-source="1743">3.2.57 Sweep Delay (Fourth-Generation KC901X)</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.57 Sweep Delay (Fourth-Generation KC901X) table"><table>
+<caption>3.2.57 Sweep Delay (Fourth-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="1744">Send command</p></th>
+<th scope="col"><p data-km-source="1745">Option</p></th>
+<th scope="col"><p data-km-source="1746">Parameter</p></th>
+<th scope="col"><p data-km-source="1747">Description</p></th>
+</tr>
+<tr>
+<td><p data-km-source="1748">sweep_delay</p></td>
+<td>
+<p data-km-source="1749">get</p>
+<p data-km-source="1750">set</p>
+</td>
+<td><p data-km-source="1751">Time</p></td>
+<td><p data-km-source="1752">Add a sweep delay at each point (milliseconds).</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="1753">Description:</p>
+<p data-km-source="1754">The set option sets the delay at each point for both normal and frequency-list sweeps. Range: 0-10000ms.</p>
+<p data-km-source="1755">The get option takes no parameters and returns the current delay setting.</p>
+<p data-km-source="1756">This setting applies only to host-controlled operation and is separate from the instrument's local sweep delay setting. It resets to 0 when remote-control mode is exited. With a nonzero sweep delay, Sxx and spectrum modes can parse host commands while sweeping. The delay does not affect calibration sweep speed. It also does not affect single-point sweeps or zero-span operation with identical start and stop frequencies.</p>
+<p data-km-source="1757">Example:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1758">$sweep_delay,set,1000\n</span>
+<span class="km-code-line rx" data-km-source="1759">$start,sweep_delay,set,success\n</span>
+<span class="km-code-line rx" data-km-source="1760">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1761">$sweep_delay,get\n</span>
+<span class="km-code-line rx" data-km-source="1762">$start,sweep_delay,get,success\n</span>
+<span class="km-code-line rx" data-km-source="1763">$1000\n</span>
+<span class="km-code-line rx" data-km-source="1764">$end\n</span></code></pre>
+</section>
+

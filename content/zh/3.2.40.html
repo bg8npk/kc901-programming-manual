@@ -1,0 +1,31 @@
+<section class="km-section" id="kc901-sec-3-2-40-zh" aria-labelledby="kc901-sec-3-2-40-heading-zh"><h4 id="kc901-sec-3-2-40-heading-zh" data-km-source="1108">3.2.40 指定频率信号源幅度有效范围查询（第四代KC901X）</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.40 指定频率信号源幅度有效范围查询（第四代KC901X） 参数表"><table>
+<caption>3.2.40 指定频率信号源幅度有效范围查询（第四代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="1109">发送命令</p></th>
+<th scope="col"><p data-km-source="1110">选项</p></th>
+<th scope="col"><p data-km-source="1111">参数</p></th>
+<th scope="col"><p data-km-source="1112">说明</p></th>
+</tr>
+<tr>
+<td><p data-km-source="1113">range_source_level</p></td>
+<td><p data-km-source="1114">get</p></td>
+<td>
+<p data-km-source="1115">start freq</p>
+<p data-km-source="1116">stop freq</p>
+<p data-km-source="1117">point</p>
+</td>
+<td><p data-km-source="1118">查询指定频率信号源幅度有效范围</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="1119">说明：</p>
+<p data-km-source="1120">传入起始频率，终止频率及点数，返回此频率信号源幅度的有效范围；</p>
+
+<p data-km-source="1121">例程：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1122">$range_source_level,get,100000000,200000000,201\n</span>
+<span class="km-code-line rx" data-km-source="1123">$start,range_source_level,get,success\n</span>
+<span class="km-code-line rx" data-km-source="1124">$-43,9\n</span>
+<span class="km-code-line rx" data-km-source="1125">$end\n</span></code></pre></section>
+

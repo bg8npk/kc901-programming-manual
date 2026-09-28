@@ -1,0 +1,101 @@
+<section class="km-section" id="kc901-sec-3-2-36-zh" aria-labelledby="kc901-sec-3-2-36-heading-zh"><h4 id="kc901-sec-3-2-36-heading-zh" data-km-source="996">3.2.36 全双端口校准（第四代KC901X）</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.36 全双端口校准（第四代KC901X） 参数表"><table>
+<caption>3.2.36 全双端口校准（第四代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="997">发送命令</p></th>
+<th scope="col"><p data-km-source="998">参数1</p></th>
+<th scope="col"><p data-km-source="999">参数2</p></th>
+<th scope="col"><p data-km-source="1000">参数3</p></th>
+<th scope="col"><p data-km-source="1001">参数4</p></th>
+</tr>
+<tr>
+<td><p data-km-source="1002">full2port_cal</p></td>
+<td><p data-km-source="1003">点数</p></td>
+<td><p data-km-source="1004">频率方式</p></td>
+<td><p data-km-source="1005">中心频率/起始频率</p></td>
+<td><p data-km-source="1006">扫宽/终止频率</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="1007">说明：</p>
+<p data-km-source="1008">发送此命令后，KC901会通过串口或网口与用户交互实现SOLT校准。以后的应用中，如果指定调用全双端口校准，则会默认调用此次校准数据，但如果频率范围超出校准的范围，则会调用系统校准。校准过程会有好几次交互，对于上位机编程而言也仅需要识别包头名即可，无需做内容字符串匹配。</p>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1009">$full2port_cal,10,cs,901000000,10000000\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1010">$start,full2port_Cal_confirm\n</span>
+<span class="km-code-line rx" data-km-source="1011">$******Full 2-Port calibration******\n</span>
+<span class="km-code-line rx" data-km-source="1012">$Do you want to calibrate the device?[Yes/no]\n</span>
+<span class="km-code-line rx" data-km-source="1013">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1014">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1015">$start,full2port_cal_wait\n</span>
+<span class="km-code-line rx" data-km-source="1016">$ waiting for the circuit to be stability...\n</span>
+<span class="km-code-line rx" data-km-source="1017">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1018">$start,port_polarity\n</span>
+<span class="km-code-line rx" data-km-source="1019">$Enter female or male to specify the polarity of the PORT1:\n</span>
+<span class="km-code-line rx" data-km-source="1020">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1021">$female\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1022">$start,cal_open\n</span>
+<span class="km-code-line rx" data-km-source="1023">$Step 1:Please connect the OPEN module to PORT1 then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1024">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1025">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1026">$start,cal_short\n</span>
+<span class="km-code-line rx" data-km-source="1027">$Step 2:Please connect the SHORT module to PORT1 then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1028">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1029">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1030">$start,cal_load\n</span>
+<span class="km-code-line rx" data-km-source="1031">$Step 3:Please connect the LOAD module to PORT1 then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1032">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1033">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1034">$start,port_polarity\n</span>
+<span class="km-code-line rx" data-km-source="1035">$Enter female or male to specify the polarity of the PORT2:\n</span>
+<span class="km-code-line rx" data-km-source="1036">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1037">$female\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1038">$start,cal_open\n</span>
+<span class="km-code-line rx" data-km-source="1039">$Step 4:Please connect the OPEN module to PORT2 then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1040">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1041">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1042">$start,cal_short\n</span>
+<span class="km-code-line rx" data-km-source="1043">$Step 5:Please connect the SHORT module to PORT2 then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1044">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1045">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1046">$start,cal_load\n</span>
+<span class="km-code-line rx" data-km-source="1047">$Step 6:Please connect the LOAD module to PORT2 then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1048">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1049">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1050">$start,cal_connect\n</span>
+<span class="km-code-line rx" data-km-source="1051">$Step 7:Please connect PORT1 and PORT2 then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1052">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1053">$yes\n</span>
+<span class="km-code-line rx" data-km-source="1054">$start,cal_completed\n</span>
+<span class="km-code-line rx" data-km-source="1055">$Calibration completed!\n</span>
+<span class="km-code-line rx" data-km-source="1056">$end\n</span></code></pre>
+
+<p data-km-source="1057">在下位机等待上位机确认的过程中，用户可以输入’exit\n’，退出校准模式。如下所示：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1058">$exit\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1059">$start,exit\n</span>
+<span class="km-code-line rx" data-km-source="1060">$Exit calibration\n</span>
+<span class="km-code-line rx" data-km-source="1061">$end\n</span></code></pre>
+</section>
+

@@ -1,0 +1,40 @@
+<section class="km-section" id="kc901-sec-3-2-12-zh" aria-labelledby="kc901-sec-3-2-12-heading-zh"><h4 id="kc901-sec-3-2-12-heading-zh" data-km-source="283">3.2.12 S11用户校准件参数（第四代KC901X）</h4>
+<p data-km-source="284">KC901K/RFMA 使用复杂校准模型：</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.12 S11用户校准件参数（第四代KC901X） 参数表"><table>
+<caption>3.2.12 S11用户校准件参数（第四代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="285">命令</p></th>
+<th scope="col"><p data-km-source="286">选项</p></th>
+<th scope="col"><p data-km-source="287">说明</p></th>
+</tr>
+<tr>
+<td><p data-km-source="288">userkit_s11</p></td>
+<td>
+<p data-km-source="289">female</p>
+<p data-km-source="290">male</p>
+</td>
+<td>
+<p data-km-source="291">依次输入短路、开路校准件参数。</p>
+<p data-km-source="292">其中，短路件参数依次为：</p>
+<p data-km-source="293">L0,L1,L2,L3,单程电长度（mm），总损耗（GΩ/m）</p>
+<p data-km-source="294">开路校准件参数依次为：</p>
+<p data-km-source="295">C0,C1,C2,C3,单程电长度（mm），总损耗（GΩ/m）</p>
+<p data-km-source="296">取值范围：</p>
+<p data-km-source="297">L0~L3，C0~C3范围：-9999.999 - +9999.999</p>
+<p data-km-source="298">单程电长度范围：0 – 999.999</p>
+<p data-km-source="299">总损耗范围：0 – 9999.999</p>
+<p data-km-source="300">注意：此处设置的是用户校准的校准件数据，对应仪表界面上是在[系统设置]本界面下的用户校准件设置。</p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="301">说明:</p>
+<p data-km-source="302">female参数用于设置阴性校准件参数，male参数用于设置阳性校准件参数;</p>
+<p data-km-source="303">例程：</p>
+<p data-km-source="304">设置短路、开路校准件电长度依次为：5.25mm、5.26mm。负载校准件没有电长度设置。</p>
+<p data-km-source="305">//  L0,L1 , L2,L3,mm,GΩ/m     C0, C1, C2, C3, mm, GΩ/m</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="306">$userkit_s11,female,10,125,-20,15,5.25,0.201,100,125,-800,15,5.26,0.200\n</span></code></pre>
+
+</section>
+

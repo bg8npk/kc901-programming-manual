@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KC901 Programming Manual 0.7.1 · English / 中文</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/manual.js" defer></script>
+</head>
+<body>
+<article id="kc901-manual" data-manual-version="0.7.1" data-html-revision="3" aria-label="KC901 programming manual">
+<nav class="km-language-bar" aria-label="Language / 语言"><span>KC901 · 0.7.1</span><div>
+<a href="#kc901-lang-en" data-km-language="en" lang="en">English</a><a href="#kc901-lang-zh" data-km-language="zh" lang="zh-CN">中文</a>
+</div></nav>
+<div id="kc901-lang-en" lang="en" class="km-language-panel" data-km-lang="en">
+<header class="km-header">
+<p class="km-eyebrow">KC901 SERIES / PROGRAMMING REFERENCE</p>
+<h1>Network Analyzer<br>Programming Manual</h1>
+<p class="km-subtitle">ASCII commands, communication examples, calibration procedures, and measurement control.</p>
+<div class="km-badges">
+<span>Manual 0.7.1</span><span>English</span><span>USB &amp; Ethernet</span><span>Third &amp; fourth generation</span>
+</div>
+<p class="km-intro">Choose the commands for your instrument generation. Supported functions vary by model; see <a href="#kc901-sec-4">firmware applicability</a>. Manual version 0.7.1 is separate from the hardware and firmware versions.</p>
+<div class="km-quick-links">
+<a href="#kc901-sec-1-1">Command format ↗</a><a href="#kc901-sec-2-4">Handshake ↗</a><a href="#kc901-sec-3-2">System commands ↗</a><a href="#kc901-sec-3-3">Measurements ↗</a>
+</div>
+<details class="km-source"><summary>Source edition and protocol conventions</summary><div class="km-source-cover">
+<p data-km-source="0">B013-008</p>
+<figure class="km-logo"><img loading="lazy" src="assets/images/image-01.png" alt="Kexinshe logo"></figure><span class="km-code-line rx" data-km-source="1">1KHz … 26.5GHz  KC901x</span><p data-km-source="2">Network Analyzer Programming Manual</p>
+<p data-km-source="3">Hardware version V0.2  Software version V1.5.6(KC901K)</p>
+<p data-km-source="4">Official edition for education, research, and technology enthusiasts</p>
+<p data-km-source="5">Second edition</p>
+<p data-km-source="6">Kexinshe</p>
+<p data-km-source="7">December 2025</p>
+</div>
+<p>This English edition follows the Chinese manual 0.7.1 with confirmed corrections to baud rate, calibration support, frequency format, sweep limits, and measurement descriptions. Unsupported third-generation remote user calibration procedures have been removed. Remaining response examples retain their source payloads. Text after a semicolon is explanatory and is not transmitted. In examples, <code>\n</code> represents the newline terminator, not a literal backslash followed by n.</p></details>
+</header>
+<div class="km-layout">
+<aside class="km-sidebar" aria-label="Manual navigation">
+<div class="km-tools" hidden>
+<label for="kc901-search">Search this manual</label><div class="km-search-row">
+<input id="kc901-search" type="search" placeholder="Command, parameter, or topic" autocomplete="off"><button type="button" class="km-clear" aria-label="Clear search">Clear</button>
+</div>
+<p class="km-search-status" role="status" aria-live="polite"></p>
+<ol class="km-results" aria-label="Search results" hidden></ol>
+</div>
+<details class="km-toc" open><summary>Contents <span>{{count_en}}</span></summary><nav aria-label="Table of contents"><ol>{{toc_en}}</ol></nav></details>
+<a class="km-top" href="#kc901-manual">Back to top ↑</a>
+</aside>
+<div class="km-content">
+<p class="km-legend"><span class="tx">TX · Host sends</span><span class="rx">RX · Instrument returns</span><span>Protocol examples are selectable text.</span></p>
+{{sections_en}}
+<footer class="km-footer">KC901 Programming Manual · 0.7.1 · English</footer>
+</div>
+</div>
+</div>
+
+<div id="kc901-lang-zh" lang="zh-CN" class="km-language-panel" data-km-lang="zh">
+<header class="km-header">
+<p class="km-eyebrow">KC901 系列 / 编程参考</p>
+<h1>网络分析仪编程手册</h1>
+<p class="km-subtitle">ASCII命令、通信示例、校准流程与测量控制。</p>
+<div class="km-badges">
+<span>手册 0.7.1</span><span>中文</span><span>USB 与以太网</span><span>第三代与第四代</span>
+</div>
+<p class="km-intro">请根据仪器代际选择对应命令。不同机型支持的功能有所不同，详见 <a href="#kc901-sec-4-zh">固件适用范围</a>。手册版本0.7.1与硬件、固件版本分别标注。</p>
+<div class="km-quick-links">
+<a href="#kc901-sec-1-1-zh">指令格式 ↗</a><a href="#kc901-sec-2-4-zh">握手连接 ↗</a><a href="#kc901-sec-3-2-zh">系统指令 ↗</a><a href="#kc901-sec-3-3-zh">测量控制 ↗</a>
+</div>
+<details class="km-source"><summary>原版信息与协议约定</summary><div class="km-source-cover">
+<p data-km-source="0">B013-008</p>
+<figure class="km-logo"><img loading="lazy" src="assets/images/image-01.png" alt="科新社标志"></figure><span class="km-code-line rx" data-km-source="1">1KHz … 26.5GHz  KC901x</span><p data-km-source="2">网络分析仪编程手册</p>
+<p data-km-source="3">硬件版本V0.2  软件版本V1.5.6(KC901K)</p>
+<p data-km-source="4">供教育、科研和科技爱好者用正式版本</p>
+<p data-km-source="5">（ 第二版 ）</p>
+<p data-km-source="6">科 新 社</p>
+<p data-km-source="7">二〇二五年十二月</p>
+</div>
+<p>本版本以中文版0.7.1为基础，已纳入确认的波特率、校准支持、频率格式、点数上限和测量数据说明修正。第三代远程用户校准流程已移除。保留的响应示例沿用原始协议数据。分号之后的内容为说明，不参与通信。示例中的 <code>\n</code> 表示换行终止符，而不是字面上的反斜杠和字母n。</p></details>
+</header>
+<div class="km-layout">
+<aside class="km-sidebar" aria-label="手册导航">
+<div class="km-tools" hidden>
+<label for="kc901-search-zh">搜索本手册</label><div class="km-search-row">
+<input id="kc901-search-zh" type="search" placeholder="命令、参数或主题" autocomplete="off"><button type="button" class="km-clear" aria-label="清空搜索">清空</button>
+</div>
+<p class="km-search-status" role="status" aria-live="polite"></p>
+<ol class="km-results" aria-label="搜索结果" hidden></ol>
+</div>
+<details class="km-toc" open><summary>目录 <span>{{count_zh}}</span></summary><nav aria-label="目录"><ol>{{toc_zh}}</ol></nav></details>
+<a class="km-top" href="#kc901-manual">返回顶部 ↑</a>
+</aside>
+<div class="km-content">
+<p class="km-legend"><span class="tx">TX · 上位机发送</span><span class="rx">RX · 下位机返回</span><span>协议示例均可选取和复制。</span></p>
+{{sections_zh}}
+<footer class="km-footer">KC901 编程手册 · 0.7.1 · 中文</footer>
+</div>
+</div>
+</div>
+
+</article>
+
+</body>
+</html>

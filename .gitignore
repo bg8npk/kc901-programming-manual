@@ -1,0 +1,36 @@
+﻿# Python caches and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+
+# Editor and local assistant settings
+.vscode/
+.idea/
+.codex/
+.agents/
+*.swp
+*.swo
+*~
+
+# OS metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary files, logs and backups
+*.tmp
+*.log
+*.bak
+*.orig
+~$*
+
+# Keep index.html tracked: it is the deployable static entry point.

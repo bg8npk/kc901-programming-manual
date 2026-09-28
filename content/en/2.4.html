@@ -1,0 +1,10 @@
+<section class="km-section" id="kc901-sec-2-4" aria-labelledby="kc901-sec-2-4-heading"><h3 id="kc901-sec-2-4-heading" data-km-source="68">2.4 Handshake with the KC901</h3>
+<p data-km-source="69">Before the handshake, make sure that no dialog, such as About, is open on the KC901. If a dialog is open, the KC901 returns the following warning string. Fourth-generation KC901 instruments allow a handshake with a dialog open and do not return this warning.</p>
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="70">$start,ConFail\n</span>
+<span class="km-code-line rx" data-km-source="71">$Please exit the window operation first.\n</span>
+<span class="km-code-line rx" data-km-source="72">$end\n</span></code></pre>
+<p data-km-source="73">Close the dialog before attempting the handshake again.</p>
+<p data-km-source="74">Request control</p>
+<p data-km-source="75">Send an uppercase C.</p>
+<p data-km-source="76">After approximately 1 second, the instrument returns [KC901] and its serial number. The KC901 then enters remote-control mode.</p></section>
+

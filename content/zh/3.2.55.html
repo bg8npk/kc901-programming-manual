@@ -1,0 +1,74 @@
+<section class="km-section" id="kc901-sec-3-2-55-zh" aria-labelledby="kc901-sec-3-2-55-heading-zh"><h4 id="kc901-sec-3-2-55-heading-zh" data-km-source="1653">3.2.55 S11系统校准（第三代KC901X）</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.55 S11系统校准（第三代KC901X） 参数表"><table>
+<caption>3.2.55 S11系统校准（第三代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="1654">发送命令</p></th>
+<th scope="col"><p data-km-source="1655">选项</p></th>
+<th scope="col"><p data-km-source="1656">说明</p></th>
+</tr>
+<tr>
+<td><p data-km-source="1657">cal_s11</p></td>
+<td><p data-km-source="1658">无</p></td>
+<td><p data-km-source="1659">S11系统校准</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="1660">说明：</p>
+<p data-km-source="1661">发送此命令后，KC901会通过串口或网口与用户交互实现SOL校准。以后的应用中都会默认调用此次校准数据。用户可以通过[Reset]命令，恢复默认调用出厂校准。此过程会有好几次交互，对于上位机编程而言也仅需要识别包头名即可，无需做内容字符串匹配。</p>
+<p data-km-source="1662">注意:该校准在每次初始化后只能进行一次，如果需要重新校准，需运行$S11,STOP\n并重新初始化($S11,INIT\n)。</p>
+<p data-km-source="1663">下面为具体流程：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1664">$cal_s11\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1665">$start,s11cal_confirm\n</span>
+<span class="km-code-line rx" data-km-source="1666">$******S11 calibration******\n       ;等待用户确认是否校准</span>
+<span class="km-code-line rx" data-km-source="1667">$ Do you want to calibrate the device?[Yes/no]\n</span>
+<span class="km-code-line rx" data-km-source="1668">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1669">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1670">$start,s11cal_wait\n                 ;等待硬件预热，时间约5秒，期间下位机无数据返回</span>
+<span class="km-code-line rx" data-km-source="1671">$ waiting for the circuit to be stability...\n</span>
+<span class="km-code-line rx" data-km-source="1672">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1673">$start,s11cal_step\n                 ;提示按照下面的步骤操作</span>
+<span class="km-code-line rx" data-km-source="1674">$ start calibration, please follow these steps:\n</span>
+<span class="km-code-line rx" data-km-source="1675">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1676">$start,s11cal_short\n                ;连接短路校准件</span>
+<span class="km-code-line rx" data-km-source="1677">$Step 1:Please connect the short module then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1678">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line " data-km-source="1679">$yes\n (注意：确认后需要等待约16秒进行短路校准，期间下位机无数据返回)</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1680">$start,s11cal_open\n                ;连接开路校准件</span>
+<span class="km-code-line rx" data-km-source="1681">$Step 2:Please connect the open module then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1682">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line " data-km-source="1683">$yes\n(注意：确认后需要等待约16秒进行开路校准，期间下位机无数据返回)</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1684">$start,s11cal_load\n                ;连接负载校准件</span>
+<span class="km-code-line rx" data-km-source="1685">$Step 3:Please connect the load module then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1686">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line " data-km-source="1687">$yes\n(注意：确认后需要等待约16秒进行负载校准，期间下位机无数据返回)</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1688">$start,s11cal_process\n             ;提示正在计算</span>
+<span class="km-code-line rx" data-km-source="1689">$Step 4: processing (Wait please).\n</span>
+<span class="km-code-line rx" data-km-source="1690">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1691">$start,s11cal_save\n                ;正在保存</span>
+<span class="km-code-line rx" data-km-source="1692">$ saving(wait please) \n</span>
+<span class="km-code-line rx" data-km-source="1693">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1694">$start,s11cal_completed\n           ;校准完成</span>
+<span class="km-code-line rx" data-km-source="1695">$Calibration completed!\n</span>
+<span class="km-code-line rx" data-km-source="1696">$end\n</span></code></pre>
+
+<p data-km-source="1697">在下位机等待上位机确认的过程中，用户可以输入’exit\n’，退出校准模式。如下所示：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1698">$exit\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1699">$start,s11cal_exit\n</span>
+<span class="km-code-line rx" data-km-source="1700">$Exit calibration\n</span>
+<span class="km-code-line rx" data-km-source="1701">$end\n</span></code></pre></section>
+

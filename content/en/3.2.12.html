@@ -1,0 +1,40 @@
+<section class="km-section" id="kc901-sec-3-2-12" aria-labelledby="kc901-sec-3-2-12-heading"><h4 id="kc901-sec-3-2-12-heading" data-km-source="283">3.2.12 S11 User Calibration Standard Parameters (Fourth-Generation KC901X)</h4>
+<p data-km-source="284">KC901K/RFMA uses the complex calibration model:</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.12 S11 User Calibration Standard Parameters (Fourth-Generation KC901X) table"><table>
+<caption>3.2.12 S11 User Calibration Standard Parameters (Fourth-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="285">Command</p></th>
+<th scope="col"><p data-km-source="286">Option</p></th>
+<th scope="col"><p data-km-source="287">Description</p></th>
+</tr>
+<tr>
+<td><p data-km-source="288">userkit_s11</p></td>
+<td>
+<p data-km-source="289">female</p>
+<p data-km-source="290">male</p>
+</td>
+<td>
+<p data-km-source="291">Enter the short and open standard parameters, in that order.</p>
+<p data-km-source="292">The short standard parameters are, in order:</p>
+<p data-km-source="293">L0,L1,L2,L3, one-way electrical length (mm), total loss (GΩ/m)</p>
+<p data-km-source="294">The open standard parameters are, in order:</p>
+<p data-km-source="295">C0,C1,C2,C3, one-way electrical length (mm), total loss (GΩ/m)</p>
+<p data-km-source="296">Range:</p>
+<p data-km-source="297">L0-L3 and C0-C3 range: -9999.999 to +9999.999</p>
+<p data-km-source="298">One-way electrical length: 0-999.999</p>
+<p data-km-source="299">Total loss: 0-9999.999</p>
+<p data-km-source="300">These are the calibration standard settings for user calibration, corresponding to the user calibration standard settings on the instrument's main Settings screen.</p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="301">Description:</p>
+<p data-km-source="302">Use female for female calibration standards and male for male calibration standards.</p>
+<p data-km-source="303">Example:</p>
+<p data-km-source="304">Set the electrical lengths of the short and open standards to 5.25mm and 5.26mm, respectively. The load standard has no electrical length setting.</p>
+<p data-km-source="305">//  L0,L1 , L2,L3,mm,GΩ/m     C0, C1, C2, C3, mm, GΩ/m</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="306">$userkit_s11,female,10,125,-20,15,5.25,0.201,100,125,-800,15,5.26,0.200\n</span></code></pre>
+
+</section>
+

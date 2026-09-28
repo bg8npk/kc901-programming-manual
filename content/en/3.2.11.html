@@ -1,0 +1,33 @@
+<section class="km-section" id="kc901-sec-3-2-11" aria-labelledby="kc901-sec-3-2-11-heading"><h4 id="kc901-sec-3-2-11-heading" data-km-source="264">3.2.11 S21 System Calibration Standard Parameters</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.11 S21 System Calibration Standard Parameters table"><table>
+<caption>3.2.11 S21 System Calibration Standard Parameters — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="265">Command</p></th>
+<th scope="col"><p data-km-source="266">Option</p></th>
+<th scope="col"><p data-km-source="267">Description</p></th>
+</tr>
+<tr>
+<td><p data-km-source="268">kit_s21</p></td>
+<td>
+<p data-km-source="269">female</p>
+<p data-km-source="270">male</p>
+</td>
+<td>
+<p data-km-source="271">Enter the calibration standard length and attenuation, in that order.</p>
+<p data-km-source="272">Length range: 0-999.999 (mm)</p>
+<p data-km-source="273">Attenuation range: 0-99.9999 (dB)</p>
+<p data-km-source="274">Frequency at which attenuation is specified: 1-10000 (MHz)</p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="275">Description:</p>
+<p data-km-source="276">Use female for female calibration standards and male for male calibration standards. Third-generation KC901X instruments do not have the female and male options.</p>
+<p data-km-source="277">Example:</p>
+<p data-km-source="278">Set the calibration standard length to 100.00mm and attenuation to 0.1dB at 4567MHz.</p>
+<p data-km-source="279">Fourth-generation KC901X example:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="280">$kit_s21,female,100,0.1,4567\n</span></code></pre>
+<p data-km-source="281">Third-generation KC901X example:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="282">$kit_s21,100,0.1,4567\n</span></code></pre></section>
+

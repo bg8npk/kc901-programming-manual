@@ -1,0 +1,63 @@
+<section class="km-section" id="kc901-sec-3-2-56-zh" aria-labelledby="kc901-sec-3-2-56-heading-zh"><h4 id="kc901-sec-3-2-56-heading-zh" data-km-source="1702">3.2.56 S21系统校准（第三代KC901X）</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.56 S21系统校准（第三代KC901X） 参数表"><table>
+<caption>3.2.56 S21系统校准（第三代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="1703">发送命令</p></th>
+<th scope="col"><p data-km-source="1704">选项</p></th>
+<th scope="col"><p data-km-source="1705">说明</p></th>
+</tr>
+<tr>
+<td><p data-km-source="1706">cal_s21</p></td>
+<td><p data-km-source="1707">无</p></td>
+<td><p data-km-source="1708">S21系统校准</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="1709">说明：</p>
+<p data-km-source="1710">发送此命令后，KC901会通过串口或网口与用户交互实现短接校准。以后的应用中都会默认调用此次校准数据。用户可以通过[Reset]命令，恢复默认调用出厂校准。此过程会有好几次交互，对于上位机编程而言也仅需要识别包头名即可，无需做内容字符串匹配。</p>
+<p data-km-source="1711">注意:该校准在每次初始化后只能进行一次，如果需要重新校准，需运行$S21,STOP\n并重新初始化($S21,INIT\n)。</p>
+<p data-km-source="1712">下面为具体流程：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1713">$cal_s21\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1714">$start,s21cal_confirm\n</span>
+<span class="km-code-line rx" data-km-source="1715">$******S21 calibration******\n       ;等待用户确认是否校准</span>
+<span class="km-code-line rx" data-km-source="1716">$ Do you want to calibrate the device?[Yes/no]\n</span>
+<span class="km-code-line rx" data-km-source="1717">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1718">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1719">$start,s21cal_wait\n                 ;等待硬件预热，时间约5秒，期间下位机无数据返回</span>
+<span class="km-code-line rx" data-km-source="1720">$ waiting for the circuit to be stability...\n</span>
+<span class="km-code-line rx" data-km-source="1721">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1722">$start,s21cal_step\n                 ;提示按照下面的步骤操作</span>
+<span class="km-code-line rx" data-km-source="1723">$ start calibration, please follow these steps::\n</span>
+<span class="km-code-line rx" data-km-source="1724">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1725">$start,s21cal_connect\n                ;短接PORT1和PORT2</span>
+<span class="km-code-line rx" data-km-source="1726">$Step 1: Please connect [SOURCE] port and [RF IN] port then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1727">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line " data-km-source="1728">$yes\n(注意：确认后需要等待约16秒进行短路校准，期间下位机无数据返回)</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1729">$start,s21cal_process\n             ;提示正在计算</span>
+<span class="km-code-line rx" data-km-source="1730">$Step 3: processing (Wait please).\n</span>
+<span class="km-code-line rx" data-km-source="1731">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1732">$start,s21cal_save\n                ;正在保存</span>
+<span class="km-code-line rx" data-km-source="1733">$ saving(wait please)\n</span>
+<span class="km-code-line rx" data-km-source="1734">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1735">$start,s21cal_completed\n           ;校准完成</span>
+<span class="km-code-line rx" data-km-source="1736">$Calibration completed!\n</span>
+<span class="km-code-line rx" data-km-source="1737">$end\n</span></code></pre>
+
+<p data-km-source="1738">在下位机等待上位机确认的过程中，用户可以输入’exit\n’，退出校准模式。如下所示：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1739">$exit\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1740">$start,s21cal_exit\n</span>
+<span class="km-code-line rx" data-km-source="1741">$Exit calibration.\n</span>
+<span class="km-code-line rx" data-km-source="1742">$end\n</span></code></pre>
+</section>
+

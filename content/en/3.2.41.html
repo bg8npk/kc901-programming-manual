@@ -1,0 +1,39 @@
+<section class="km-section" id="kc901-sec-3-2-41" aria-labelledby="kc901-sec-3-2-41-heading"><h4 id="kc901-sec-3-2-41-heading" data-km-source="1126">3.2.41 Power Sweep Settings (Fourth-Generation KC901X)</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.41 Power Sweep Settings (Fourth-Generation KC901X) table"><table>
+<caption>3.2.41 Power Sweep Settings (Fourth-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="1127">Send command</p></th>
+<th scope="col"><p data-km-source="1128">Option</p></th>
+<th scope="col"><p data-km-source="1129">Parameter</p></th>
+<th scope="col"><p data-km-source="1130">Description</p></th>
+</tr>
+<tr>
+<td><p data-km-source="1131">power_sweep</p></td>
+<td>
+<p data-km-source="1132">get</p>
+<p data-km-source="1133">set</p>
+</td>
+<td>
+<p data-km-source="1134">start level</p>
+<p data-km-source="1135">stop level</p>
+</td>
+<td><p data-km-source="1136">Operate the instrument in power sweep mode.</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="1137">Description:</p>
+<p data-km-source="1138">The set option takes the signal source start and stop amplitudes and places the instrument in power sweep mode.</p>
+<p data-km-source="1139">The get option takes no parameters and returns the signal source start and stop amplitudes for power sweep mode.</p>
+
+<p data-km-source="1140">Example:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1141">$power_sweep,set,-50,10\n</span>
+<span class="km-code-line rx" data-km-source="1142">$start,power_sweep,set,success\n</span>
+<span class="km-code-line rx" data-km-source="1143">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1144">$power_sweep,get\n</span>
+<span class="km-code-line rx" data-km-source="1145">$start,power_sweep,get,success\n</span>
+<span class="km-code-line rx" data-km-source="1146">$-50,$10\n</span>
+<span class="km-code-line rx" data-km-source="1147">$end\n</span></code></pre>
+</section>
+

@@ -1,0 +1,54 @@
+<section class="km-section" id="kc901-sec-3-2-24-zh" aria-labelledby="kc901-sec-3-2-24-heading-zh"><h4 id="kc901-sec-3-2-24-heading-zh" data-km-source="481">3.2.24 S11系统校准（第四代KC901X）</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.24 S11系统校准（第四代KC901X） 参数表"><table>
+<caption>3.2.24 S11系统校准（第四代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="482">发送命令</p></th>
+<th scope="col"><p data-km-source="483">选项</p></th>
+<th scope="col"><p data-km-source="484">说明</p></th>
+</tr>
+<tr>
+<td><p data-km-source="485">cal_sys_s11</p></td>
+<td><p data-km-source="486">无</p></td>
+<td><p data-km-source="487">S11系统校准</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="488">说明：</p>
+<p data-km-source="489">发送此命令后，KC901会通过串口或网口与用户交互实现SOL校准。以后的应用中都会默认调用此次校准数据。用户可以通过[Reset]命令，恢复默认调用出厂校准。此过程会有好几次交互，对于上位机编程而言也仅需要识别包头名即可，无需做内容字符串匹配。</p>
+<p data-km-source="490">注意:该校准在每次初始化后只能进行一次，如果需要重新校准，需运行$S11,STOP\n并重新初始化($S11,INIT\n)。</p>
+<p data-km-source="491">下面为具体流程：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="492">$cal_sys_s11\n</span>
+<span class="km-code-line rx" data-km-source="493">$start,s11_SysCal_confirm\n</span>
+<span class="km-code-line rx" data-km-source="494">$******S11 System calibration******\n</span>
+<span class="km-code-line rx" data-km-source="495">$ Do you want to calibrate the device?[Yes/no]\n</span>
+<span class="km-code-line rx" data-km-source="496">$end\n</span>
+<span class="km-code-line tx" data-km-source="497">$yes\n</span>
+<span class="km-code-line rx" data-km-source="498">$start,s11_syscal_wait\n</span>
+<span class="km-code-line rx" data-km-source="499">$ waiting for the circuit to be stability...\n</span>
+<span class="km-code-line rx" data-km-source="500">$end\n</span>
+<span class="km-code-line rx" data-km-source="501">$start,port_polarity\n</span>
+<span class="km-code-line rx" data-km-source="502">$Enter female or male to specify the polarity of the PORT1:\n</span>
+<span class="km-code-line rx" data-km-source="503">$end\n</span>
+<span class="km-code-line tx" data-km-source="504">$female\n</span>
+<span class="km-code-line rx" data-km-source="505">$start,cal_open\n</span>
+<span class="km-code-line rx" data-km-source="506">$Step 1:Please connect the OPEN module to PORT1 then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="507">$end\n</span>
+<span class="km-code-line tx" data-km-source="508">$yes\n</span>
+<span class="km-code-line rx" data-km-source="509">$start,cal_short\n</span>
+<span class="km-code-line rx" data-km-source="510">$Step 2:Please connect the SHORT module to PORT1 then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="511">$end\n</span>
+<span class="km-code-line tx" data-km-source="512">$yes\n</span>
+<span class="km-code-line rx" data-km-source="513">$start,cal_load\n</span>
+<span class="km-code-line rx" data-km-source="514">$Step 3:Please connect the LOAD module to PORT1 then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="515">$end\n</span>
+<span class="km-code-line tx" data-km-source="516">$yes\n</span>
+<span class="km-code-line rx" data-km-source="517">$start,cal_completed\n</span>
+<span class="km-code-line rx" data-km-source="518">$Calibration completed!\n</span>
+<span class="km-code-line rx" data-km-source="519">$end\n</span></code></pre>
+<p data-km-source="520">在下位机等待上位机确认的过程中，用户可以输入’exit\n’，退出校准模式。如下所示：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="521">$exit\n</span>
+<span class="km-code-line rx" data-km-source="522">$start,exit\n</span>
+<span class="km-code-line rx" data-km-source="523">$Exit calibration\n</span>
+<span class="km-code-line rx" data-km-source="524">$end\n</span></code></pre></section>
+

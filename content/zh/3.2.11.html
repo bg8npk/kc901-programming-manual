@@ -1,0 +1,33 @@
+<section class="km-section" id="kc901-sec-3-2-11-zh" aria-labelledby="kc901-sec-3-2-11-heading-zh"><h4 id="kc901-sec-3-2-11-heading-zh" data-km-source="264">3.2.11 S21系统校准件参数</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.11 S21系统校准件参数 参数表"><table>
+<caption>3.2.11 S21系统校准件参数 — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="265">命令</p></th>
+<th scope="col"><p data-km-source="266">选项</p></th>
+<th scope="col"><p data-km-source="267">说明</p></th>
+</tr>
+<tr>
+<td><p data-km-source="268">kit_s21</p></td>
+<td>
+<p data-km-source="269">female</p>
+<p data-km-source="270">male</p>
+</td>
+<td>
+<p data-km-source="271">依次输入校准件长度和校准件衰减</p>
+<p data-km-source="272">长度范围:0—999.999(单位：mm)</p>
+<p data-km-source="273">衰减范围:0—99.9999(单位：dB)</p>
+<p data-km-source="274">衰减位于的频率:1—10000（单位：MHz）</p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="275">说明:</p>
+<p data-km-source="276">female参数用于设置阴性校准件参数，male参数用于设置阳性校准件参数;第三代KC901X没有female和male选项。</p>
+<p data-km-source="277">例程：</p>
+<p data-km-source="278">设置校准件长度为100.00mm，衰减0.1dB，位于频率4567MHz</p>
+<p data-km-source="279">第四代KC901X示例：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="280">$kit_s21,female,100,0.1,4567\n</span></code></pre>
+<p data-km-source="281">第三代KC901X示例：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="282">$kit_s21,100,0.1,4567\n</span></code></pre></section>
+

@@ -1,0 +1,40 @@
+<section class="km-section" id="kc901-sec-3-2-43" aria-labelledby="kc901-sec-3-2-43-heading"><h4 id="kc901-sec-3-2-43-heading" data-km-source="1160">3.2.43 Frequency List (Fourth-Generation KC901X)</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.43 Frequency List (Fourth-Generation KC901X) table"><table>
+<caption>3.2.43 Frequency List (Fourth-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="1161">Command</p></th>
+<th scope="col"><p data-km-source="1162">Option</p></th>
+<th scope="col"><p data-km-source="1163">Parameter 1</p></th>
+</tr>
+<tr>
+<td rowspan="2">
+<p data-km-source="1164">freq_list</p>
+</td>
+<td><p data-km-source="1165">set</p></td>
+<td rowspan="2">
+<p data-km-source="1166">Frequency range</p>
+</td>
+</tr>
+<tr><td><p data-km-source="1167">get</p></td></tr>
+</tbody>
+</table></div>
+<p data-km-source="1168">Description:</p>
+<p data-km-source="1169">The set option sends a frequency list to the instrument in Hz. Separate frequencies with "-". After all frequencies have been received, the instrument returns "Frequency received successfully!".</p>
+<p data-km-source="1170">The frequency list must contain at least 2 points and no more than 10000 points. The received list is stored in RAM and must be sent again after a power cycle. All frequencies must be within the instrument’s range. Repeating this command overwrites the previous list. Do not send an oversized list; whether the instrument rejects or truncates such a list remains to be confirmed.</p>
+<p data-km-source="1171">Example:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1172">$freq_list,set,100000000-200000000-40000000\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1173">$start,Frequency received successfully!</span>
+<span class="km-code-line rx" data-km-source="1174">$end</span></code></pre>
+<p data-km-source="1175">The get option takes no parameters and returns the frequency list received by the instrument.</p>
+<p data-km-source="1176">Example:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1177">$freq_list,get\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1178">$start,freq</span>
+<span class="km-code-line rx" data-km-source="1179">100000000</span>
+<span class="km-code-line rx" data-km-source="1180">200000000</span>
+<span class="km-code-line rx" data-km-source="1181">40000000</span>
+<span class="km-code-line rx" data-km-source="1182">$end</span></code></pre>
+</section>
+

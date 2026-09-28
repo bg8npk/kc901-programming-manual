@@ -1,0 +1,62 @@
+<section class="km-section" id="kc901-sec-3-3-13" aria-labelledby="kc901-sec-3-3-13-heading"><h4 id="kc901-sec-3-3-13-heading" data-km-source="2928">3.3.13 Frequency-List SPEC Measurements (Fourth-Generation KC901X)</h4>
+<p data-km-source="2929">Related setting: 3.2.18 Spectrum Reference Level.</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.13 Frequency-List SPEC Measurements (Fourth-Generation KC901X) table"><table>
+<caption>3.3.13 Frequency-List SPEC Measurements (Fourth-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="2930">Command</p></th>
+<th scope="col"><p data-km-source="2931">Option</p></th>
+<th scope="col"><p data-km-source="2932">Parameter 1</p></th>
+<th scope="col"><p data-km-source="2933">Parameter 2</p></th>
+<th scope="col"><p data-km-source="2934">Parameter 3</p></th>
+</tr>
+<tr>
+<td rowspan="3">
+<p data-km-source="2935">sweep_list_spec</p>
+
+</td>
+<td><p data-km-source="2936">init</p></td>
+<td rowspan="3">
+<p data-km-source="2937">calon</p>
+<p data-km-source="2938">caloff</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2939">lowlo</p>
+<p data-km-source="2940">highlo</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2941">port1</p>
+<p data-km-source="2942">port2</p>
+
+</td>
+</tr>
+<tr><td><p data-km-source="2943">run</p></td></tr>
+<tr><td><p data-km-source="2944">stop</p></td></tr>
+</tbody>
+</table></div>
+<p data-km-source="2945">Description:</p>
+<p data-km-source="2946">1. Options:</p>
+<p data-km-source="2947">init -&gt; Initialize SPEC. Required before using SPEC.</p>
+<p data-km-source="2948">run -&gt; Run a SPEC frequency sweep and acquire data.</p>
+<p data-km-source="2949">stop -&gt; Stop and close SPEC. Required before switching to another operating mode.</p>
+<p data-km-source="2950">2. Parameter 1:</p>
+<p data-km-source="2951">calon -&gt; Enable system calibration.</p>
+<p data-km-source="2952">caloff -&gt; Disable system calibration.</p>
+<p data-km-source="2953">3. Parameter 2:</p>
+<p data-km-source="2954">lowlo -&gt; Sweep using the low local-oscillator setting.</p>
+<p data-km-source="2955">highlo -&gt; Sweep using the high local-oscillator setting.</p>
+<p data-km-source="2956">4. Parameter 3:</p>
+<p data-km-source="2957">Port1 -&gt; Select input port 1 (PORT1).</p>
+<p data-km-source="2958">Port2 -&gt; Select input port 2 (PORT2).</p>
+<p data-km-source="2959">5. Example:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2960">$sweep_list_spec,run,caloff,lowlo,port1\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="2961">$start,spec\n</span>
+<span class="km-code-line rx" data-km-source="2962">100000000,2.331\n</span>
+<span class="km-code-line rx" data-km-source="2963">200000000,0.119\n</span>
+<span class="km-code-line rx" data-km-source="2964">40000000,-1.136\n</span>
+<span class="km-code-line rx" data-km-source="2965">$end\n</span></code></pre>
+</section>
+

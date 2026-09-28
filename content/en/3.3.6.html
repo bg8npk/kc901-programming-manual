@@ -1,0 +1,107 @@
+<section class="km-section" id="kc901-sec-3-3-6" aria-labelledby="kc901-sec-3-3-6-heading"><h4 id="kc901-sec-3-3-6-heading" data-km-source="2404">3.3.6 Field Strength Measurements (Fourth-Generation KC901X)</h4>
+<p data-km-source="2405">Related setting: Output Attenuation. The source cites 3.2.4; the corresponding section in this edition is 3.2.5.</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.6 Field Strength Measurements (Fourth-Generation KC901X) table"><table>
+<caption>3.3.6 Field Strength Measurements (Fourth-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="2406">Command</p></th>
+<th scope="col"><p data-km-source="2407">Option</p></th>
+<th scope="col"><p data-km-source="2408">Parameter 1</p></th>
+<th scope="col"><p data-km-source="2409">Parameter 3</p></th>
+<th scope="col"><p data-km-source="2410">Parameter 4</p></th>
+<th scope="col"><p data-km-source="2411">Parameter 5</p></th>
+<th scope="col"><p data-km-source="2412">Parameter 6</p></th>
+</tr>
+<tr>
+<td rowspan="3">
+<p data-km-source="2413">field</p>
+
+</td>
+<td><p data-km-source="2414">init</p></td>
+<td rowspan="3">
+<p data-km-source="2415">lowlo</p>
+<p data-km-source="2416">highlo</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2417">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2418">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2419">port1</p>
+<p data-km-source="2420">port2</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2421">single</p>
+<p data-km-source="2422">continue</p>
+
+</td>
+</tr>
+<tr><td><p data-km-source="2423">run</p></td></tr>
+<tr><td><p data-km-source="2424">stop</p></td></tr>
+</tbody>
+</table></div>
+<p data-km-source="2425">Description:</p>
+<p data-km-source="2426">1. Options:</p>
+<p data-km-source="2427">init -&gt; Initialize FIELD. Required before using FIELD.</p>
+<p data-km-source="2428">run -&gt; Run FIELD and acquire measurement data.</p>
+<p data-km-source="2429">stop -&gt; Stop and close FIELD. Required before switching to another operating mode.</p>
+<p data-km-source="2430">2. Parameter 1:</p>
+<p data-km-source="2431">lowlo -&gt; Measure using the low local-oscillator setting.</p>
+<p data-km-source="2432">highlo -&gt; Measure using the high local-oscillator setting.</p>
+<p data-km-source="2433">3. Parameter 3: Antenna gain, in dBi.</p>
+<p data-km-source="2434">Antenna gain range: -100.00 to +100.00dBi.</p>
+<p data-km-source="2435">4. Parameter 4: Single-point measurement frequency in Hz, with resolution down to 0.1Hz.</p>
+<p data-km-source="2436">The available frequency range depends on the instrument, as shown in the following table:</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.6 Field Strength Measurements (Fourth-Generation KC901X) table"><table>
+<caption>3.3.6 Field Strength Measurements (Fourth-Generation KC901X) — reference table</caption>
+<tbody>
+<tr><th scope="col" colspan="2"><p data-km-source="2437">Frequency range</p></th></tr>
+<tr>
+<td><p data-km-source="2438">KC901R</p></td>
+<td><p data-km-source="2439">0-7000000000Hz(7GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="2440">KC901K</p></td>
+<td><p data-km-source="2441">0-4100000000Hz(4.1GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="2442">KC901J</p></td>
+<td><p data-km-source="2443">0-2100000000Hz(2.1GHz)</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="2444">5. Parameter 5:</p>
+<p data-km-source="2445">port1 -&gt; Select input port 1 (PORT1).</p>
+<p data-km-source="2446">port2 -&gt; Select input port 2 (PORT2).</p>
+<p data-km-source="2447">6. Parameter 6:</p>
+<p data-km-source="2448">single -&gt; Single acquisition.</p>
+<p data-km-source="2449">continue -&gt; Repeated acquisition.</p>
+<p data-km-source="2450">7. Example:</p>
+<p data-km-source="2451">With parameter 6 set to single, field strength is acquired once and only one packet is received, for example:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2452">$field,run,lowlo,10,100000000,port1,single\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="2453">$start,field\n</span>
+<span class="km-code-line rx" data-km-source="2454">100000000,28.792,-78.438 \n    ; Frequency, field strength, absolute level (dBm).</span>
+<span class="km-code-line rx" data-km-source="2455">$end\n</span></code></pre>
+<p data-km-source="2456">With parameter 6 set to continue, field strength is acquired repeatedly and data is received continuously, for example:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2457">$field,run,lowlo,10,100000000,port1, continue\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="2458">$start,field\n</span>
+<span class="km-code-line rx" data-km-source="2459">100000000,22.297,-84.933\n   ; Frequency, field strength, absolute level (dBm).</span>
+<span class="km-code-line rx" data-km-source="2460">$end\n</span>
+<span class="km-code-line rx" data-km-source="2461">$start,field\n</span>
+<span class="km-code-line rx" data-km-source="2462">100000000,21.680,-85.550\n</span>
+<span class="km-code-line rx" data-km-source="2463">$end\n</span>
+<span class="km-code-line rx" data-km-source="2464">$start,field\n</span>
+<span class="km-code-line rx" data-km-source="2465">100000000,30.598,-76.632\n</span>
+<span class="km-code-line rx" data-km-source="2466">$end\n</span>
+<span class="km-code-line rx" data-km-source="2467">$start,field\n</span>
+<span class="km-code-line rx" data-km-source="2468">100000000,30.598,-76.632\n</span>
+<span class="km-code-line rx" data-km-source="2469">$end\n</span></code></pre></section>
+

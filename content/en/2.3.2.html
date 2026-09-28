@@ -1,0 +1,11 @@
+<section class="km-section" id="kc901-sec-2-3-2" aria-labelledby="kc901-sec-2-3-2-heading"><h4 id="kc901-sec-2-3-2-heading" data-km-source="59">2.3.2 Configuring Network Parameters</h4>
+<p data-km-source="60">Open IP SET under Settings and configure the KC901 IP parameters. Save the settings. The green Ethernet indicator flashes when the network connection is established.</p>
+<figure class="km-figure"><img loading="lazy" src="assets/images/image-04.png" alt="KC901K Ethernet TCP/IP settings: DHCP OFF, port 901, address 192.168.11.9, gateway 192.168.11.1, netmask 255.255.255.0"><figcaption>Example of the instrument’s Ethernet TCP/IP settings. The retained screenshot includes one Chinese UI label meaning Language; all network settings are shown in English.</figcaption></figure>
+<p data-km-source="61">DHCP: When enabled, the instrument obtains its IP address and gateway dynamically from the router. The source manual generally recommends disabling DHCP.</p>
+<p data-km-source="62">DHCP is supported only by fourth-generation KC901X instruments, not by third-generation KC901X instruments.</p>
+<p data-km-source="63">Port: The port number in the host software must match this setting. Avoid conflicts with other applications. If the host uses a firewall, allow traffic on the corresponding port.</p>
+<p data-km-source="64">IPv4 address: Choose an address within the permitted range of the connected network. It must not conflict with another device.</p>
+<p data-km-source="65">IPv4 gateway: Use the router's gateway setting. A common LAN default is 192.168.1.1.</p>
+<p data-km-source="66">IPv4 subnet mask: Set this according to the connected network; a common value is 255.255.255.0.</p>
+<p data-km-source="67">A network with a router is generally preferable. Both the KC901 and the host act as endpoints on that network. For a direct KC901-to-PC connection, assign different IP addresses on the same subnet to the PC and KC901. With some older network adapters, try a crossover Ethernet cable if the connection fails.</p></section>
+

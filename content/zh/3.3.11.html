@@ -1,0 +1,90 @@
+<section class="km-section" id="kc901-sec-3-3-11-zh" aria-labelledby="kc901-sec-3-3-11-heading-zh"><h4 id="kc901-sec-3-3-11-heading-zh" data-km-source="2778">3.3.11 列表S22测量参数（第四代KC901X）</h4>
+<p data-km-source="2779">与此功能还有关联的参数还有：</p>
+<p data-km-source="2780">3.2.5 设置输出衰减，3.2.9 电缆补偿</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.11 列表S22测量参数（第四代KC901X） 参数表"><table>
+<caption>3.3.11 列表S22测量参数（第四代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="2781">命令</p></th>
+<th scope="col"><p data-km-source="2782">选项</p></th>
+<th scope="col"><p data-km-source="2783">参数1</p></th>
+<th scope="col"><p data-km-source="2784">参数2</p></th>
+</tr>
+<tr>
+<td rowspan="3">
+<p data-km-source="2785">sweep_list_s22</p>
+
+</td>
+<td><p data-km-source="2786">init</p></td>
+<td rowspan="3">
+<p data-km-source="2787">s22cal</p>
+<p data-km-source="2788">full2portcal</p>
+<p data-km-source="2789">syscal</p>
+<p data-km-source="2790">calOff</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2791">ri</p>
+<p data-km-source="2792">ma</p>
+<p data-km-source="2793">vswr</p>
+<p data-km-source="2794">z</p>
+<p data-km-source="2795">loss</p>
+
+</td>
+</tr>
+<tr><td><p data-km-source="2796">run</p></td></tr>
+<tr><td><p data-km-source="2797">stop</p></td></tr>
+</tbody>
+</table></div>
+<p data-km-source="2798">说明：</p>
+<p data-km-source="2799">1、选项：</p>
+<p data-km-source="2800">init-&gt;初始化S22功能（在使用S22功能前必须使用此命令）</p>
+<p data-km-source="2801">run-&gt;运行S22进行扫频采集</p>
+<p data-km-source="2802">stop-&gt;停止并关闭S22功能(在使用其它工作模式前必须使用此命令)</p>
+<p data-km-source="2803">2、参数1：</p>
+<p data-km-source="2804">s22cal-&gt;打开s22校准</p>
+<p data-km-source="2805">full2portcal-&gt;打开全双端口校准</p>
+<p data-km-source="2806">syscal-&gt;打开系统校准</p>
+<p data-km-source="2807">caloff-&gt;关闭系统校准</p>
+<p data-km-source="2808">3、参数2：</p>
+<p data-km-source="2809">ri-&gt;以实部和虚部返回数据</p>
+<p data-km-source="2810">ma-&gt;以反射系数和角度返回数据</p>
+<p data-km-source="2811">vswr-&gt;以电压驻波比返回数据</p>
+<p data-km-source="2812">z-&gt;以阻抗返回数据</p>
+<p data-km-source="2813">loss-&gt;以回波损耗（对数值）返回数据</p>
+<p data-km-source="2814">4、例程：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2815">$sweep_list_s22,run,caloff,ri\n</span>
+<span class="km-code-line rx" data-km-source="2816">$start,s22,ri\n</span>
+<span class="km-code-line rx" data-km-source="2817">100000000,-3.4254e+00,3.9333e+00\n;依次为频率，实部，虚部</span>
+<span class="km-code-line rx" data-km-source="2818">200000000,7.1214e-01,5.4916e+00\n</span>
+<span class="km-code-line rx" data-km-source="2819">40000000,-2.8701e+00,-1.6338e+00\n</span>
+<span class="km-code-line rx" data-km-source="2820">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2821">$sweep_list_s22,run,caloff,ma\n</span>
+<span class="km-code-line rx" data-km-source="2822">$start,s22,ma\n</span>
+<span class="km-code-line rx" data-km-source="2823">100000000,5.2614e+00,130.9248\n       ;依次为频率，反射系数，相位</span>
+<span class="km-code-line rx" data-km-source="2824">200000000,5.5759e+00,82.5062\n</span>
+<span class="km-code-line rx" data-km-source="2825">40000000,6.7225e+00,114.1863\n</span>
+<span class="km-code-line rx" data-km-source="2826">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2827">$sweep_list_s22,run,caloff,vswr\n</span>
+<span class="km-code-line rx" data-km-source="2828">$start,s22,vswr\n</span>
+<span class="km-code-line rx" data-km-source="2829">100000000,-1.4694\n                   ;依次为频率，电压驻波比</span>
+<span class="km-code-line rx" data-km-source="2830">200000000,-1.4361\n</span>
+<span class="km-code-line rx" data-km-source="2831">40000000,-1.2921\n</span>
+<span class="km-code-line rx" data-km-source="2832">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2833">$sweep_list_s22,run,caloff,z\n</span>
+<span class="km-code-line rx" data-km-source="2834">$start,s22,z\n                  ;依次为频率，阻抗的模，电阻，电抗</span>
+<span class="km-code-line rx" data-km-source="2835">100000000,39.1282,-37.4988,11.1738\n</span>
+<span class="km-code-line rx" data-km-source="2836">200000000,52.3065,-49.1036,18.0223\n</span>
+<span class="km-code-line rx" data-km-source="2837">40000000,58.5305,-58.4607,-2.8582\n</span>
+<span class="km-code-line rx" data-km-source="2838">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2839">$sweep_list_s22,run,caloff,loss\n</span>
+<span class="km-code-line rx" data-km-source="2840">$start,s22,loss\n</span>
+<span class="km-code-line rx" data-km-source="2841">100000000,14.4200\n;依次为频率，回波损耗</span>
+<span class="km-code-line rx" data-km-source="2842">200000000,14.9363\n</span>
+<span class="km-code-line rx" data-km-source="2843">40000000,10.6300\n</span>
+<span class="km-code-line rx" data-km-source="2844">$end\n</span></code></pre></section>
+

@@ -1,0 +1,162 @@
+<section class="km-section" id="kc901-sec-3-3-16" aria-labelledby="kc901-sec-3-3-16-heading"><h4 id="kc901-sec-3-3-16-heading" data-km-source="3210">3.3.16 Spectrum Measurements (Third-Generation KC901X)</h4>
+<p data-km-source="3211">Related setting: Spectrum Reference Level. The source cites 3.2.15; the corresponding section in this edition is 3.2.18.</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.16 Spectrum Measurements (Third-Generation KC901X) table"><table>
+<caption>3.3.16 Spectrum Measurements (Third-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="3212">Command</p></th>
+<th scope="col"><p data-km-source="3213">Option</p></th>
+<th scope="col"><p data-km-source="3214">Parameter 1</p></th>
+<th scope="col"><p data-km-source="3215">Parameter 2</p></th>
+<th scope="col"><p data-km-source="3216">Parameter 3</p></th>
+<th scope="col"><p data-km-source="3217">Parameter 4</p></th>
+<th scope="col"><p data-km-source="3218">Parameter 5</p></th>
+<th scope="col"><p data-km-source="3219">Parameter 6</p></th>
+</tr>
+<tr>
+<td rowspan="3">
+<p data-km-source="3220">spec</p>
+
+</td>
+<td><p data-km-source="3221">init</p></td>
+<td rowspan="3">
+<p data-km-source="3222">calon</p>
+<p data-km-source="3223">caloff</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3224">lowlo</p>
+<p data-km-source="3225">highlo</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3226">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3227">cs</p>
+<p data-km-source="3228">ss</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3229">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3230">**</p>
+
+</td>
+</tr>
+<tr><td><p data-km-source="3231">run</p></td></tr>
+<tr><td><p data-km-source="3232">stop</p></td></tr>
+</tbody>
+</table></div>
+<p data-km-source="3233">Description:</p>
+<p data-km-source="3234">1. Options:</p>
+<p data-km-source="3235">init -&gt; Initialize SPEC. Required before using SPEC.</p>
+<p data-km-source="3236">run -&gt; Run a SPEC frequency sweep and acquire data.</p>
+<p data-km-source="3237">stop -&gt; Stop and close SPEC. Required before switching to another operating mode.</p>
+<p data-km-source="3238">2. Parameter 1:</p>
+<p data-km-source="3239">calon -&gt; Enable system calibration.</p>
+<p data-km-source="3240">caloff -&gt; Disable system calibration.</p>
+<p data-km-source="3241">3. Parameter 2:</p>
+<p data-km-source="3242">lowlo -&gt; Sweep using the low local-oscillator setting.</p>
+<p data-km-source="3243">highlo -&gt; Sweep using the high local-oscillator setting.</p>
+<p data-km-source="3244">Parameter 3 sets the number of sweep points. Up to 1001 points are supported. For more points, use this command multiple times. To measure a single frequency, set the point count to 1. Unlike field strength mode, this mode allows a reference level to be specified. Specifying a reference level is recommended when measuring relative values accurately.</p>
+<p data-km-source="3245">5. Parameter 4:</p>
+<p data-km-source="3246">cs -&gt; Specify the sweep range using Cent and Span.</p>
+<p data-km-source="3247">ss -&gt; Specify the sweep range using Start and Stop.</p>
+<p data-km-source="3248">If parameter 3 specifies a single frequency point, set parameter 4 to CS.</p>
+<p data-km-source="3249">Parameters 5 and 6 specify center frequency and span, in Hz.</p>
+<p data-km-source="3250">The available frequency range depends on the instrument, as shown in the following table:</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.16 Spectrum Measurements (Third-Generation KC901X) table"><table>
+<caption>3.3.16 Spectrum Measurements (Third-Generation KC901X) — reference table</caption>
+<tbody>
+<tr><th scope="col" colspan="2"><p data-km-source="3251">Center frequency range</p></th></tr>
+<tr>
+<td><p data-km-source="3252">KC901M</p></td>
+<td><p data-km-source="3253">500Hz-9999999500Hz(10GHz–500Hz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3254">KC901V</p></td>
+<td><p data-km-source="3255">500Hz-6999999500Hz(7GHz–500Hz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3256">KC901S+</p></td>
+<td><p data-km-source="3257">500Hz-4099999500Hz(4.1GHz-500Hz)</p></td>
+</tr>
+<tr><td colspan="2"><p data-km-source="3258">Span range</p></td></tr>
+<tr>
+<td><p data-km-source="3259">KC901M</p></td>
+<td><p data-km-source="3260">1000Hz-10000000000Hz(10GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3261">KC901V</p></td>
+<td><p data-km-source="3262">1000Hz-7000000000Hz(7GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3263">KC901S+</p></td>
+<td><p data-km-source="3264">1000Hz-4100000000Hz(4.1GHz)</p></td>
+</tr>
+<tr><td colspan="2"><p data-km-source="3265">Start frequency range</p></td></tr>
+<tr>
+<td><p data-km-source="3266">KC901M</p></td>
+<td><p data-km-source="3267">0-9999999000Hz(10GHz – 1KHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3268">KC901V</p></td>
+<td><p data-km-source="3269">0-6999999000Hz(7GHz – 1KHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3270">KC901S+</p></td>
+<td><p data-km-source="3271">0-4099999000Hz(4.1GHz – 1KHz)</p></td>
+</tr>
+<tr><td colspan="2"><p data-km-source="3272">Stop frequency range</p></td></tr>
+<tr>
+<td><p data-km-source="3273">KC901M</p></td>
+<td><p data-km-source="3274">10000Hz-10000000000Hz(10GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3275">KC901V</p></td>
+<td><p data-km-source="3276">1000Hz-7000000000Hz(7GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3277">KC901S+</p></td>
+<td><p data-km-source="3278">1000Hz-4100000000Hz(4.1GHz)</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="3279">The stop frequency must be greater than the start frequency.</p>
+<p data-km-source="3280">If parameter 3 specifies a single frequency point, parameter 4 can be cs or ss. Only parameter 5 is required (cent or start); parameter 6 would be parsed as a new command by the KC901.</p>
+<p data-km-source="3281">7. Example:</p>
+<p data-km-source="3282">When the number of acquisition points is greater than 1:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3283">$spec,run,caloff,lowlo,10,cs,100000000,50000000\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="3284">$start,spec\n</span>
+<span class="km-code-line rx" data-km-source="3285">$75000000,-74.166\n  ; Frequency, amplitude (dBm).</span>
+<span class="km-code-line rx" data-km-source="3286">$80000000,-74.385\n</span>
+<span class="km-code-line rx" data-km-source="3287">$85000000,-74.228\n</span>
+<span class="km-code-line rx" data-km-source="3288">$90000000,-74.249\n</span>
+<span class="km-code-line rx" data-km-source="3289">$95000000,-74.125\n</span>
+<span class="km-code-line rx" data-km-source="3290">$100000000,-74.456\n</span>
+<span class="km-code-line rx" data-km-source="3291">$105000000,-74.422\n</span>
+<span class="km-code-line rx" data-km-source="3292">$110000000,-74.147\n</span>
+<span class="km-code-line rx" data-km-source="3293">$115000000,-74.077\n</span>
+<span class="km-code-line rx" data-km-source="3294">$120000000,-74.295\n</span>
+<span class="km-code-line rx" data-km-source="3295">$125000000,-74.314\n</span>
+<span class="km-code-line rx" data-km-source="3296">$end\n</span></code></pre>
+<p data-km-source="3297">When the number of sweep points is 1:</p>
+<p data-km-source="3298">SPEC performs repeated acquisition, with each acquisition returned in a separate packet, as shown below:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3299">$spec,run,caloff,lowlo,1,cs,100000000\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="3300">$start,spec\n</span>
+<span class="km-code-line rx" data-km-source="3301">$100000000,-74.307\n</span>
+<span class="km-code-line rx" data-km-source="3302">$end\n</span>
+<span class="km-code-line rx" data-km-source="3303">$start,spec\n</span>
+<span class="km-code-line rx" data-km-source="3304">$100000000,-74.540\n</span>
+<span class="km-code-line rx" data-km-source="3305">$end\n</span>
+<span class="km-code-line rx" data-km-source="3306">$start,spec\n</span>
+<span class="km-code-line rx" data-km-source="3307">$100000000,-74.310\n</span>
+<span class="km-code-line rx" data-km-source="3308">$end\n</span></code></pre>
+</section>
+

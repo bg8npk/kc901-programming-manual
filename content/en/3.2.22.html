@@ -1,0 +1,24 @@
+<section class="km-section" id="kc901-sec-3-2-22" aria-labelledby="kc901-sec-3-2-22-heading"><h4 id="kc901-sec-3-2-22-heading" data-km-source="456">3.2.22 Remote Firmware Update (USB Serial Connection Only)</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.22 Remote Firmware Update (USB Serial Connection Only) table"><table>
+<caption>3.2.22 Remote Firmware Update (USB Serial Connection Only) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="457">Send command</p></th>
+<th scope="col"><p data-km-source="458">Option</p></th>
+<th scope="col"><p data-km-source="459">Description</p></th>
+</tr>
+<tr>
+<td><p data-km-source="460">update</p></td>
+<td><p data-km-source="461">None</p></td>
+<td><p data-km-source="462">Update the firmware from the SD card.</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="463">Description:</p>
+<p data-km-source="464">Before sending this command, make sure the update files have been loaded onto the SD card. After receiving the command, the KC901 restarts automatically in remote update mode. Update progress messages are returned over the serial port and indicate success or failure. Fourth-generation KC901 instruments require a Boot version higher than 0.0.4 to support this command; it can be updated using the V1.5.6 base firmware update package.</p>
+<p data-km-source="465">Example:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="466">$update\n</span></code></pre>
+<p data-km-source="467">Note:</p>
+<p data-km-source="468">1. If an unexpected problem causes the instrument to freeze during a remote update, restart it to automatically retry the update.</p>
+<p data-km-source="469">2. During an update, the serial baud rate is fixed at 460800 on fourth-generation KC901X instruments and 921600 on third-generation KC901X instruments.</p></section>
+

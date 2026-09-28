@@ -1,0 +1,57 @@
+<section class="km-section" id="kc901-sec-3-2-47" aria-labelledby="kc901-sec-3-2-47-heading"><h4 id="kc901-sec-3-2-47-heading" data-km-source="1301">3.2.47 Frequency-List S12 Response Calibration (Fourth-Generation KC901X)</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.47 Frequency-List S12 Response Calibration (Fourth-Generation KC901X) table"><table>
+<caption>3.2.47 Frequency-List S12 Response Calibration (Fourth-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="1302">Send command</p></th>
+<th scope="col"><p data-km-source="1303">Option</p></th>
+<th scope="col"><p data-km-source="1304">Description</p></th>
+</tr>
+<tr>
+<td><p data-km-source="1305">list_response_s12_cal</p></td>
+<td><p data-km-source="1306">None</p></td>
+<td><p data-km-source="1307">Perform S12 response calibration using the frequency list.</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="1308">Description:</p>
+<p data-km-source="1309">This command starts an interactive T calibration at the frequencies in the custom list, over the serial or Ethernet connection. When sweeping the frequency list with S12 response calibration selected, this calibration data is used by default. If the frequency range exceeds the calibrated range, system calibration is used instead. The procedure involves several exchanges. Host software only needs to identify packet header names; matching the message text is unnecessary.</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1310">$list_response_s12_cal\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1311">$start,s12_Cal_confirm\n</span>
+<span class="km-code-line rx" data-km-source="1312">$******S12 Response calibration******\n</span>
+<span class="km-code-line rx" data-km-source="1313">$Do you want to calibrate the device?[Yes/no]\n</span>
+<span class="km-code-line rx" data-km-source="1314">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1315">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1316">$start,s12_response_cal_wait\n</span>
+<span class="km-code-line rx" data-km-source="1317">$ waiting for the circuit to be stability...\n</span>
+<span class="km-code-line rx" data-km-source="1318">$end\n</span></code></pre>
+
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1319">$start,port_polarity\n</span>
+<span class="km-code-line rx" data-km-source="1320">$Enter female,male or f_m to specify the polarity of the PORTS:\n</span>
+<span class="km-code-line rx" data-km-source="1321">$end\n</span></code></pre>
+
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1322">$female\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1323">$start,cal_connect\n</span>
+<span class="km-code-line rx" data-km-source="1324">$Step 1:Please connect PORT1 and PORT2 then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1325">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1326">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1327">$start,cal_completed\n</span>
+<span class="km-code-line rx" data-km-source="1328">$Calibration completed!\n</span>
+<span class="km-code-line rx" data-km-source="1329">$end\n</span></code></pre>
+
+<p data-km-source="1330">While the instrument is waiting for confirmation from the host, the user can enter 'exit\n' to leave calibration mode, as shown below:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1331">$exit\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1332">$start,exit\n</span>
+<span class="km-code-line rx" data-km-source="1333">$Exit calibration\n</span>
+<span class="km-code-line rx" data-km-source="1334">$end\n</span></code></pre>
+</section>
+

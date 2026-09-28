@@ -1,0 +1,40 @@
+<section class="km-section" id="kc901-sec-3-2-43-zh" aria-labelledby="kc901-sec-3-2-43-heading-zh"><h4 id="kc901-sec-3-2-43-heading-zh" data-km-source="1160">3.2.43 频率列表设置（第四代KC901X）</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.43 频率列表设置（第四代KC901X） 参数表"><table>
+<caption>3.2.43 频率列表设置（第四代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="1161">命令</p></th>
+<th scope="col"><p data-km-source="1162">选项</p></th>
+<th scope="col"><p data-km-source="1163">参数1</p></th>
+</tr>
+<tr>
+<td rowspan="2">
+<p data-km-source="1164">freq_list</p>
+</td>
+<td><p data-km-source="1165">set</p></td>
+<td rowspan="2">
+<p data-km-source="1166">频率范围</p>
+</td>
+</tr>
+<tr><td><p data-km-source="1167">get</p></td></tr>
+</tbody>
+</table></div>
+<p data-km-source="1168">说明：</p>
+<p data-km-source="1169">set选项给下位机下发频率列表单位Hz，频率与频率之间用“-”分割，下位机接受完所以频率后返回“Frequency received successfully!”；</p>
+<p data-km-source="1170">频率列表至少包含2个点，最多包含10000个点。下位机接收的频率列表保存在RAM中，关机后需要重新下发。列表中的频率不能超出设备支持的范围。重复执行此命令会覆盖之前的列表。请勿下发超限列表；超限时是拒绝还是截断，尚待确认。</p>
+<p data-km-source="1171">例程：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1172">$freq_list,set,100000000-200000000-40000000\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1173">$start,Frequency received successfully!</span>
+<span class="km-code-line rx" data-km-source="1174">$end</span></code></pre>
+<p data-km-source="1175">get选项不需要传入参数，返回下位机收到的频率列表；</p>
+<p data-km-source="1176">例程：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1177">$freq_list,get\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1178">$start,freq</span>
+<span class="km-code-line rx" data-km-source="1179">100000000</span>
+<span class="km-code-line rx" data-km-source="1180">200000000</span>
+<span class="km-code-line rx" data-km-source="1181">40000000</span>
+<span class="km-code-line rx" data-km-source="1182">$end</span></code></pre>
+</section>
+

@@ -1,0 +1,55 @@
+<section class="km-section" id="kc901-sec-3-2-20" aria-labelledby="kc901-sec-3-2-20-heading"><h4 id="kc901-sec-3-2-20-heading" data-km-source="402">3.2.20 Network Parameters</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.20 Network Parameters table"><table>
+<caption>3.2.20 Network Parameters — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="403">Command</p></th>
+<th scope="col"><p data-km-source="404">Option</p></th>
+<th scope="col"><p data-km-source="405">Description</p></th>
+</tr>
+<tr>
+<td><p data-km-source="406">netinfo</p></td>
+<td><p data-km-source="407">None</p></td>
+<td><p data-km-source="408">Read the current network settings.</p></td>
+</tr>
+<tr>
+<td><p data-km-source="409">ip</p></td>
+<td><p data-km-source="410">None</p></td>
+<td><p data-km-source="411">Device address</p></td>
+</tr>
+<tr>
+<td><p data-km-source="412">gw</p></td>
+<td><p data-km-source="413">None</p></td>
+<td><p data-km-source="414">Gateway address</p></td>
+</tr>
+<tr>
+<td><p data-km-source="415">msk</p></td>
+<td><p data-km-source="416">None</p></td>
+<td><p data-km-source="417">Subnet mask</p></td>
+</tr>
+<tr>
+<td><p data-km-source="418">port</p></td>
+<td><p data-km-source="419">None</p></td>
+<td><p data-km-source="420">Port number (less than 65535)</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="421">Example:</p>
+<p data-km-source="422">Read the current network settings:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="423">$netinfo\n</span>
+<span class="km-code-line rx" data-km-source="424">$start,NetInfo\n</span>
+<span class="km-code-line rx" data-km-source="425">dhcp: on\n; DHCP status</span>
+<span class="km-code-line rx" data-km-source="426">192,168,1,2\n                 ; IP address</span>
+<span class="km-code-line rx" data-km-source="427">192,168,1,1\n                 ; Gateway address</span>
+<span class="km-code-line rx" data-km-source="428">255,255,255,0\n               ; Subnet mask</span>
+<span class="km-code-line rx" data-km-source="429">901\n                       ; Port number</span>
+<span class="km-code-line rx" data-km-source="430">$end\n</span></code></pre>
+<p data-km-source="431">Set the IP address:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="432">$ip,192.168.1.2\n</span></code></pre>
+<p data-km-source="433">Set the gateway address:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="434">$gw,192.168.1.1\n</span></code></pre>
+<p data-km-source="435">Set the subnet mask:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="436">$msk,255.255.255.0\n</span></code></pre>
+<p data-km-source="437">Set the port number. Only third-generation KC901X instruments allow the port number to be changed. On fourth-generation instruments, it is fixed at 901.</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="438">$port,901\n</span></code></pre></section>
+

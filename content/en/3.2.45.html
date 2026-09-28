@@ -1,0 +1,68 @@
+<section class="km-section" id="kc901-sec-3-2-45" aria-labelledby="kc901-sec-3-2-45-heading"><h4 id="kc901-sec-3-2-45-heading" data-km-source="1225">3.2.45 Frequency-List S22 User Calibration (Fourth-Generation KC901X)</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.45 Frequency-List S22 User Calibration (Fourth-Generation KC901X) table"><table>
+<caption>3.2.45 Frequency-List S22 User Calibration (Fourth-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="1226">Send command</p></th>
+<th scope="col"><p data-km-source="1227">Option</p></th>
+<th scope="col"><p data-km-source="1228">Description</p></th>
+</tr>
+<tr>
+<td><p data-km-source="1229">list_user_s22_cal</p></td>
+<td><p data-km-source="1230">None</p></td>
+<td><p data-km-source="1231">Perform S22 user calibration using the frequency list.</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="1232">Description:</p>
+<p data-km-source="1233">This command starts an interactive port 2 SOL calibration at the frequencies in the custom list, over the serial or Ethernet connection. When sweeping the frequency list with S22 user calibration selected, this calibration data is used by default. If the frequency range exceeds the calibrated range, system calibration is used instead. The procedure involves several exchanges. Host software only needs to identify packet header names; matching the message text is unnecessary.</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1234">$list_user_s22_cal\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1235">$start,s22_Cal_confirm\n</span>
+<span class="km-code-line rx" data-km-source="1236">$******S22 calibration******\n</span>
+<span class="km-code-line rx" data-km-source="1237">$Do you want to calibrate the device?[Yes/no]\n</span>
+<span class="km-code-line rx" data-km-source="1238">$end</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1239">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1240">$start,s22_cal_wait\n</span>
+<span class="km-code-line rx" data-km-source="1241">$ waiting for the circuit to be stability...\n</span>
+<span class="km-code-line rx" data-km-source="1242">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1243">$start,port_polarity\n</span>
+<span class="km-code-line rx" data-km-source="1244">$Enter female or male to specify the polarity of the PORT2:\n</span>
+<span class="km-code-line rx" data-km-source="1245">$end\n</span></code></pre>
+
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1246">$female\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1247">$start,cal_open\n</span>
+<span class="km-code-line rx" data-km-source="1248">$Step 1:Please connect the OPEN module to PORT2 then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1249">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1250">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1251">$start,cal_short\n</span>
+<span class="km-code-line rx" data-km-source="1252">$Step 2:Please connect the SHORT module to PORT2 then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1253">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1254">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1255">$start,cal_load\n</span>
+<span class="km-code-line rx" data-km-source="1256">$Step 3:Please connect the LOAD module to PORT2 then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1257">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1258">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1259">$start,cal_completed\n</span>
+<span class="km-code-line rx" data-km-source="1260">$Calibration completed!\n</span>
+<span class="km-code-line rx" data-km-source="1261">$end\n</span></code></pre>
+
+<p data-km-source="1262">While the instrument is waiting for confirmation from the host, the user can enter 'exit\n' to leave calibration mode, as shown below:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1263">$exit\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1264">$start,exit\n</span>
+<span class="km-code-line rx" data-km-source="1265">$Exit calibration\n</span>
+<span class="km-code-line rx" data-km-source="1266">$end\n</span></code></pre>
+</section>
+

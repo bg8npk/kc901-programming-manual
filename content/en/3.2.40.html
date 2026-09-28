@@ -1,0 +1,31 @@
+<section class="km-section" id="kc901-sec-3-2-40" aria-labelledby="kc901-sec-3-2-40-heading"><h4 id="kc901-sec-3-2-40-heading" data-km-source="1108">3.2.40 Valid Source Amplitude Range at Specified Frequencies (Fourth-Generation KC901X)</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.40 Valid Source Amplitude Range at Specified Frequencies (Fourth-Generation KC901X) table"><table>
+<caption>3.2.40 Valid Source Amplitude Range at Specified Frequencies (Fourth-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="1109">Send command</p></th>
+<th scope="col"><p data-km-source="1110">Option</p></th>
+<th scope="col"><p data-km-source="1111">Parameter</p></th>
+<th scope="col"><p data-km-source="1112">Description</p></th>
+</tr>
+<tr>
+<td><p data-km-source="1113">range_source_level</p></td>
+<td><p data-km-source="1114">get</p></td>
+<td>
+<p data-km-source="1115">start freq</p>
+<p data-km-source="1116">stop freq</p>
+<p data-km-source="1117">point</p>
+</td>
+<td><p data-km-source="1118">Query the valid signal source amplitude range at specified frequencies.</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="1119">Description:</p>
+<p data-km-source="1120">Provide the start frequency, stop frequency, and number of points. The instrument returns the valid signal source amplitude range for those frequencies.</p>
+
+<p data-km-source="1121">Example:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1122">$range_source_level,get,100000000,200000000,201\n</span>
+<span class="km-code-line rx" data-km-source="1123">$start,range_source_level,get,success\n</span>
+<span class="km-code-line rx" data-km-source="1124">$-43,9\n</span>
+<span class="km-code-line rx" data-km-source="1125">$end\n</span></code></pre></section>
+

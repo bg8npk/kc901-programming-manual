@@ -1,0 +1,38 @@
+<section class="km-section" id="kc901-sec-3-2-7-zh" aria-labelledby="kc901-sec-3-2-7-heading-zh"><h4 id="kc901-sec-3-2-7-heading-zh" data-km-source="190">3.2.7气压计</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.7气压计 参数表"><table>
+<caption>3.2.7气压计 — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="191">命令</p></th>
+<th scope="col"><p data-km-source="192">选项</p></th>
+<th scope="col"><p data-km-source="193">参数</p></th>
+<th scope="col"><p data-km-source="194">说明</p></th>
+</tr>
+<tr>
+<td rowspan="2">
+<p data-km-source="195">press</p>
+</td>
+<td><p data-km-source="196">set</p></td>
+<td><p data-km-source="197">数值</p></td>
+<td>
+<p data-km-source="198">设置绝对高度补偿，单位是m，范围：-999.9-999.9</p>
+<p data-km-source="199">注意：当设置完高度补偿后，读取的海拔数据会缓慢变化到补偿后的值（因为数据存在滑动滤波以保证稳定性）</p>
+</td>
+</tr>
+<tr>
+<td><p data-km-source="200">get</p></td>
+<td><p data-km-source="201">无</p></td>
+<td><p data-km-source="202">读取气压数据，依次返回hPa和m单位</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="203">例程：</p>
+<p data-km-source="204">高度补偿正100米</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="205">$press,set,100.0\n</span></code></pre>
+<p data-km-source="206">读取气压测试数据，要求返回以百帕为单位的值</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="207">$press,get\n</span>
+<span class="km-code-line rx" data-km-source="208">$start,press\n</span>
+<span class="km-code-line rx" data-km-source="209">$950.412,536.802\n  ;依次为气压(hPa)和海拔(m)</span>
+<span class="km-code-line rx" data-km-source="210">$end\n</span></code></pre>
+</section>
+

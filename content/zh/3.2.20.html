@@ -1,0 +1,55 @@
+<section class="km-section" id="kc901-sec-3-2-20-zh" aria-labelledby="kc901-sec-3-2-20-heading-zh"><h4 id="kc901-sec-3-2-20-heading-zh" data-km-source="402">3.2.20设置网络参数</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.20设置网络参数 参数表"><table>
+<caption>3.2.20设置网络参数 — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="403">命令</p></th>
+<th scope="col"><p data-km-source="404">选项</p></th>
+<th scope="col"><p data-km-source="405">说明</p></th>
+</tr>
+<tr>
+<td><p data-km-source="406">netinfo</p></td>
+<td><p data-km-source="407">无</p></td>
+<td><p data-km-source="408">查看当前网络设置</p></td>
+</tr>
+<tr>
+<td><p data-km-source="409">ip</p></td>
+<td><p data-km-source="410">无</p></td>
+<td><p data-km-source="411">设备地址</p></td>
+</tr>
+<tr>
+<td><p data-km-source="412">gw</p></td>
+<td><p data-km-source="413">无</p></td>
+<td><p data-km-source="414">网关地址</p></td>
+</tr>
+<tr>
+<td><p data-km-source="415">msk</p></td>
+<td><p data-km-source="416">无</p></td>
+<td><p data-km-source="417">子网掩码</p></td>
+</tr>
+<tr>
+<td><p data-km-source="418">port</p></td>
+<td><p data-km-source="419">无</p></td>
+<td><p data-km-source="420">端口号(小于65535)</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="421">例程：</p>
+<p data-km-source="422">查看当前网络设置:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="423">$netinfo\n</span>
+<span class="km-code-line rx" data-km-source="424">$start,NetInfo\n</span>
+<span class="km-code-line rx" data-km-source="425">dhcp: on\n;dhcp状态</span>
+<span class="km-code-line rx" data-km-source="426">192,168,1,2\n                 ;IP地址</span>
+<span class="km-code-line rx" data-km-source="427">192,168,1,1\n                 ;网关地址</span>
+<span class="km-code-line rx" data-km-source="428">255,255,255,0\n               ;子掩网码</span>
+<span class="km-code-line rx" data-km-source="429">901\n                       ;端口号</span>
+<span class="km-code-line rx" data-km-source="430">$end\n</span></code></pre>
+<p data-km-source="431">设置IP地址：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="432">$ip,192.168.1.2\n</span></code></pre>
+<p data-km-source="433">设置网关地址：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="434">$gw,192.168.1.1\n</span></code></pre>
+<p data-km-source="435">设置子掩网码：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="436">$msk,255.255.255.0\n</span></code></pre>
+<p data-km-source="437">设置端口号：（只有第三代KC901X支持更改端口号，第四代不支持更改固定为901）</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="438">$port,901\n</span></code></pre></section>
+

@@ -1,0 +1,6 @@
+<section class="km-section" id="kc901-sec-2-6-zh" aria-labelledby="kc901-sec-2-6-heading-zh"><h3 id="kc901-sec-2-6-heading-zh" data-km-source="82">2.6终止数据返回</h3>
+<p data-km-source="83">在901有连续的数据返回时，如果需要终止目前操作，需要在上位机采用组合键[Ctrl]+[C](也就是16进制的0x03)，此时901会终止执行已经收到的命令，并将已经测到，但尚未发送完毕的数据全部发完，然后停止返回数据。</p>
+<p data-km-source="84">注意：</p>
+<p data-km-source="85">1、当终止数据返回后，KC901会完全归回初始状态。例如，使用s11 RUN指令采集数据的过程中按下了组合键[Ctrl]+[C]，则需要再次发送s11 init后，才能继续运行s11 run。</p>
+<p data-km-source="86">2、若使用SecureCRT调试KC901，需要用鼠标点击数据显示窗口，然后就可以直接[Ctrl]+[C]。</p></section>
+

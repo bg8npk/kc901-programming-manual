@@ -1,0 +1,35 @@
+<section class="km-section" id="kc901-sec-3-2-39" aria-labelledby="kc901-sec-3-2-39-heading"><h4 id="kc901-sec-3-2-39-heading" data-km-source="1087">3.2.39 Signal Source Amplitude (Fourth-Generation KC901X)</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.39 Signal Source Amplitude (Fourth-Generation KC901X) table"><table>
+<caption>3.2.39 Signal Source Amplitude (Fourth-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="1088">Send command</p></th>
+<th scope="col"><p data-km-source="1089">Option</p></th>
+<th scope="col"><p data-km-source="1090">Parameter</p></th>
+<th scope="col"><p data-km-source="1091">Description</p></th>
+</tr>
+<tr>
+<td><p data-km-source="1092">source_level</p></td>
+<td>
+<p data-km-source="1093">get</p>
+<p data-km-source="1094">set</p>
+</td>
+<td><p data-km-source="1095">level</p></td>
+<td><p data-km-source="1096">Operate the instrument in level mode.</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="1097">Description:</p>
+<p data-km-source="1098">The set option sets the signal source output amplitude and places the instrument in level mode.</p>
+<p data-km-source="1099">The get option takes no parameters and returns the signal source amplitude for level mode.</p>
+
+<p data-km-source="1100">Example:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1101">$source_level,set,-50\n</span>
+<span class="km-code-line rx" data-km-source="1102">$start,source_level,set,success\n</span>
+<span class="km-code-line rx" data-km-source="1103">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1104">$source_level,get\n</span>
+<span class="km-code-line rx" data-km-source="1105">$start,source_level,get,success\n</span>
+<span class="km-code-line rx" data-km-source="1106">$-50\n</span>
+<span class="km-code-line rx" data-km-source="1107">$end\n</span></code></pre></section>
+

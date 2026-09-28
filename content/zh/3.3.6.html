@@ -1,0 +1,107 @@
+<section class="km-section" id="kc901-sec-3-3-6-zh" aria-labelledby="kc901-sec-3-3-6-heading-zh"><h4 id="kc901-sec-3-3-6-heading-zh" data-km-source="2404">3.3.6 获取场强测量参数（第四代KC901X）</h4>
+<p data-km-source="2405">注意：与此功能相关的参数还有：3.2.5 设置输出衰减。</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.6 获取场强测量参数（第四代KC901X） 参数表"><table>
+<caption>3.3.6 获取场强测量参数（第四代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="2406">命令</p></th>
+<th scope="col"><p data-km-source="2407">选项</p></th>
+<th scope="col"><p data-km-source="2408">参数1</p></th>
+<th scope="col"><p data-km-source="2409">参数3</p></th>
+<th scope="col"><p data-km-source="2410">参数4</p></th>
+<th scope="col"><p data-km-source="2411">参数5</p></th>
+<th scope="col"><p data-km-source="2412">参数6</p></th>
+</tr>
+<tr>
+<td rowspan="3">
+<p data-km-source="2413">field</p>
+
+</td>
+<td><p data-km-source="2414">init</p></td>
+<td rowspan="3">
+<p data-km-source="2415">lowlo</p>
+<p data-km-source="2416">highlo</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2417">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2418">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2419">port1</p>
+<p data-km-source="2420">port2</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2421">single</p>
+<p data-km-source="2422">continue</p>
+
+</td>
+</tr>
+<tr><td><p data-km-source="2423">run</p></td></tr>
+<tr><td><p data-km-source="2424">stop</p></td></tr>
+</tbody>
+</table></div>
+<p data-km-source="2425">说明：</p>
+<p data-km-source="2426">1、选项：</p>
+<p data-km-source="2427">init-&gt;初始化FIELD功能（在使用FIELD前必须使用此命令）</p>
+<p data-km-source="2428">run-&gt;运行FIELD进行扫频采集</p>
+<p data-km-source="2429">stop-&gt;停止并关闭FIELD功能(在使用其他工作模式前必须使用此命令)</p>
+<p data-km-source="2430">2、参数1：</p>
+<p data-km-source="2431">lowlo-&gt;以低本振方式测试</p>
+<p data-km-source="2432">highlo-&gt;以高本振方式测试</p>
+<p data-km-source="2433">3、参数3：天线增益，以dBi为单位。</p>
+<p data-km-source="2434">天线增益范围：-100.00…+100.00dBi</p>
+<p data-km-source="2435">4、参数4：扫描单点频率以Hz为单位，可以精确到0.1Hz。</p>
+<p data-km-source="2436">根据设备的不同，频率可操作范围有所不同，如下表所示：</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.6 获取场强测量参数（第四代KC901X） 参数表"><table>
+<caption>3.3.6 获取场强测量参数（第四代KC901X） — 参数表</caption>
+<tbody>
+<tr><th scope="col" colspan="2"><p data-km-source="2437">频率范围</p></th></tr>
+<tr>
+<td><p data-km-source="2438">KC901R</p></td>
+<td><p data-km-source="2439">0-7000000000Hz(7GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="2440">KC901K</p></td>
+<td><p data-km-source="2441">0-4100000000Hz(4.1GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="2442">KC901J</p></td>
+<td><p data-km-source="2443">0-2100000000Hz(2.1GHz)</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="2444">5、参数5:</p>
+<p data-km-source="2445">port1-&gt;选择输入端口为端口1（PORT1）</p>
+<p data-km-source="2446">port2-&gt;选择输入端口为端口2（PORT2）</p>
+<p data-km-source="2447">6、参数6:</p>
+<p data-km-source="2448">single-&gt;单次采样</p>
+<p data-km-source="2449">continue-&gt;循环采样</p>
+<p data-km-source="2450">7、例程：</p>
+<p data-km-source="2451">参数6选择single是场强数据是单次采样，所以每次接受到的数据都只有一个单独的包，比如：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2452">$field,run,lowlo,10,100000000,port1,single\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="2453">$start,field\n</span>
+<span class="km-code-line rx" data-km-source="2454">100000000,28.792,-78.438 \n    ；依次为频率，场强，绝对强度(dBm)</span>
+<span class="km-code-line rx" data-km-source="2455">$end\n</span></code></pre>
+<p data-km-source="2456">参数6选择continue是场强数据是循环采样，所以会连续接受到的数据，比如：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2457">$field,run,lowlo,10,100000000,port1, continue\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="2458">$start,field\n</span>
+<span class="km-code-line rx" data-km-source="2459">100000000,22.297,-84.933\n   ；依次为频率，场强，绝对强度(dBm)</span>
+<span class="km-code-line rx" data-km-source="2460">$end\n</span>
+<span class="km-code-line rx" data-km-source="2461">$start,field\n</span>
+<span class="km-code-line rx" data-km-source="2462">100000000,21.680,-85.550\n</span>
+<span class="km-code-line rx" data-km-source="2463">$end\n</span>
+<span class="km-code-line rx" data-km-source="2464">$start,field\n</span>
+<span class="km-code-line rx" data-km-source="2465">100000000,30.598,-76.632\n</span>
+<span class="km-code-line rx" data-km-source="2466">$end\n</span>
+<span class="km-code-line rx" data-km-source="2467">$start,field\n</span>
+<span class="km-code-line rx" data-km-source="2468">100000000,30.598,-76.632\n</span>
+<span class="km-code-line rx" data-km-source="2469">$end\n</span></code></pre></section>
+

@@ -1,0 +1,192 @@
+<section class="km-section" id="kc901-sec-3-3-15-zh" aria-labelledby="kc901-sec-3-3-15-heading-zh"><h4 id="kc901-sec-3-3-15-heading-zh" data-km-source="3087">3.3.15 获取S21测量参数（第三代KC901X）</h4>
+<p data-km-source="3088">注意：与此功能相关的参数还有：3.2.5 设置输出衰减。</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.15 获取S21测量参数（第三代KC901X） 参数表"><table>
+<caption>3.3.15 获取S21测量参数（第三代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="3089">命令</p></th>
+<th scope="col"><p data-km-source="3090">选项</p></th>
+<th scope="col"><p data-km-source="3091">参数1</p></th>
+<th scope="col"><p data-km-source="3092">参数2</p></th>
+<th scope="col"><p data-km-source="3093">参数3</p></th>
+<th scope="col"><p data-km-source="3094">参数4</p></th>
+<th scope="col"><p data-km-source="3095">参数5</p></th>
+<th scope="col"><p data-km-source="3096">参数6</p></th>
+<th scope="col"><p data-km-source="3097">参数7</p></th>
+</tr>
+<tr>
+<td rowspan="3">
+<p data-km-source="3098">S21</p>
+
+</td>
+<td><p data-km-source="3099">init</p></td>
+<td rowspan="3">
+<p data-km-source="3100">caluser（远程模式不支持）</p>
+<p data-km-source="3101">calsys</p>
+<p data-km-source="3102">caloff</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3103">ri</p>
+<p data-km-source="3104">ma</p>
+<p data-km-source="3105">Loss</p>
+<p data-km-source="3106">delay</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3107">lowlo</p>
+<p data-km-source="3108">highlo</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3109">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3110">cs</p>
+<p data-km-source="3111">ss</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3112">**</p>
+<p data-km-source="3113">**</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="3114">**</p>
+<p data-km-source="3115">**</p>
+
+</td>
+</tr>
+<tr><td><p data-km-source="3116">run</p></td></tr>
+<tr><td><p data-km-source="3117">stop</p></td></tr>
+</tbody>
+</table></div>
+<p data-km-source="3118">说明：</p>
+<p data-km-source="3119">1、选项：</p>
+<p data-km-source="3120">init-&gt;初始化S21功能（在使用S21前必须使用此命令）</p>
+<p data-km-source="3121">run-&gt; 运行S21功能进行扫频采集</p>
+<p data-km-source="3122">stop-&gt;停止并关闭S21功能(在使用其他工作模式前必须使用此命令)</p>
+<p data-km-source="3123">2、参数1：</p>
+<p data-km-source="3124">caluser-&gt;第三代KC901X远程模式不支持用户校准，请勿使用此选项。</p>
+<p data-km-source="3125">calsys-&gt;打开系统校准</p>
+<p data-km-source="3126">caloff-&gt;关闭系统校准</p>
+<p data-km-source="3127">3、参数2：</p>
+<p data-km-source="3128">ri-&gt;以实部和虚部返回数据</p>
+<p data-km-source="3129">ma-&gt;以插损和相位返回数据</p>
+<p data-km-source="3130">loss-&gt;以插入损耗（对数值）返回数据</p>
+<p data-km-source="3131">delay-&gt;以群延时返回数据</p>
+<p data-km-source="3132">4、参数3：</p>
+<p data-km-source="3133">lowlo-&gt;以低本振方式扫描</p>
+<p data-km-source="3134">highlo-&gt;以高本振方式扫描</p>
+<p data-km-source="3135">5、参数4用于设置扫描点数，第三代KC901最大支持1001点。需要扫描更多频点时，可以分成多个指令进行分段扫描。可以设置为1点，此时仪器将连续工作。</p>
+<p data-km-source="3136">6、参数5：</p>
+<p data-km-source="3137">cs-&gt;以cent和span的方式确定扫频范围</p>
+<p data-km-source="3138">ss-&gt;以start和stop的方式确定扫频范围</p>
+<p data-km-source="3139">如果参数4设置为仅扫描1个频率点，则参数5选择cs和ss都可以，且仅需要输入参数6就可以了（cent \ start均可），参数7会被KC901解析为新的命令。</p>
+<p data-km-source="3140">参数6和7用于传输具体频率，以Hz为单位。根据参数5的设置，只需要采用其中一种格式。</p>
+<p data-km-source="3141">根据设备的不同，频率可操作范围有所不同，如下表所示：</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.15 获取S21测量参数（第三代KC901X） 参数表"><table>
+<caption>3.3.15 获取S21测量参数（第三代KC901X） — 参数表</caption>
+<tbody>
+<tr><th scope="col" colspan="2"><p data-km-source="3142">中心频率范围</p></th></tr>
+<tr>
+<td><p data-km-source="3143">KC901M</p></td>
+<td><p data-km-source="3144">500Hz-9999999500Hz(10GHz–500Hz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3145">KC901V</p></td>
+<td><p data-km-source="3146">500Hz-6999999500Hz(7GHz–500Hz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3147">KC901S+</p></td>
+<td><p data-km-source="3148">500Hz-4099999500Hz(4.1GHz -500Hz)</p></td>
+</tr>
+<tr><td colspan="2"><p data-km-source="3149">扫宽范围</p></td></tr>
+<tr>
+<td><p data-km-source="3150">KC901M</p></td>
+<td><p data-km-source="3151">1000Hz-10000000000Hz(10GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3152">KC901V</p></td>
+<td><p data-km-source="3153">1000Hz-7000000000Hz(7GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3154">KC901S+</p></td>
+<td><p data-km-source="3155">1000Hz-4100000000Hz(4.1GHz)</p></td>
+</tr>
+<tr><td colspan="2"><p data-km-source="3156">起始频率范围</p></td></tr>
+<tr>
+<td><p data-km-source="3157">KC901M</p></td>
+<td><p data-km-source="3158">0-9999999000Hz(10GHz–1KHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3159">KC901V</p></td>
+<td><p data-km-source="3160">0-6999999000Hz(7GHz–1KHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3161">KC901S+</p></td>
+<td><p data-km-source="3162">0-4099999000Hz(4.1GHz-1KHz)</p></td>
+</tr>
+<tr><td colspan="2"><p data-km-source="3163">终止频率范围</p></td></tr>
+<tr>
+<td><p data-km-source="3164">KC901M</p></td>
+<td><p data-km-source="3165">10000Hz-10000000000Hz(10GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3166">KC901V</p></td>
+<td><p data-km-source="3167">1000Hz-7000000000Hz(7GHz)</p></td>
+</tr>
+<tr>
+<td><p data-km-source="3168">KC901S+</p></td>
+<td><p data-km-source="3169">1000Hz-4100000000(4.1GHz)</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="3170">终止频率应当大于起始频率。</p>
+<p data-km-source="3171">如果参数4设置为仅扫描1个频率点，则参数6为该频率点的值，参数7不用输入。</p>
+<p data-km-source="3172">8、例程：</p>
+<p data-km-source="3173">当采样点数大于1时：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3174">$s21,run,caloff,ri,lowlo,2,cs,100000000,50000000\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="3175">$start,s21,ri\n</span>
+<span class="km-code-line rx" data-km-source="3176">$75000000,-0.442e-1,0.000e0\n  ;依次为频率，实部，虚部</span>
+<span class="km-code-line rx" data-km-source="3177">$100000000,-0.419e-1,0.174e-2\n</span>
+<span class="km-code-line rx" data-km-source="3178">$125000000,-0.418e-1,0.219e-2\n</span>
+<span class="km-code-line rx" data-km-source="3179">$end\n</span>
+<span class="km-code-line tx" data-km-source="3180">$s21,run,caloff,ma,lowlo,2,cs,100000000,50000000\n</span>
+<span class="km-code-line rx" data-km-source="3181">$start,s21,ma\n</span>
+<span class="km-code-line rx" data-km-source="3182">$75000000,7.097e-1,180.000\n;依次为频率，插损，相位</span>
+<span class="km-code-line rx" data-km-source="3183">$100000000,6.758e0,157.210\n</span>
+<span class="km-code-line rx" data-km-source="3184">$125000000,6.402e0,150.816\n</span>
+<span class="km-code-line rx" data-km-source="3185">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3186">$s21,run,caloff,loss,lowlo,2,cs,100000000,50000000</span>
+<span class="km-code-line rx" data-km-source="3187">$start,s21,loss</span>
+<span class="km-code-line rx" data-km-source="3188">$75000000,-116.130    ；依次为频率，回拨损耗</span>
+<span class="km-code-line rx" data-km-source="3189">$100000000,-102.054</span>
+<span class="km-code-line rx" data-km-source="3190">$125000000,-112.225</span>
+<span class="km-code-line rx" data-km-source="3191">$end</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3192">$s21,run,caloff,delay,lowlo,2,cs,100000000,50000000</span>
+<span class="km-code-line rx" data-km-source="3193">$start,s21,delay</span>
+<span class="km-code-line rx" data-km-source="3194">$75000000,-5.147039e-09</span>
+<span class="km-code-line rx" data-km-source="3195">$100000000,2.589045e-09</span>
+<span class="km-code-line rx" data-km-source="3196">$125000000,2.589045e-09</span>
+<span class="km-code-line rx" data-km-source="3197">$end</span></code></pre>
+
+<p data-km-source="3198">当扫描点数等于1时：</p>
+<p data-km-source="3199">S21属于循环采样，每次采样结果都为一个包，如下所示：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="3200">$s21,run,caloff,ma,lowlo,1,cs,100000000\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="3201">$start,s21,ma\n</span>
+<span class="km-code-line rx" data-km-source="3202">$100000000,6.744e-1,156.693\n</span>
+<span class="km-code-line rx" data-km-source="3203">$end\n</span>
+<span class="km-code-line rx" data-km-source="3204">$start,s21,ma\n</span>
+<span class="km-code-line rx" data-km-source="3205">$100000000,6.766e0,156.762\n</span>
+<span class="km-code-line rx" data-km-source="3206">$end\n</span>
+<span class="km-code-line rx" data-km-source="3207">$start,s21,ma\n</span>
+<span class="km-code-line rx" data-km-source="3208">$100000000,6.773e0,156.731\n</span>
+<span class="km-code-line rx" data-km-source="3209">$end\n</span></code></pre>
+</section>
+

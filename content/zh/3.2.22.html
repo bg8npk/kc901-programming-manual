@@ -1,0 +1,24 @@
+<section class="km-section" id="kc901-sec-3-2-22-zh" aria-labelledby="kc901-sec-3-2-22-heading-zh"><h4 id="kc901-sec-3-2-22-heading-zh" data-km-source="456">3.2.22远程升级(仅适用于USB串口连接)</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.22远程升级(仅适用于USB串口连接) 参数表"><table>
+<caption>3.2.22远程升级(仅适用于USB串口连接) — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="457">发送命令</p></th>
+<th scope="col"><p data-km-source="458">选项</p></th>
+<th scope="col"><p data-km-source="459">说明</p></th>
+</tr>
+<tr>
+<td><p data-km-source="460">update</p></td>
+<td><p data-km-source="461">无</p></td>
+<td><p data-km-source="462">通过SD卡升级代码</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="463">说明：</p>
+<p data-km-source="464">在发送此命令前，请确认SD卡中已经载入升级程序。发送命令后，KC901会自动重启进入远程升级模式。升级过程中会通过串口返回升级过程提示，从中可以看出升级成功还是失败(第四代901需要将Boot版本高于0.0.4才支持该命令，可以通过V1.5.6基础固件升级包升级)。</p>
+<p data-km-source="465">例程：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="466">$update\n</span></code></pre>
+<p data-km-source="467">注意:</p>
+<p data-km-source="468">1、当在远程升级过程中，若出现意外导致设备死机等其他情况。重启仪器便可自动重新升级。</p>
+<p data-km-source="469">2、升级过程中，第四代KC901X串口波特率固定为460800，第三代KC901X串口波特率固定为921600。</p></section>
+

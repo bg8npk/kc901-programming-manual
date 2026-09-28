@@ -1,0 +1,11 @@
+<section class="km-section" id="kc901-sec-2-3-2-zh" aria-labelledby="kc901-sec-2-3-2-heading-zh"><h4 id="kc901-sec-2-3-2-heading-zh" data-km-source="59">2.3.2、配置网络参数</h4>
+<p data-km-source="60">进入“系统设置”界面下的“IP设置”（“IP SET”）子菜单，设置KC901的IP参数。设置好以后保存，若成功接入网络，则网口的绿灯会闪烁。</p>
+<figure class="km-figure"><img loading="lazy" src="assets/images/image-04.png" alt="KC901K以太网TCP/IP设置示例：DHCP关闭，端口901，地址192.168.11.9，网关192.168.11.1，子网掩码255.255.255.0"><figcaption>仪器以太网TCP/IP设置界面示例。</figcaption></figure>
+<p data-km-source="61">DHCP: 开启后从路由器动态获取IP地址及网关。一般建议关闭DHCP。</p>
+<p data-km-source="62">（DHCP功能仅第四代KC901X支持，第三代KC901X不支持）</p>
+<p data-km-source="63">端口：上位机软件设置的端口号需要与此参数一致，注意避免与其它程序的端口相冲突。对于安装有防火墙的上位机，请在防火墙中放行对应的端口。</p>
+<p data-km-source="64">IPv4地址：请在所接入网络允许的范围内选择，并且该地址不能与网络中的其它设备冲突。</p>
+<p data-km-source="65">IPv4网关：请根据路由器的参数设置。通常的局域网，网关默认为192.168.1.1。</p>
+<p data-km-source="66">IPv4子网掩码：请根据接入网络的具体情况设置，通常为255.255.255.0。</p>
+<p data-km-source="67">通常网络中最好有路由器。不论KC901还是上位机，都作为该网络的一个终端。如果希望直接将KC901连接到电脑上，相当于电脑直接连电脑，需为电脑和KC901指定同一网段中的不同IP。对于某些早期的网卡，如果连接不上，可以试试反序的网线。</p></section>
+

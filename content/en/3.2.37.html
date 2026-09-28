@@ -1,0 +1,24 @@
+<section class="km-section" id="kc901-sec-3-2-37" aria-labelledby="kc901-sec-3-2-37-heading"><h4 id="kc901-sec-3-2-37-heading" data-km-source="1062">3.2.37 Reading System Warnings</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.37 Reading System Warnings table"><table>
+<caption>3.2.37 Reading System Warnings — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="1063">Send command</p></th>
+<th scope="col"><p data-km-source="1064">Option</p></th>
+<th scope="col"><p data-km-source="1065">Description</p></th>
+</tr>
+<tr>
+<td><p data-km-source="1066">getstatus</p></td>
+<td><p data-km-source="1067">None</p></td>
+<td><p data-km-source="1068">Read system warnings.</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="1069">Description:</p>
+<p data-km-source="1070">If warnings exist, this command returns the system warnings once over the serial or Ethernet connection. If there are no warnings, no response is returned.</p>
+<p data-km-source="1071">Example:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1072">$getstatus\n</span>
+<span class="km-code-line rx" data-km-source="1073">$start,err_BatVolLow</span>
+<span class="km-code-line rx" data-km-source="1074">$error:Low battery!</span>
+<span class="km-code-line rx" data-km-source="1075">$end</span></code></pre></section>
+

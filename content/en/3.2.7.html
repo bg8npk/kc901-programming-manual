@@ -1,0 +1,38 @@
+<section class="km-section" id="kc901-sec-3-2-7" aria-labelledby="kc901-sec-3-2-7-heading"><h4 id="kc901-sec-3-2-7-heading" data-km-source="190">3.2.7 Barometer</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.7 Barometer table"><table>
+<caption>3.2.7 Barometer — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="191">Command</p></th>
+<th scope="col"><p data-km-source="192">Option</p></th>
+<th scope="col"><p data-km-source="193">Parameter</p></th>
+<th scope="col"><p data-km-source="194">Description</p></th>
+</tr>
+<tr>
+<td rowspan="2">
+<p data-km-source="195">press</p>
+</td>
+<td><p data-km-source="196">set</p></td>
+<td><p data-km-source="197">Value</p></td>
+<td>
+<p data-km-source="198">Set the absolute altitude compensation in m. Range: -999.9 to 999.9.</p>
+<p data-km-source="199">After altitude compensation is set, the reported altitude changes gradually to the compensated value because a moving filter is used to stabilize the readings.</p>
+</td>
+</tr>
+<tr>
+<td><p data-km-source="200">get</p></td>
+<td><p data-km-source="201">None</p></td>
+<td><p data-km-source="202">Read barometric data, returned in hPa and m, respectively.</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="203">Example:</p>
+<p data-km-source="204">Set altitude compensation to +100 meters.</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="205">$press,set,100.0\n</span></code></pre>
+<p data-km-source="206">Read barometric measurement data with pressure in hectopascals.</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="207">$press,get\n</span>
+<span class="km-code-line rx" data-km-source="208">$start,press\n</span>
+<span class="km-code-line rx" data-km-source="209">$950.412,536.802\n  ; Pressure (hPa), then altitude (m).</span>
+<span class="km-code-line rx" data-km-source="210">$end\n</span></code></pre>
+</section>
+

@@ -1,0 +1,36 @@
+<section class="km-section" id="kc901-sec-3-2-57-zh" aria-labelledby="kc901-sec-3-2-57-heading-zh"><h4 id="kc901-sec-3-2-57-heading-zh" data-km-source="1743">3.2.57扫描延时（第四代KC901X）</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.57扫描延时（第四代KC901X） 参数表"><table>
+<caption>3.2.57扫描延时（第四代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="1744">发送命令</p></th>
+<th scope="col"><p data-km-source="1745">选项</p></th>
+<th scope="col"><p data-km-source="1746">参数</p></th>
+<th scope="col"><p data-km-source="1747">说明</p></th>
+</tr>
+<tr>
+<td><p data-km-source="1748">sweep_delay</p></td>
+<td>
+<p data-km-source="1749">get</p>
+<p data-km-source="1750">set</p>
+</td>
+<td><p data-km-source="1751">时间</p></td>
+<td><p data-km-source="1752">增加每个点扫描的延时时间（单位毫秒)</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="1753">说明：</p>
+<p data-km-source="1754">set选项设置普通扫描和列表扫描每个点的延时时间，设置范围为0—10000ms。</p>
+<p data-km-source="1755">get选项不需要填入参数，返回当前设置的延时时间。</p>
+<p data-km-source="1756">注意:该指令的值只用于上位机使用，不与下位机的扫描延时功能共享同一套值，退出远程模式后此命令的值会被清0。扫描延时时间为非0值时，在扫描状态下Sxx模式和频谱模式可以解析上位机指令。运行校准的扫描速度不受延时值影响。扫描点数为1和起始终止频率相同的zerospan模式的扫描速度不受延时值影响。</p>
+<p data-km-source="1757">例程：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1758">$sweep_delay,set,1000\n</span>
+<span class="km-code-line rx" data-km-source="1759">$start,sweep_delay,set,success\n</span>
+<span class="km-code-line rx" data-km-source="1760">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1761">$sweep_delay,get\n</span>
+<span class="km-code-line rx" data-km-source="1762">$start,sweep_delay,get,success\n</span>
+<span class="km-code-line rx" data-km-source="1763">$1000\n</span>
+<span class="km-code-line rx" data-km-source="1764">$end\n</span></code></pre>
+</section>
+

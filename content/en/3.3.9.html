@@ -1,0 +1,93 @@
+<section class="km-section" id="kc901-sec-3-3-9" aria-labelledby="kc901-sec-3-3-9-heading"><h4 id="kc901-sec-3-3-9-heading" data-km-source="2627">3.3.9 Frequency-List S11 Measurements (Fourth-Generation KC901X)</h4>
+<p data-km-source="2628">Related settings:</p>
+<p data-km-source="2629">3.2.5 Output Attenuation; 3.2.9 Cable Compensation</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.3.9 Frequency-List S11 Measurements (Fourth-Generation KC901X) table"><table>
+<caption>3.3.9 Frequency-List S11 Measurements (Fourth-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="2630">Command</p></th>
+<th scope="col"><p data-km-source="2631">Option</p></th>
+<th scope="col"><p data-km-source="2632">Parameter 1</p></th>
+<th scope="col"><p data-km-source="2633">Parameter 2</p></th>
+</tr>
+<tr>
+<td rowspan="3">
+<p data-km-source="2634">sweep_list_s11</p>
+
+</td>
+<td><p data-km-source="2635">init</p></td>
+<td rowspan="3">
+<p data-km-source="2636">s11cal</p>
+<p data-km-source="2637">full2portcal</p>
+<p data-km-source="2638">syscal</p>
+<p data-km-source="2639">calOff</p>
+
+</td>
+<td rowspan="3">
+<p data-km-source="2640">ri</p>
+<p data-km-source="2641">ma</p>
+<p data-km-source="2642">vswr</p>
+<p data-km-source="2643">z</p>
+<p data-km-source="2644">loss</p>
+
+</td>
+</tr>
+<tr><td><p data-km-source="2645">run</p></td></tr>
+<tr><td><p data-km-source="2646">stop</p></td></tr>
+</tbody>
+</table></div>
+<p data-km-source="2647">Description:</p>
+<p data-km-source="2648">Options:</p>
+<p data-km-source="2649">init -&gt; Initialize S11. Required before using S11.</p>
+<p data-km-source="2650">run -&gt; Run an S11 frequency sweep and acquire data.</p>
+<p data-km-source="2651">stop -&gt; Stop and close S11. Required before switching to another operating mode.</p>
+<p data-km-source="2652">Parameter 1:</p>
+<p data-km-source="2653">s11cal -&gt; Enable S11 calibration.</p>
+<p data-km-source="2654">full2portcal -&gt; Enable full two-port calibration.</p>
+<p data-km-source="2655">syscal -&gt; Enable system calibration.</p>
+<p data-km-source="2656">caloff -&gt; Disable system calibration.</p>
+<p data-km-source="2657">Parameter 2:</p>
+<p data-km-source="2658">ri -&gt; Return real and imaginary components.</p>
+<p data-km-source="2659">ma -&gt; Return reflection coefficient magnitude and phase angle.</p>
+<p data-km-source="2660">vswr -&gt; Return voltage standing wave ratio.</p>
+<p data-km-source="2661">z -&gt; Return impedance.</p>
+<p data-km-source="2662">loss -&gt; Return return loss (logarithmic value).</p>
+<p data-km-source="2663">Example:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2664">$sweep_list_s11,run,caloff,ri\n</span>
+<span class="km-code-line rx" data-km-source="2665">$start,s11,ri\n</span>
+<span class="km-code-line rx" data-km-source="2666">100000000,3.0392e+00,-4.0155e+00\n  ; Frequency, real component, imaginary component.</span>
+<span class="km-code-line rx" data-km-source="2667">200000000,-1.1988e+00,-5.3318e+00\n</span>
+<span class="km-code-line rx" data-km-source="2668">40000000,1.5519e+00,-1.8471e+00\n</span>
+<span class="km-code-line rx" data-km-source="2669">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2670">$sweep_list_s11,run,caloff,ma\n</span>
+<span class="km-code-line rx" data-km-source="2671">$start,s11,ma\n</span>
+<span class="km-code-line rx" data-km-source="2672">100000000,5.0388e+00,-52.8689\n ; Frequency, reflection coefficient magnitude, phase.</span>
+<span class="km-code-line rx" data-km-source="2673">200000000,5.4693e+00,-102.6998\n</span>
+<span class="km-code-line rx" data-km-source="2674">40000000,4.3237e+00,65.2164\n</span>
+<span class="km-code-line rx" data-km-source="2675">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2676">$sweep_list_s11,run,caloff,vswr\n</span>
+<span class="km-code-line rx" data-km-source="2677">$start,s11,vswr\n</span>
+<span class="km-code-line rx" data-km-source="2678">100000000,-1.4951\n           ; Frequency, voltage standing wave ratio.</span>
+<span class="km-code-line rx" data-km-source="2679">200000000,-1.4478\n</span>
+<span class="km-code-line rx" data-km-source="2680">40000000,-2.2818\n</span>
+<span class="km-code-line rx" data-km-source="2681">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2682">$sweep_list_s11,run,caloff,z\n</span>
+<span class="km-code-line rx" data-km-source="2683">$start,s11,z\n; Frequency, impedance magnitude, resistance, reactance.</span>
+<span class="km-code-line rx" data-km-source="2684">100000000,63.2252,-60.0500,-19.7846\n</span>
+<span class="km-code-line rx" data-km-source="2685">200000000,46.2477,-43.3802,-16.0313\n</span>
+<span class="km-code-line rx" data-km-source="2686">40000000,49.5252,-48.0281,12.0850\n</span>
+<span class="km-code-line rx" data-km-source="2687">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="2688">$sweep_list_s11,run,caloff,loss\n</span>
+<span class="km-code-line rx" data-km-source="2689">$start,s11,loss\n</span>
+<span class="km-code-line rx" data-km-source="2690">100000000,14.0521\n; Frequency, return loss.</span>
+<span class="km-code-line rx" data-km-source="2691">200000000,14.7536\n</span>
+<span class="km-code-line rx" data-km-source="2692">40000000,9.9649\n</span>
+<span class="km-code-line rx" data-km-source="2693">$end</span></code></pre>
+
+
+</section>
+

@@ -1,0 +1,54 @@
+<section class="km-section" id="kc901-sec-3-2-27-zh" aria-labelledby="kc901-sec-3-2-27-heading-zh"><h4 id="kc901-sec-3-2-27-heading-zh" data-km-source="602">3.2.27 S12系统校准（第四代KC901X）</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.27 S12系统校准（第四代KC901X） 参数表"><table>
+<caption>3.2.27 S12系统校准（第四代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="603">发送命令</p></th>
+<th scope="col"><p data-km-source="604">选项</p></th>
+<th scope="col"><p data-km-source="605">说明</p></th>
+</tr>
+<tr>
+<td><p data-km-source="606">cal_sys_s12</p></td>
+<td><p data-km-source="607">无</p></td>
+<td><p data-km-source="608">S12系统校准</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="609">说明：</p>
+<p data-km-source="610">发送此命令后，KC901会通过串口或网口与用户交互实现SOL校准。以后的应用中都会默认调用此次校准数据。用户可以通过[Reset]命令，恢复默认调用出厂校准。此过程会有好几次交互，对于上位机编程而言也仅需要识别包头名即可，无需做内容字符串匹配。</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="611">$cal_sys_s12\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="612">$start,s12_SysCal_confirm\n</span>
+<span class="km-code-line rx" data-km-source="613">$******S12 System calibration******\n</span>
+<span class="km-code-line rx" data-km-source="614">$Do you want to calibrate the device?[Yes/no]\n</span>
+<span class="km-code-line rx" data-km-source="615">$end</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="616">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="617">$start,s12_syscal_wait\n</span>
+<span class="km-code-line rx" data-km-source="618">$ waiting for the circuit to be stability...\n</span>
+<span class="km-code-line rx" data-km-source="619">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="620">$start,port_polarity\n</span>
+<span class="km-code-line rx" data-km-source="621">$Enter female,male or f_m to specify the polarity of the PORTS:\n</span>
+<span class="km-code-line rx" data-km-source="622">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="623">$female\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="624">$start,cal_connect\n</span>
+<span class="km-code-line rx" data-km-source="625">$Step 1:Please connect PORT1 and PORT2 then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="626">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="627">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="628">$start,cal_completed\n</span>
+<span class="km-code-line rx" data-km-source="629">$Calibration completed!\n</span>
+<span class="km-code-line rx" data-km-source="630">$end\n</span></code></pre>
+
+<p data-km-source="631">在下位机等待上位机确认的过程中，用户可以输入’exit\n’，退出校准模式。如下所示：</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="632">$exit\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="633">$start,exit\n</span>
+<span class="km-code-line rx" data-km-source="634">$Exit calibration\n</span>
+<span class="km-code-line rx" data-km-source="635">$end\n</span></code></pre></section>
+

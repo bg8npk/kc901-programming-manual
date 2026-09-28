@@ -1,0 +1,63 @@
+<section class="km-section" id="kc901-sec-3-2-56" aria-labelledby="kc901-sec-3-2-56-heading"><h4 id="kc901-sec-3-2-56-heading" data-km-source="1702">3.2.56 S21 System Calibration (Third-Generation KC901X)</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.56 S21 System Calibration (Third-Generation KC901X) table"><table>
+<caption>3.2.56 S21 System Calibration (Third-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p data-km-source="1703">Send command</p></th>
+<th scope="col"><p data-km-source="1704">Option</p></th>
+<th scope="col"><p data-km-source="1705">Description</p></th>
+</tr>
+<tr>
+<td><p data-km-source="1706">cal_s21</p></td>
+<td><p data-km-source="1707">None</p></td>
+<td><p data-km-source="1708">S21 system calibration</p></td>
+</tr>
+</tbody>
+</table></div>
+<p data-km-source="1709">Description:</p>
+<p data-km-source="1710">This command starts an interactive through calibration over the serial or Ethernet connection. The resulting calibration data is used by default in subsequent operation. Use the [Reset] command to restore factory calibration as the default. The procedure involves several exchanges. Host software only needs to identify packet header names; matching the message text is unnecessary.</p>
+<p data-km-source="1711">This calibration can be performed only once after each initialization. To recalibrate, run $S21,STOP\n and initialize again with $S21,INIT\n.</p>
+<p data-km-source="1712">The complete procedure follows:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1713">$cal_s21\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1714">$start,s21cal_confirm\n</span>
+<span class="km-code-line rx" data-km-source="1715">$******S21 calibration******\n       ; Wait for the user to confirm calibration.</span>
+<span class="km-code-line rx" data-km-source="1716">$ Do you want to calibrate the device?[Yes/no]\n</span>
+<span class="km-code-line rx" data-km-source="1717">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1718">$yes\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1719">$start,s21cal_wait\n                 ; Wait approximately 5 seconds for hardware warm-up. No data is returned during this time.</span>
+<span class="km-code-line rx" data-km-source="1720">$ waiting for the circuit to be stability...\n</span>
+<span class="km-code-line rx" data-km-source="1721">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1722">$start,s21cal_step\n                 ; Follow the steps below.</span>
+<span class="km-code-line rx" data-km-source="1723">$ start calibration, please follow these steps::\n</span>
+<span class="km-code-line rx" data-km-source="1724">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1725">$start,s21cal_connect\n                ; Connect PORT1 directly to PORT2.</span>
+<span class="km-code-line rx" data-km-source="1726">$Step 1: Please connect [SOURCE] port and [RF IN] port then send 'yes'.\n</span>
+<span class="km-code-line rx" data-km-source="1727">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line " data-km-source="1728">$yes\n ; After confirmation, wait approximately 16 seconds for the calibration described as "short calibration" in the source. No data is returned during this time.</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1729">$start,s21cal_process\n             ; Calculation in progress.</span>
+<span class="km-code-line rx" data-km-source="1730">$Step 3: processing (Wait please).\n</span>
+<span class="km-code-line rx" data-km-source="1731">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1732">$start,s21cal_save\n                ; Saving.</span>
+<span class="km-code-line rx" data-km-source="1733">$ saving(wait please)\n</span>
+<span class="km-code-line rx" data-km-source="1734">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1735">$start,s21cal_completed\n           ; Calibration complete.</span>
+<span class="km-code-line rx" data-km-source="1736">$Calibration completed!\n</span>
+<span class="km-code-line rx" data-km-source="1737">$end\n</span></code></pre>
+
+<p data-km-source="1738">While the instrument is waiting for confirmation from the host, the user can enter 'exit\n' to leave calibration mode, as shown below:</p>
+<pre class="km-code"><code><span class="km-code-line tx" data-km-source="1739">$exit\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line rx" data-km-source="1740">$start,s21cal_exit\n</span>
+<span class="km-code-line rx" data-km-source="1741">$Exit calibration.\n</span>
+<span class="km-code-line rx" data-km-source="1742">$end\n</span></code></pre>
+</section>
+
