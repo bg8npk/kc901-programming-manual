@@ -9,7 +9,11 @@
 </tr>
 <tr>
 <td><p data-km-source="161">outAtt</p></td>
-<td><p data-km-source="162">None</p></td>
+<td>
+<p data-km-source="162">None</p>
+<p>get (fourth-generation KC901X only)</p>
+<p>set (fourth-generation KC901X only)</p>
+</td>
 <td>
 <p data-km-source="163">Parameter range:</p>
 <p data-km-source="164">KC901K、J、R :-30~30</p>
@@ -28,7 +32,17 @@
 </table></div>
 <p data-km-source="174">On fourth-generation KC901 instruments, this setting places the output amplitude in source gain mode.</p>
 <p data-km-source="175">Example:</p>
+<p>Third-generation KC901X:</p>
 <p data-km-source="176">Set the output attenuator to 10dB attenuation.</p>
 <pre class="km-code"><code><span class="km-code-line tx" data-km-source="177">$outAtt,10\n</span></code></pre>
+<p>Fourth-generation KC901X:</p>
+<p>Set the output attenuator to 10dB attenuation.</p>
+<pre class="km-code"><code><span class="km-code-line tx">$outAtt,set,10\n</span>
+<span class="km-code-line rx">$start,OutAtt,set,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+<p>Query the current output attenuation.</p>
+<pre class="km-code"><code><span class="km-code-line tx">$outAtt,get\n</span>
+<span class="km-code-line rx">$start,OutAtt,get,success\n</span>
+<span class="km-code-line rx">$10\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
 </section>
-

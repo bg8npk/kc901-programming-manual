@@ -44,7 +44,7 @@
 <p class="km-search-status" role="status" aria-live="polite"></p>
 <ol class="km-results" aria-label="Search results" hidden></ol>
 </div>
-<details class="km-toc" open><summary>Contents <span>111 sections</span></summary><nav aria-label="Table of contents"><ol><li class="km-level-2"><a href="#kc901-sec-0">0. Overview</a></li>
+<details class="km-toc" open><summary>Contents <span>112 sections</span></summary><nav aria-label="Table of contents"><ol><li class="km-level-2"><a href="#kc901-sec-0">0. Overview</a></li>
 <li class="km-level-2"><a href="#kc901-sec-1">1. Command Format and Description</a></li>
 <li class="km-level-3"><a href="#kc901-sec-1-1">1.1 Command Format</a></li>
 <li class="km-level-3"><a href="#kc901-sec-1-2">1.2 Response Format</a></li>
@@ -72,10 +72,10 @@
 <li class="km-level-4"><a href="#kc901-sec-3-2-7">3.2.7 Barometer</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-8">3.2.8 Key Beep</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-9">3.2.9 S11 Cable Compensation</a></li>
-<li class="km-level-4"><a href="#kc901-sec-3-2-10">3.2.10 S11 System Calibration Standard Parameters</a></li>
-<li class="km-level-4"><a href="#kc901-sec-3-2-11">3.2.11 S21 System Calibration Standard Parameters</a></li>
-<li class="km-level-4"><a href="#kc901-sec-3-2-12">3.2.12 S11 User Calibration Standard Parameters (Fourth-Generation KC901X)</a></li>
-<li class="km-level-4"><a href="#kc901-sec-3-2-13">3.2.13 S21 User Calibration Standard Parameters (Fourth-Generation KC901X)</a></li>
+<li class="km-level-4"><a href="#kc901-sec-3-2-10">3.2.10 S11 System Calibration Standard Parameters (Fourth-Generation KC901X; unavailable in firmware version 1.8.0 and later)</a></li>
+<li class="km-level-4"><a href="#kc901-sec-3-2-11">3.2.11 S21 System Calibration Standard Parameters (Fourth-Generation KC901X; unavailable in firmware version 1.8.0 and later)</a></li>
+<li class="km-level-4"><a href="#kc901-sec-3-2-12">3.2.12 S11 User Calibration Standard Parameters (Fourth-Generation KC901X; unavailable in firmware version 1.8.0 and later)</a></li>
+<li class="km-level-4"><a href="#kc901-sec-3-2-13">3.2.13 S21 User Calibration Standard Parameters (Fourth-Generation KC901X; unavailable in firmware version 1.8.0 and later)</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-14">3.2.14 Device Information</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-15">3.2.15 Voltage Readings</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-16">3.2.16 Internal Temperature</a></li>
@@ -120,6 +120,7 @@
 <li class="km-level-4"><a href="#kc901-sec-3-2-55">3.2.55 S11 System Calibration (Third-Generation KC901X)</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-56">3.2.56 S21 System Calibration (Third-Generation KC901X)</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-57">3.2.57 Sweep Delay (Fourth-Generation KC901X)</a></li>
+<li class="km-level-4"><a href="#kc901-sec-3-2-58">3.2.58 Kit File Commands (Fourth-Generation KC901X)</a></li>
 <li class="km-level-3"><a href="#kc901-sec-3-3">3.3 Measurement Control Commands</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-3-1">3.3.1 S11 Measurements (Fourth-Generation KC901X)</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-3-2">3.3.2 S21 Measurements (Fourth-Generation KC901X)</a></li>
@@ -380,7 +381,11 @@
 </tr>
 <tr>
 <td><p data-km-source="161">outAtt</p></td>
-<td><p data-km-source="162">None</p></td>
+<td>
+<p data-km-source="162">None</p>
+<p>get (fourth-generation KC901X only)</p>
+<p>set (fourth-generation KC901X only)</p>
+</td>
 <td>
 <p data-km-source="163">Parameter range:</p>
 <p data-km-source="164">KC901K、J、R :-30~30</p>
@@ -399,8 +404,19 @@
 </table></div>
 <p data-km-source="174">On fourth-generation KC901 instruments, this setting places the output amplitude in source gain mode.</p>
 <p data-km-source="175">Example:</p>
+<p>Third-generation KC901X:</p>
 <p data-km-source="176">Set the output attenuator to 10dB attenuation.</p>
 <pre class="km-code"><code><span class="km-code-line tx" data-km-source="177">$outAtt,10\n</span></code></pre>
+<p>Fourth-generation KC901X:</p>
+<p>Set the output attenuator to 10dB attenuation.</p>
+<pre class="km-code"><code><span class="km-code-line tx">$outAtt,set,10\n</span>
+<span class="km-code-line rx">$start,OutAtt,set,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+<p>Query the current output attenuation.</p>
+<pre class="km-code"><code><span class="km-code-line tx">$outAtt,get\n</span>
+<span class="km-code-line rx">$start,OutAtt,get,success\n</span>
+<span class="km-code-line rx">$10\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
 </section>
 <section class="km-section" id="kc901-sec-3-2-6" aria-labelledby="kc901-sec-3-2-6-heading"><h4 id="kc901-sec-3-2-6-heading" data-km-source="178">3.2.6 Brightness</h4>
 <div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.6 Brightness table"><table>
@@ -521,10 +537,10 @@
 <p data-km-source="235">Set the cable length compensation to 10.123 meters.</p>
 <pre class="km-code"><code><span class="km-code-line tx" data-km-source="236">$cable,len,10.123\n</span></code></pre>
 </section>
-<section class="km-section" id="kc901-sec-3-2-10" aria-labelledby="kc901-sec-3-2-10-heading"><h4 id="kc901-sec-3-2-10-heading" data-km-source="237">3.2.10 S11 System Calibration Standard Parameters</h4>
+<section class="km-section" id="kc901-sec-3-2-10" aria-labelledby="kc901-sec-3-2-10-heading"><h4 id="kc901-sec-3-2-10-heading" data-km-source="237">3.2.10 S11 System Calibration Standard Parameters (Fourth-Generation KC901X; unavailable in firmware version 1.8.0 and later)</h4>
 <p data-km-source="238">KC901K/RFMA uses the standard calibration model:</p>
-<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.10 S11 System Calibration Standard Parameters table"><table>
-<caption>3.2.10 S11 System Calibration Standard Parameters — reference table</caption>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.10 S11 System Calibration Standard Parameters (Fourth-Generation KC901X; unavailable in firmware version 1.8.0 and later) table"><table>
+<caption>3.2.10 S11 System Calibration Standard Parameters (Fourth-Generation KC901X; unavailable in firmware version 1.8.0 and later) — reference table</caption>
 <tbody>
 <tr>
 <th scope="col"><p data-km-source="239">Command</p></th>
@@ -562,9 +578,9 @@
 <p data-km-source="262">Third-generation KC901X example:</p>
 <pre class="km-code"><code><span class="km-code-line tx" data-km-source="263">$kit_s11,10,125,-20,15,5.25,0.201,100,125,-800,15,5.26,0.200\n</span></code></pre>
 </section>
-<section class="km-section" id="kc901-sec-3-2-11" aria-labelledby="kc901-sec-3-2-11-heading"><h4 id="kc901-sec-3-2-11-heading" data-km-source="264">3.2.11 S21 System Calibration Standard Parameters</h4>
-<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.11 S21 System Calibration Standard Parameters table"><table>
-<caption>3.2.11 S21 System Calibration Standard Parameters — reference table</caption>
+<section class="km-section" id="kc901-sec-3-2-11" aria-labelledby="kc901-sec-3-2-11-heading"><h4 id="kc901-sec-3-2-11-heading" data-km-source="264">3.2.11 S21 System Calibration Standard Parameters (Fourth-Generation KC901X; unavailable in firmware version 1.8.0 and later)</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.11 S21 System Calibration Standard Parameters (Fourth-Generation KC901X; unavailable in firmware version 1.8.0 and later) table"><table>
+<caption>3.2.11 S21 System Calibration Standard Parameters (Fourth-Generation KC901X; unavailable in firmware version 1.8.0 and later) — reference table</caption>
 <tbody>
 <tr>
 <th scope="col"><p data-km-source="265">Command</p></th>
@@ -594,10 +610,10 @@
 <pre class="km-code"><code><span class="km-code-line tx" data-km-source="280">$kit_s21,female,100,0.1,4567\n</span></code></pre>
 <p data-km-source="281">Third-generation KC901X example:</p>
 <pre class="km-code"><code><span class="km-code-line tx" data-km-source="282">$kit_s21,100,0.1,4567\n</span></code></pre></section>
-<section class="km-section" id="kc901-sec-3-2-12" aria-labelledby="kc901-sec-3-2-12-heading"><h4 id="kc901-sec-3-2-12-heading" data-km-source="283">3.2.12 S11 User Calibration Standard Parameters (Fourth-Generation KC901X)</h4>
+<section class="km-section" id="kc901-sec-3-2-12" aria-labelledby="kc901-sec-3-2-12-heading"><h4 id="kc901-sec-3-2-12-heading" data-km-source="283">3.2.12 S11 User Calibration Standard Parameters (Fourth-Generation KC901X; unavailable in firmware version 1.8.0 and later)</h4>
 <p data-km-source="284">KC901K/RFMA uses the complex calibration model:</p>
-<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.12 S11 User Calibration Standard Parameters (Fourth-Generation KC901X) table"><table>
-<caption>3.2.12 S11 User Calibration Standard Parameters (Fourth-Generation KC901X) — reference table</caption>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.12 S11 User Calibration Standard Parameters (Fourth-Generation KC901X; unavailable in firmware version 1.8.0 and later) table"><table>
+<caption>3.2.12 S11 User Calibration Standard Parameters (Fourth-Generation KC901X; unavailable in firmware version 1.8.0 and later) — reference table</caption>
 <tbody>
 <tr>
 <th scope="col"><p data-km-source="285">Command</p></th>
@@ -633,9 +649,9 @@
 <pre class="km-code"><code><span class="km-code-line tx" data-km-source="306">$userkit_s11,female,10,125,-20,15,5.25,0.201,100,125,-800,15,5.26,0.200\n</span></code></pre>
 
 </section>
-<section class="km-section" id="kc901-sec-3-2-13" aria-labelledby="kc901-sec-3-2-13-heading"><h4 id="kc901-sec-3-2-13-heading" data-km-source="307">3.2.13 S21 User Calibration Standard Parameters (Fourth-Generation KC901X)</h4>
-<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.13 S21 User Calibration Standard Parameters (Fourth-Generation KC901X) table"><table>
-<caption>3.2.13 S21 User Calibration Standard Parameters (Fourth-Generation KC901X) — reference table</caption>
+<section class="km-section" id="kc901-sec-3-2-13" aria-labelledby="kc901-sec-3-2-13-heading"><h4 id="kc901-sec-3-2-13-heading" data-km-source="307">3.2.13 S21 User Calibration Standard Parameters (Fourth-Generation KC901X; unavailable in firmware version 1.8.0 and later)</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.13 S21 User Calibration Standard Parameters (Fourth-Generation KC901X; unavailable in firmware version 1.8.0 and later) table"><table>
+<caption>3.2.13 S21 User Calibration Standard Parameters (Fourth-Generation KC901X; unavailable in firmware version 1.8.0 and later) — reference table</caption>
 <tbody>
 <tr>
 <th scope="col"><p data-km-source="308">Command</p></th>
@@ -2799,6 +2815,138 @@
 <span class="km-code-line rx" data-km-source="1762">$start,sweep_delay,get,success\n</span>
 <span class="km-code-line rx" data-km-source="1763">$1000\n</span>
 <span class="km-code-line rx" data-km-source="1764">$end\n</span></code></pre>
+
+</section>
+<section class="km-section" id="kc901-sec-3-2-58" aria-labelledby="kc901-sec-3-2-58-heading"><h4 id="kc901-sec-3-2-58-heading">3.2.58 Kit File Commands (Fourth-Generation KC901X)</h4>
+<p>The following commands manage Kit files stored in fourth-generation 901X instruments. Commands start with <code>$</code> and end with a newline <code>\n</code>; parameters are separated by commas. Kit file names must include the <code>.kit</code> suffix. The instrument can store up to 21 Kit files, including <code>default.kit</code>.</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.58 Kit File Commands (Fourth-Generation KC901X) table"><table>
+<caption>3.2.58 Kit File Commands (Fourth-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p>Send command</p></th>
+<th scope="col"><p>Option</p></th>
+<th scope="col"><p>Parameter</p></th>
+<th scope="col"><p>Description</p></th>
+</tr>
+<tr>
+<td><p>kit_file_list</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>Get all Kit file names stored in the instrument.</p></td>
+</tr>
+<tr>
+<td><p>kit_file_edit</p></td>
+<td>
+<p>add</p>
+<p>delete</p>
+<p>rename</p>
+</td>
+<td><p>File name</p></td>
+<td><p>Add, delete, or rename a Kit file.</p></td>
+</tr>
+<tr>
+<td><p>kit_file_select</p></td>
+<td>
+<p>set</p>
+<p>get</p>
+</td>
+<td><p>File name</p></td>
+<td><p>Set or query the Kit file used for host calibration.</p></td>
+</tr>
+<tr>
+<td><p>kit_file_param</p></td>
+<td>
+<p>get</p>
+<p>set</p>
+</td>
+<td><p>File name, calibration-kit parameters</p></td>
+<td><p>Read or modify calibration-kit parameters in the specified Kit file.</p></td>
+</tr>
+</tbody>
+</table></div>
+
+<p><code>kit_file_list</code> gets all Kit file names stored in the instrument. File names are returned in the instrument's current list order.</p>
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_list\n</span>
+<span class="km-code-line rx">$start,kit_file_list\n</span>
+<span class="km-code-line rx">default.kit\n</span>
+<span class="km-code-line rx">N_Kit_01.kit\n</span>
+<span class="km-code-line rx">N_Kit_02.kit\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p><code>kit_file_edit</code> adds, deletes, or renames Kit files. Adding a file copies the calibration-kit parameters from <code>default.kit</code>. The <code>default.kit</code> file cannot be deleted. The operation fails if the file already exists, the file count limit is reached, the file name is invalid, or the Flash save fails.</p>
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_edit,add,N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_edit,add,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_edit,delete,N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_edit,delete,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_edit,rename,N_Kit_01.kit,N_Kit_02.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_edit,rename,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p>On failure, the command returns <code>fail</code> for the corresponding option, for example:</p>
+<pre class="km-code"><code><span class="km-code-line rx">$start,kit_file_edit,add,fail\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p><code>kit_file_select</code> sets or queries the Kit file used for host calibration. The selection is not written to Flash; after the instrument restarts, <code>default.kit</code> is selected by default. Set the required Kit file before running host calibration commands.</p>
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_select,set,N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_select,set,success\n</span>
+<span class="km-code-line rx">$N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_select,get\n</span>
+<span class="km-code-line rx">$start,kit_file_select,get,success\n</span>
+<span class="km-code-line rx">$N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p>If the selected file does not exist, the instrument returns:</p>
+<pre class="km-code"><code><span class="km-code-line rx">$start,kit_file_select,set,error\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p><code>kit_file_param</code> reads or modifies calibration-kit parameters in the specified Kit file. The parameter order is fixed:</p>
+<pre class="km-code"><code>L0,L1,L2,L3,ShortLen,ShortLoss,C0,C1,C2,C3,OpenLen,OpenLoss,ThruLen,ThruLoss,LossFreq
+</code></pre>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="Kit file calibration-kit parameters and units"><table>
+<caption>Kit file calibration-kit parameters and units</caption>
+<tbody>
+<tr>
+<th scope="col"><p>Parameter</p></th>
+<th scope="col"><p>Description</p></th>
+<th scope="col"><p>Unit</p></th>
+</tr>
+<tr><td><p>L0</p></td><td><p>Short standard L0</p></td><td><p><code>H(e-12)</code></p></td></tr>
+<tr><td><p>L1</p></td><td><p>Short standard L1</p></td><td><p><code>H(e-24)/Hz</code></p></td></tr>
+<tr><td><p>L2</p></td><td><p>Short standard L2</p></td><td><p><code>H(e-33)/Hz^2</code></p></td></tr>
+<tr><td><p>L3</p></td><td><p>Short standard L3</p></td><td><p><code>H(e-42)/Hz^3</code></p></td></tr>
+<tr><td><p>ShortLen</p></td><td><p>Short standard length</p></td><td><p>mm</p></td></tr>
+<tr><td><p>ShortLoss</p></td><td><p>Short standard loss</p></td><td><p>GΩ/s</p></td></tr>
+<tr><td><p>C0</p></td><td><p>Open standard C0</p></td><td><p><code>F(e-15)</code></p></td></tr>
+<tr><td><p>C1</p></td><td><p>Open standard C1</p></td><td><p><code>F(e-27)/Hz</code></p></td></tr>
+<tr><td><p>C2</p></td><td><p>Open standard C2</p></td><td><p><code>F(e-36)/Hz^2</code></p></td></tr>
+<tr><td><p>C3</p></td><td><p>Open standard C3</p></td><td><p><code>F(e-45)/Hz^3</code></p></td></tr>
+<tr><td><p>OpenLen</p></td><td><p>Open standard length</p></td><td><p>mm</p></td></tr>
+<tr><td><p>OpenLoss</p></td><td><p>Open standard loss</p></td><td><p>GΩ/s</p></td></tr>
+<tr><td><p>ThruLen</p></td><td><p>Thru standard length</p></td><td><p>mm</p></td></tr>
+<tr><td><p>ThruLoss</p></td><td><p>Thru standard loss</p></td><td><p>dB</p></td></tr>
+<tr><td><p>LossFreq</p></td><td><p>Thru loss reference frequency</p></td><td><p>MHz</p></td></tr>
+</tbody>
+</table></div>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_param,get,N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_param,get,success\n</span>
+<span class="km-code-line rx">$&lt;L0&gt;,&lt;L1&gt;,&lt;L2&gt;,&lt;L3&gt;,&lt;ShortLen&gt;,&lt;ShortLoss&gt;,&lt;C0&gt;,&lt;C1&gt;,&lt;C2&gt;,&lt;C3&gt;,&lt;OpenLen&gt;,&lt;OpenLoss&gt;,&lt;ThruLen&gt;,&lt;ThruLoss&gt;,&lt;LossFreq&gt;\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_param,set,N_Kit_01.kit,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1000\n</span>
+<span class="km-code-line rx">$start,kit_file_param,set,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p>If the command, option, or parameters cannot be parsed, the instrument may return error frames such as <code>err_cmd</code>, <code>err_opt</code>, <code>err_par1</code>, and <code>err_par2</code>. Example:</p>
+<pre class="km-code"><code><span class="km-code-line rx">$start,err_cmd\n</span>
+<span class="km-code-line rx">$error:Command input error!\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
 </section>
 <section class="km-section" id="kc901-sec-3-3" aria-labelledby="kc901-sec-3-3-heading"><h3 id="kc901-sec-3-3-heading" data-km-source="1765">3.3 Measurement Control Commands</h3>
 </section>
@@ -5619,7 +5767,7 @@
 <p class="km-search-status" role="status" aria-live="polite"></p>
 <ol class="km-results" aria-label="搜索结果" hidden></ol>
 </div>
-<details class="km-toc" open><summary>目录 <span>111 个章节</span></summary><nav aria-label="目录"><ol><li class="km-level-2"><a href="#kc901-sec-0-zh">0、概述</a></li>
+<details class="km-toc" open><summary>目录 <span>112 个章节</span></summary><nav aria-label="目录"><ol><li class="km-level-2"><a href="#kc901-sec-0-zh">0、概述</a></li>
 <li class="km-level-2"><a href="#kc901-sec-1-zh">1、指令格式及说明</a></li>
 <li class="km-level-3"><a href="#kc901-sec-1-1-zh">1.1发送指令格式</a></li>
 <li class="km-level-3"><a href="#kc901-sec-1-2-zh">1.2返回数据格式</a></li>
@@ -5647,10 +5795,10 @@
 <li class="km-level-4"><a href="#kc901-sec-3-2-7-zh">3.2.7气压计</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-8-zh">3.2.8按键提示音</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-9-zh">3.2.9 S11电缆补偿</a></li>
-<li class="km-level-4"><a href="#kc901-sec-3-2-10-zh">3.2.10 S11系统校准件参数</a></li>
-<li class="km-level-4"><a href="#kc901-sec-3-2-11-zh">3.2.11 S21系统校准件参数</a></li>
-<li class="km-level-4"><a href="#kc901-sec-3-2-12-zh">3.2.12 S11用户校准件参数（第四代KC901X）</a></li>
-<li class="km-level-4"><a href="#kc901-sec-3-2-13-zh">3.2.13 S21用户校准件参数（第四代KC901X）</a></li>
+<li class="km-level-4"><a href="#kc901-sec-3-2-10-zh">3.2.10 S11系统校准件参数（第四代KC901X固件版本1.8.0 及以上不可用）</a></li>
+<li class="km-level-4"><a href="#kc901-sec-3-2-11-zh">3.2.11 S21系统校准件参数（第四代KC901X固件版本1.8.0 及以上不可用）</a></li>
+<li class="km-level-4"><a href="#kc901-sec-3-2-12-zh">3.2.12 S11用户校准件参数（第四代KC901X固件版本1.8.0 及以上不可用）</a></li>
+<li class="km-level-4"><a href="#kc901-sec-3-2-13-zh">3.2.13 S21用户校准件参数（第四代KC901X固件版本1.8.0 及以上不可用）</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-14-zh">3.2.14 获取设备信息</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-15-zh">3.2.15 获取电压</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-16-zh">3.2.16 获取机内温度</a></li>
@@ -5676,7 +5824,7 @@
 <li class="km-level-4"><a href="#kc901-sec-3-2-36-zh">3.2.36 全双端口校准（第四代KC901X）</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-37-zh">3.2.37 获取系统警告信息</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-38-zh">3.2.38 清除系统警告信息标志位</a></li>
-<li class="km-level-4"><a href="#kc901-sec-3-2-39-zh">3.2.39 信号源幅度设置（第四代KC901X）</a></li>
+<li class="km-level-4"><a href="#kc901-sec-3-2-39-zh">3.2.39 输出电平设置（第四代KC901X）</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-40-zh">3.2.40 指定频率信号源幅度有效范围查询（第四代KC901X）</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-41-zh">3.2.41 功率扫描设置（第四代KC901X）</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-42-zh">3.2.42 DHCP开关（第四代KC901X）</a></li>
@@ -5695,6 +5843,7 @@
 <li class="km-level-4"><a href="#kc901-sec-3-2-55-zh">3.2.55 S11系统校准（第三代KC901X）</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-56-zh">3.2.56 S21系统校准（第三代KC901X）</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-2-57-zh">3.2.57扫描延时（第四代KC901X）</a></li>
+<li class="km-level-4"><a href="#kc901-sec-3-2-58-zh">3.2.58 Kit文件指令（第四代KC901X）</a></li>
 <li class="km-level-3"><a href="#kc901-sec-3-3-zh">3.3控制指令</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-3-1-zh">3.3.1 获取S11测量参数（第四代KC901X）</a></li>
 <li class="km-level-4"><a href="#kc901-sec-3-3-2-zh">3.3.2 获取S21测量参数（第四代KC901X）</a></li>
@@ -5955,7 +6104,11 @@
 </tr>
 <tr>
 <td><p data-km-source="161">outAtt</p></td>
-<td><p data-km-source="162">无</p></td>
+<td>
+<p data-km-source="162">无</p>
+<p>get（仅第四代KC901X支持）</p>
+<p>set（仅第四代KC901X支持）</p>
+</td>
 <td>
 <p data-km-source="163">参数取值范围：</p>
 <p data-km-source="164">KC901K、J、R :-30~30</p>
@@ -5974,8 +6127,19 @@
 </table></div>
 <p data-km-source="174">说明：第四代901设置后输出幅度为源增益模式；</p>
 <p data-km-source="175">例程：</p>
+<p>第三代KC901X：</p>
 <p data-km-source="176">输出衰减器置10dB衰减</p>
 <pre class="km-code"><code><span class="km-code-line tx" data-km-source="177">$outAtt,10\n</span></code></pre>
+<p>第四代KC901X：</p>
+<p>输出衰减器置10dB衰减</p>
+<pre class="km-code"><code><span class="km-code-line tx">$outAtt,set,10\n</span>
+<span class="km-code-line rx">$start,OutAtt,set,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+<p>查询当前输出衰减</p>
+<pre class="km-code"><code><span class="km-code-line tx">$outAtt,get\n</span>
+<span class="km-code-line rx">$start,OutAtt,get,success\n</span>
+<span class="km-code-line rx">$10\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
 </section>
 <section class="km-section" id="kc901-sec-3-2-6-zh" aria-labelledby="kc901-sec-3-2-6-heading-zh"><h4 id="kc901-sec-3-2-6-heading-zh" data-km-source="178">3.2.6设置亮度</h4>
 <div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.6设置亮度 参数表"><table>
@@ -6096,10 +6260,10 @@
 <p data-km-source="235">设置电缆长度补偿值为10.123米</p>
 <pre class="km-code"><code><span class="km-code-line tx" data-km-source="236">$cable,len,10.123\n</span></code></pre>
 </section>
-<section class="km-section" id="kc901-sec-3-2-10-zh" aria-labelledby="kc901-sec-3-2-10-heading-zh"><h4 id="kc901-sec-3-2-10-heading-zh" data-km-source="237">3.2.10 S11系统校准件参数</h4>
+<section class="km-section" id="kc901-sec-3-2-10-zh" aria-labelledby="kc901-sec-3-2-10-heading-zh"><h4 id="kc901-sec-3-2-10-heading-zh" data-km-source="237">3.2.10 S11系统校准件参数（第四代KC901X固件版本1.8.0 及以上不可用）</h4>
 <p data-km-source="238">KC901K/RFMA 使用标准校准模型：</p>
-<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.10 S11系统校准件参数 参数表"><table>
-<caption>3.2.10 S11系统校准件参数 — 参数表</caption>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.10 S11系统校准件参数（第四代KC901X固件版本1.8.0 及以上不可用） 参数表"><table>
+<caption>3.2.10 S11系统校准件参数（第四代KC901X固件版本1.8.0 及以上不可用） — 参数表</caption>
 <tbody>
 <tr>
 <th scope="col"><p data-km-source="239">命令</p></th>
@@ -6137,9 +6301,9 @@
 <p data-km-source="262">第三代KC901X示例：</p>
 <pre class="km-code"><code><span class="km-code-line tx" data-km-source="263">$kit_s11,10,125,-20,15,5.25,0.201,100,125,-800,15,5.26,0.200\n</span></code></pre>
 </section>
-<section class="km-section" id="kc901-sec-3-2-11-zh" aria-labelledby="kc901-sec-3-2-11-heading-zh"><h4 id="kc901-sec-3-2-11-heading-zh" data-km-source="264">3.2.11 S21系统校准件参数</h4>
-<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.11 S21系统校准件参数 参数表"><table>
-<caption>3.2.11 S21系统校准件参数 — 参数表</caption>
+<section class="km-section" id="kc901-sec-3-2-11-zh" aria-labelledby="kc901-sec-3-2-11-heading-zh"><h4 id="kc901-sec-3-2-11-heading-zh" data-km-source="264">3.2.11 S21系统校准件参数（第四代KC901X固件版本1.8.0 及以上不可用）</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.11 S21系统校准件参数（第四代KC901X固件版本1.8.0 及以上不可用） 参数表"><table>
+<caption>3.2.11 S21系统校准件参数（第四代KC901X固件版本1.8.0 及以上不可用） — 参数表</caption>
 <tbody>
 <tr>
 <th scope="col"><p data-km-source="265">命令</p></th>
@@ -6169,10 +6333,10 @@
 <pre class="km-code"><code><span class="km-code-line tx" data-km-source="280">$kit_s21,female,100,0.1,4567\n</span></code></pre>
 <p data-km-source="281">第三代KC901X示例：</p>
 <pre class="km-code"><code><span class="km-code-line tx" data-km-source="282">$kit_s21,100,0.1,4567\n</span></code></pre></section>
-<section class="km-section" id="kc901-sec-3-2-12-zh" aria-labelledby="kc901-sec-3-2-12-heading-zh"><h4 id="kc901-sec-3-2-12-heading-zh" data-km-source="283">3.2.12 S11用户校准件参数（第四代KC901X）</h4>
+<section class="km-section" id="kc901-sec-3-2-12-zh" aria-labelledby="kc901-sec-3-2-12-heading-zh"><h4 id="kc901-sec-3-2-12-heading-zh" data-km-source="283">3.2.12 S11用户校准件参数（第四代KC901X固件版本1.8.0 及以上不可用）</h4>
 <p data-km-source="284">KC901K/RFMA 使用复杂校准模型：</p>
-<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.12 S11用户校准件参数（第四代KC901X） 参数表"><table>
-<caption>3.2.12 S11用户校准件参数（第四代KC901X） — 参数表</caption>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.12 S11用户校准件参数（第四代KC901X固件版本1.8.0 及以上不可用） 参数表"><table>
+<caption>3.2.12 S11用户校准件参数（第四代KC901X固件版本1.8.0 及以上不可用） — 参数表</caption>
 <tbody>
 <tr>
 <th scope="col"><p data-km-source="285">命令</p></th>
@@ -6208,9 +6372,9 @@
 <pre class="km-code"><code><span class="km-code-line tx" data-km-source="306">$userkit_s11,female,10,125,-20,15,5.25,0.201,100,125,-800,15,5.26,0.200\n</span></code></pre>
 
 </section>
-<section class="km-section" id="kc901-sec-3-2-13-zh" aria-labelledby="kc901-sec-3-2-13-heading-zh"><h4 id="kc901-sec-3-2-13-heading-zh" data-km-source="307">3.2.13 S21用户校准件参数（第四代KC901X）</h4>
-<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.13 S21用户校准件参数（第四代KC901X） 参数表"><table>
-<caption>3.2.13 S21用户校准件参数（第四代KC901X） — 参数表</caption>
+<section class="km-section" id="kc901-sec-3-2-13-zh" aria-labelledby="kc901-sec-3-2-13-heading-zh"><h4 id="kc901-sec-3-2-13-heading-zh" data-km-source="307">3.2.13 S21用户校准件参数（第四代KC901X固件版本1.8.0 及以上不可用）</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.13 S21用户校准件参数（第四代KC901X固件版本1.8.0 及以上不可用） 参数表"><table>
+<caption>3.2.13 S21用户校准件参数（第四代KC901X固件版本1.8.0 及以上不可用） — 参数表</caption>
 <tbody>
 <tr>
 <th scope="col"><p data-km-source="308">命令</p></th>
@@ -7424,9 +7588,9 @@
 <p data-km-source="1085">例程：</p>
 <pre class="km-code"><code><span class="km-code-line tx" data-km-source="1086">$clearstatus\n</span></code></pre>
 </section>
-<section class="km-section" id="kc901-sec-3-2-39-zh" aria-labelledby="kc901-sec-3-2-39-heading-zh"><h4 id="kc901-sec-3-2-39-heading-zh" data-km-source="1087">3.2.39 信号源幅度设置（第四代KC901X）</h4>
-<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.39 信号源幅度设置（第四代KC901X） 参数表"><table>
-<caption>3.2.39 信号源幅度设置（第四代KC901X） — 参数表</caption>
+<section class="km-section" id="kc901-sec-3-2-39-zh" aria-labelledby="kc901-sec-3-2-39-heading-zh"><h4 id="kc901-sec-3-2-39-heading-zh" data-km-source="1087">3.2.39 输出电平设置（第四代KC901X）</h4>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.39 输出电平设置（第四代KC901X） 参数表"><table>
+<caption>3.2.39 输出电平设置（第四代KC901X） — 参数表</caption>
 <tbody>
 <tr>
 <th scope="col"><p data-km-source="1088">发送命令</p></th>
@@ -8374,6 +8538,138 @@
 <span class="km-code-line rx" data-km-source="1762">$start,sweep_delay,get,success\n</span>
 <span class="km-code-line rx" data-km-source="1763">$1000\n</span>
 <span class="km-code-line rx" data-km-source="1764">$end\n</span></code></pre>
+
+</section>
+<section class="km-section" id="kc901-sec-3-2-58-zh" aria-labelledby="kc901-sec-3-2-58-heading-zh"><h4 id="kc901-sec-3-2-58-heading-zh">3.2.58 Kit文件指令（第四代KC901X）</h4>
+<p>以下指令用于管理第四代KC901X设备中的Kit文件。指令以<code>$</code>开头，以换行符<code>\n</code>结束；参数使用英文逗号<code>,</code>分隔；Kit文件名必须带<code>.kit</code>后缀。设备最多保存21个Kit文件，包括<code>default.kit</code>。</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.58 Kit文件指令（第四代KC901X） 参数表"><table>
+<caption>3.2.58 Kit文件指令（第四代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p>发送命令</p></th>
+<th scope="col"><p>选项</p></th>
+<th scope="col"><p>参数</p></th>
+<th scope="col"><p>说明</p></th>
+</tr>
+<tr>
+<td><p>kit_file_list</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>获取设备中保存的全部Kit文件名称。</p></td>
+</tr>
+<tr>
+<td><p>kit_file_edit</p></td>
+<td>
+<p>add</p>
+<p>delete</p>
+<p>rename</p>
+</td>
+<td><p>文件名</p></td>
+<td><p>新增、删除或重命名Kit文件。</p></td>
+</tr>
+<tr>
+<td><p>kit_file_select</p></td>
+<td>
+<p>set</p>
+<p>get</p>
+</td>
+<td><p>文件名</p></td>
+<td><p>设置或查询上位机校准所使用的Kit文件。</p></td>
+</tr>
+<tr>
+<td><p>kit_file_param</p></td>
+<td>
+<p>get</p>
+<p>set</p>
+</td>
+<td><p>文件名，校准件参数</p></td>
+<td><p>读取或修改指定Kit文件的校准件参数。</p></td>
+</tr>
+</tbody>
+</table></div>
+
+<p><code>kit_file_list</code>用于获取设备中保存的全部Kit文件名称，文件名按照设备当前保存的列表顺序返回。</p>
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_list\n</span>
+<span class="km-code-line rx">$start,kit_file_list\n</span>
+<span class="km-code-line rx">default.kit\n</span>
+<span class="km-code-line rx">N_Kit_01.kit\n</span>
+<span class="km-code-line rx">N_Kit_02.kit\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p><code>kit_file_edit</code>用于新增、删除或重命名Kit文件。新增文件会复制<code>default.kit</code>的校准件参数；<code>default.kit</code>不能删除。文件已存在、文件数量达到上限、文件名不符合规则或Flash保存失败时，操作失败。</p>
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_edit,add,N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_edit,add,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_edit,delete,N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_edit,delete,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_edit,rename,N_Kit_01.kit,N_Kit_02.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_edit,rename,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p>失败时返回对应选项的<code>fail</code>结果，例如：</p>
+<pre class="km-code"><code><span class="km-code-line rx">$start,kit_file_edit,add,fail\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p><code>kit_file_select</code>用于设置或查询上位机校准所使用的Kit文件。选择状态不写入Flash；设备重新启动后，默认选择<code>default.kit</code>。建议在执行上位机校准指令前设置需要使用的Kit文件。</p>
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_select,set,N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_select,set,success\n</span>
+<span class="km-code-line rx">$N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_select,get\n</span>
+<span class="km-code-line rx">$start,kit_file_select,get,success\n</span>
+<span class="km-code-line rx">$N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p>设置的文件不存在时返回：</p>
+<pre class="km-code"><code><span class="km-code-line rx">$start,kit_file_select,set,error\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p><code>kit_file_param</code>用于读取或修改指定Kit文件的校准件参数。参数顺序固定为：</p>
+<pre class="km-code"><code>L0,L1,L2,L3,ShortLen,ShortLoss,C0,C1,C2,C3,OpenLen,OpenLoss,ThruLen,ThruLoss,LossFreq
+</code></pre>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="Kit文件校准件参数及单位"><table>
+<caption>Kit文件校准件参数及单位</caption>
+<tbody>
+<tr>
+<th scope="col"><p>参数</p></th>
+<th scope="col"><p>含义</p></th>
+<th scope="col"><p>单位</p></th>
+</tr>
+<tr><td><p>L0</p></td><td><p>短路校准件L0</p></td><td><p><code>H(e-12)</code></p></td></tr>
+<tr><td><p>L1</p></td><td><p>短路校准件L1</p></td><td><p><code>H(e-24)/Hz</code></p></td></tr>
+<tr><td><p>L2</p></td><td><p>短路校准件L2</p></td><td><p><code>H(e-33)/Hz^2</code></p></td></tr>
+<tr><td><p>L3</p></td><td><p>短路校准件L3</p></td><td><p><code>H(e-42)/Hz^3</code></p></td></tr>
+<tr><td><p>ShortLen</p></td><td><p>短路校准件长度</p></td><td><p>mm</p></td></tr>
+<tr><td><p>ShortLoss</p></td><td><p>短路校准件损耗</p></td><td><p>GΩ/s</p></td></tr>
+<tr><td><p>C0</p></td><td><p>开路校准件C0</p></td><td><p><code>F(e-15)</code></p></td></tr>
+<tr><td><p>C1</p></td><td><p>开路校准件C1</p></td><td><p><code>F(e-27)/Hz</code></p></td></tr>
+<tr><td><p>C2</p></td><td><p>开路校准件C2</p></td><td><p><code>F(e-36)/Hz^2</code></p></td></tr>
+<tr><td><p>C3</p></td><td><p>开路校准件C3</p></td><td><p><code>F(e-45)/Hz^3</code></p></td></tr>
+<tr><td><p>OpenLen</p></td><td><p>开路校准件长度</p></td><td><p>mm</p></td></tr>
+<tr><td><p>OpenLoss</p></td><td><p>开路校准件损耗</p></td><td><p>GΩ/s</p></td></tr>
+<tr><td><p>ThruLen</p></td><td><p>直通校准件长度</p></td><td><p>mm</p></td></tr>
+<tr><td><p>ThruLoss</p></td><td><p>直通校准件损耗</p></td><td><p>dB</p></td></tr>
+<tr><td><p>LossFreq</p></td><td><p>直通损耗参考频率</p></td><td><p>MHz</p></td></tr>
+</tbody>
+</table></div>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_param,get,N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_param,get,success\n</span>
+<span class="km-code-line rx">$&lt;L0&gt;,&lt;L1&gt;,&lt;L2&gt;,&lt;L3&gt;,&lt;ShortLen&gt;,&lt;ShortLoss&gt;,&lt;C0&gt;,&lt;C1&gt;,&lt;C2&gt;,&lt;C3&gt;,&lt;OpenLen&gt;,&lt;OpenLoss&gt;,&lt;ThruLen&gt;,&lt;ThruLoss&gt;,&lt;LossFreq&gt;\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_param,set,N_Kit_01.kit,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1000\n</span>
+<span class="km-code-line rx">$start,kit_file_param,set,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p>命令、选项或参数无法通过解析时，设备可能返回<code>err_cmd</code>、<code>err_opt</code>、<code>err_par1</code>、<code>err_par2</code>等错误帧。例如：</p>
+<pre class="km-code"><code><span class="km-code-line rx">$start,err_cmd\n</span>
+<span class="km-code-line rx">$error:Command input error!\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
 </section>
 <section class="km-section" id="kc901-sec-3-3-zh" aria-labelledby="kc901-sec-3-3-heading-zh"><h3 id="kc901-sec-3-3-heading-zh" data-km-source="1765">3.3控制指令</h3>
 </section>

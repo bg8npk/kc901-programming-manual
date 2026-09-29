@@ -1,0 +1,131 @@
+<section class="km-section" id="kc901-sec-3-2-58-zh" aria-labelledby="kc901-sec-3-2-58-heading-zh"><h4 id="kc901-sec-3-2-58-heading-zh">3.2.58 Kit文件指令（第四代KC901X）</h4>
+<p>以下指令用于管理第四代KC901X设备中的Kit文件。指令以<code>$</code>开头，以换行符<code>\n</code>结束；参数使用英文逗号<code>,</code>分隔；Kit文件名必须带<code>.kit</code>后缀。设备最多保存21个Kit文件，包括<code>default.kit</code>。</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.58 Kit文件指令（第四代KC901X） 参数表"><table>
+<caption>3.2.58 Kit文件指令（第四代KC901X） — 参数表</caption>
+<tbody>
+<tr>
+<th scope="col"><p>发送命令</p></th>
+<th scope="col"><p>选项</p></th>
+<th scope="col"><p>参数</p></th>
+<th scope="col"><p>说明</p></th>
+</tr>
+<tr>
+<td><p>kit_file_list</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>获取设备中保存的全部Kit文件名称。</p></td>
+</tr>
+<tr>
+<td><p>kit_file_edit</p></td>
+<td>
+<p>add</p>
+<p>delete</p>
+<p>rename</p>
+</td>
+<td><p>文件名</p></td>
+<td><p>新增、删除或重命名Kit文件。</p></td>
+</tr>
+<tr>
+<td><p>kit_file_select</p></td>
+<td>
+<p>set</p>
+<p>get</p>
+</td>
+<td><p>文件名</p></td>
+<td><p>设置或查询上位机校准所使用的Kit文件。</p></td>
+</tr>
+<tr>
+<td><p>kit_file_param</p></td>
+<td>
+<p>get</p>
+<p>set</p>
+</td>
+<td><p>文件名，校准件参数</p></td>
+<td><p>读取或修改指定Kit文件的校准件参数。</p></td>
+</tr>
+</tbody>
+</table></div>
+
+<p><code>kit_file_list</code>用于获取设备中保存的全部Kit文件名称，文件名按照设备当前保存的列表顺序返回。</p>
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_list\n</span>
+<span class="km-code-line rx">$start,kit_file_list\n</span>
+<span class="km-code-line rx">default.kit\n</span>
+<span class="km-code-line rx">N_Kit_01.kit\n</span>
+<span class="km-code-line rx">N_Kit_02.kit\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p><code>kit_file_edit</code>用于新增、删除或重命名Kit文件。新增文件会复制<code>default.kit</code>的校准件参数；<code>default.kit</code>不能删除。文件已存在、文件数量达到上限、文件名不符合规则或Flash保存失败时，操作失败。</p>
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_edit,add,N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_edit,add,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_edit,delete,N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_edit,delete,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_edit,rename,N_Kit_01.kit,N_Kit_02.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_edit,rename,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p>失败时返回对应选项的<code>fail</code>结果，例如：</p>
+<pre class="km-code"><code><span class="km-code-line rx">$start,kit_file_edit,add,fail\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p><code>kit_file_select</code>用于设置或查询上位机校准所使用的Kit文件。选择状态不写入Flash；设备重新启动后，默认选择<code>default.kit</code>。建议在执行上位机校准指令前设置需要使用的Kit文件。</p>
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_select,set,N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_select,set,success\n</span>
+<span class="km-code-line rx">$N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_select,get\n</span>
+<span class="km-code-line rx">$start,kit_file_select,get,success\n</span>
+<span class="km-code-line rx">$N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p>设置的文件不存在时返回：</p>
+<pre class="km-code"><code><span class="km-code-line rx">$start,kit_file_select,set,error\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p><code>kit_file_param</code>用于读取或修改指定Kit文件的校准件参数。参数顺序固定为：</p>
+<pre class="km-code"><code>L0,L1,L2,L3,ShortLen,ShortLoss,C0,C1,C2,C3,OpenLen,OpenLoss,ThruLen,ThruLoss,LossFreq
+</code></pre>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="Kit文件校准件参数及单位"><table>
+<caption>Kit文件校准件参数及单位</caption>
+<tbody>
+<tr>
+<th scope="col"><p>参数</p></th>
+<th scope="col"><p>含义</p></th>
+<th scope="col"><p>单位</p></th>
+</tr>
+<tr><td><p>L0</p></td><td><p>短路校准件L0</p></td><td><p><code>H(e-12)</code></p></td></tr>
+<tr><td><p>L1</p></td><td><p>短路校准件L1</p></td><td><p><code>H(e-24)/Hz</code></p></td></tr>
+<tr><td><p>L2</p></td><td><p>短路校准件L2</p></td><td><p><code>H(e-33)/Hz^2</code></p></td></tr>
+<tr><td><p>L3</p></td><td><p>短路校准件L3</p></td><td><p><code>H(e-42)/Hz^3</code></p></td></tr>
+<tr><td><p>ShortLen</p></td><td><p>短路校准件长度</p></td><td><p>mm</p></td></tr>
+<tr><td><p>ShortLoss</p></td><td><p>短路校准件损耗</p></td><td><p>GΩ/s</p></td></tr>
+<tr><td><p>C0</p></td><td><p>开路校准件C0</p></td><td><p><code>F(e-15)</code></p></td></tr>
+<tr><td><p>C1</p></td><td><p>开路校准件C1</p></td><td><p><code>F(e-27)/Hz</code></p></td></tr>
+<tr><td><p>C2</p></td><td><p>开路校准件C2</p></td><td><p><code>F(e-36)/Hz^2</code></p></td></tr>
+<tr><td><p>C3</p></td><td><p>开路校准件C3</p></td><td><p><code>F(e-45)/Hz^3</code></p></td></tr>
+<tr><td><p>OpenLen</p></td><td><p>开路校准件长度</p></td><td><p>mm</p></td></tr>
+<tr><td><p>OpenLoss</p></td><td><p>开路校准件损耗</p></td><td><p>GΩ/s</p></td></tr>
+<tr><td><p>ThruLen</p></td><td><p>直通校准件长度</p></td><td><p>mm</p></td></tr>
+<tr><td><p>ThruLoss</p></td><td><p>直通校准件损耗</p></td><td><p>dB</p></td></tr>
+<tr><td><p>LossFreq</p></td><td><p>直通损耗参考频率</p></td><td><p>MHz</p></td></tr>
+</tbody>
+</table></div>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_param,get,N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_param,get,success\n</span>
+<span class="km-code-line rx">$&lt;L0&gt;,&lt;L1&gt;,&lt;L2&gt;,&lt;L3&gt;,&lt;ShortLen&gt;,&lt;ShortLoss&gt;,&lt;C0&gt;,&lt;C1&gt;,&lt;C2&gt;,&lt;C3&gt;,&lt;OpenLen&gt;,&lt;OpenLoss&gt;,&lt;ThruLen&gt;,&lt;ThruLoss&gt;,&lt;LossFreq&gt;\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_param,set,N_Kit_01.kit,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1000\n</span>
+<span class="km-code-line rx">$start,kit_file_param,set,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p>命令、选项或参数无法通过解析时，设备可能返回<code>err_cmd</code>、<code>err_opt</code>、<code>err_par1</code>、<code>err_par2</code>等错误帧。例如：</p>
+<pre class="km-code"><code><span class="km-code-line rx">$start,err_cmd\n</span>
+<span class="km-code-line rx">$error:Command input error!\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+</section>

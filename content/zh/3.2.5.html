@@ -9,7 +9,11 @@
 </tr>
 <tr>
 <td><p data-km-source="161">outAtt</p></td>
-<td><p data-km-source="162">无</p></td>
+<td>
+<p data-km-source="162">无</p>
+<p>get（仅第四代KC901X支持）</p>
+<p>set（仅第四代KC901X支持）</p>
+</td>
 <td>
 <p data-km-source="163">参数取值范围：</p>
 <p data-km-source="164">KC901K、J、R :-30~30</p>
@@ -28,7 +32,17 @@
 </table></div>
 <p data-km-source="174">说明：第四代901设置后输出幅度为源增益模式；</p>
 <p data-km-source="175">例程：</p>
+<p>第三代KC901X：</p>
 <p data-km-source="176">输出衰减器置10dB衰减</p>
 <pre class="km-code"><code><span class="km-code-line tx" data-km-source="177">$outAtt,10\n</span></code></pre>
+<p>第四代KC901X：</p>
+<p>输出衰减器置10dB衰减</p>
+<pre class="km-code"><code><span class="km-code-line tx">$outAtt,set,10\n</span>
+<span class="km-code-line rx">$start,OutAtt,set,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+<p>查询当前输出衰减</p>
+<pre class="km-code"><code><span class="km-code-line tx">$outAtt,get\n</span>
+<span class="km-code-line rx">$start,OutAtt,get,success\n</span>
+<span class="km-code-line rx">$10\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
 </section>
-

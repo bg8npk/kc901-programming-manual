@@ -1,0 +1,131 @@
+<section class="km-section" id="kc901-sec-3-2-58" aria-labelledby="kc901-sec-3-2-58-heading"><h4 id="kc901-sec-3-2-58-heading">3.2.58 Kit File Commands (Fourth-Generation KC901X)</h4>
+<p>The following commands manage Kit files stored in fourth-generation 901X instruments. Commands start with <code>$</code> and end with a newline <code>\n</code>; parameters are separated by commas. Kit file names must include the <code>.kit</code> suffix. The instrument can store up to 21 Kit files, including <code>default.kit</code>.</p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.58 Kit File Commands (Fourth-Generation KC901X) table"><table>
+<caption>3.2.58 Kit File Commands (Fourth-Generation KC901X) — reference table</caption>
+<tbody>
+<tr>
+<th scope="col"><p>Send command</p></th>
+<th scope="col"><p>Option</p></th>
+<th scope="col"><p>Parameter</p></th>
+<th scope="col"><p>Description</p></th>
+</tr>
+<tr>
+<td><p>kit_file_list</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>Get all Kit file names stored in the instrument.</p></td>
+</tr>
+<tr>
+<td><p>kit_file_edit</p></td>
+<td>
+<p>add</p>
+<p>delete</p>
+<p>rename</p>
+</td>
+<td><p>File name</p></td>
+<td><p>Add, delete, or rename a Kit file.</p></td>
+</tr>
+<tr>
+<td><p>kit_file_select</p></td>
+<td>
+<p>set</p>
+<p>get</p>
+</td>
+<td><p>File name</p></td>
+<td><p>Set or query the Kit file used for host calibration.</p></td>
+</tr>
+<tr>
+<td><p>kit_file_param</p></td>
+<td>
+<p>get</p>
+<p>set</p>
+</td>
+<td><p>File name, calibration-kit parameters</p></td>
+<td><p>Read or modify calibration-kit parameters in the specified Kit file.</p></td>
+</tr>
+</tbody>
+</table></div>
+
+<p><code>kit_file_list</code> gets all Kit file names stored in the instrument. File names are returned in the instrument's current list order.</p>
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_list\n</span>
+<span class="km-code-line rx">$start,kit_file_list\n</span>
+<span class="km-code-line rx">default.kit\n</span>
+<span class="km-code-line rx">N_Kit_01.kit\n</span>
+<span class="km-code-line rx">N_Kit_02.kit\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p><code>kit_file_edit</code> adds, deletes, or renames Kit files. Adding a file copies the calibration-kit parameters from <code>default.kit</code>. The <code>default.kit</code> file cannot be deleted. The operation fails if the file already exists, the file count limit is reached, the file name is invalid, or the Flash save fails.</p>
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_edit,add,N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_edit,add,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_edit,delete,N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_edit,delete,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_edit,rename,N_Kit_01.kit,N_Kit_02.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_edit,rename,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p>On failure, the command returns <code>fail</code> for the corresponding option, for example:</p>
+<pre class="km-code"><code><span class="km-code-line rx">$start,kit_file_edit,add,fail\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p><code>kit_file_select</code> sets or queries the Kit file used for host calibration. The selection is not written to Flash; after the instrument restarts, <code>default.kit</code> is selected by default. Set the required Kit file before running host calibration commands.</p>
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_select,set,N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_select,set,success\n</span>
+<span class="km-code-line rx">$N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_select,get\n</span>
+<span class="km-code-line rx">$start,kit_file_select,get,success\n</span>
+<span class="km-code-line rx">$N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p>If the selected file does not exist, the instrument returns:</p>
+<pre class="km-code"><code><span class="km-code-line rx">$start,kit_file_select,set,error\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p><code>kit_file_param</code> reads or modifies calibration-kit parameters in the specified Kit file. The parameter order is fixed:</p>
+<pre class="km-code"><code>L0,L1,L2,L3,ShortLen,ShortLoss,C0,C1,C2,C3,OpenLen,OpenLoss,ThruLen,ThruLoss,LossFreq
+</code></pre>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="Kit file calibration-kit parameters and units"><table>
+<caption>Kit file calibration-kit parameters and units</caption>
+<tbody>
+<tr>
+<th scope="col"><p>Parameter</p></th>
+<th scope="col"><p>Description</p></th>
+<th scope="col"><p>Unit</p></th>
+</tr>
+<tr><td><p>L0</p></td><td><p>Short standard L0</p></td><td><p><code>H(e-12)</code></p></td></tr>
+<tr><td><p>L1</p></td><td><p>Short standard L1</p></td><td><p><code>H(e-24)/Hz</code></p></td></tr>
+<tr><td><p>L2</p></td><td><p>Short standard L2</p></td><td><p><code>H(e-33)/Hz^2</code></p></td></tr>
+<tr><td><p>L3</p></td><td><p>Short standard L3</p></td><td><p><code>H(e-42)/Hz^3</code></p></td></tr>
+<tr><td><p>ShortLen</p></td><td><p>Short standard length</p></td><td><p>mm</p></td></tr>
+<tr><td><p>ShortLoss</p></td><td><p>Short standard loss</p></td><td><p>GΩ/s</p></td></tr>
+<tr><td><p>C0</p></td><td><p>Open standard C0</p></td><td><p><code>F(e-15)</code></p></td></tr>
+<tr><td><p>C1</p></td><td><p>Open standard C1</p></td><td><p><code>F(e-27)/Hz</code></p></td></tr>
+<tr><td><p>C2</p></td><td><p>Open standard C2</p></td><td><p><code>F(e-36)/Hz^2</code></p></td></tr>
+<tr><td><p>C3</p></td><td><p>Open standard C3</p></td><td><p><code>F(e-45)/Hz^3</code></p></td></tr>
+<tr><td><p>OpenLen</p></td><td><p>Open standard length</p></td><td><p>mm</p></td></tr>
+<tr><td><p>OpenLoss</p></td><td><p>Open standard loss</p></td><td><p>GΩ/s</p></td></tr>
+<tr><td><p>ThruLen</p></td><td><p>Thru standard length</p></td><td><p>mm</p></td></tr>
+<tr><td><p>ThruLoss</p></td><td><p>Thru standard loss</p></td><td><p>dB</p></td></tr>
+<tr><td><p>LossFreq</p></td><td><p>Thru loss reference frequency</p></td><td><p>MHz</p></td></tr>
+</tbody>
+</table></div>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_param,get,N_Kit_01.kit\n</span>
+<span class="km-code-line rx">$start,kit_file_param,get,success\n</span>
+<span class="km-code-line rx">$&lt;L0&gt;,&lt;L1&gt;,&lt;L2&gt;,&lt;L3&gt;,&lt;ShortLen&gt;,&lt;ShortLoss&gt;,&lt;C0&gt;,&lt;C1&gt;,&lt;C2&gt;,&lt;C3&gt;,&lt;OpenLen&gt;,&lt;OpenLoss&gt;,&lt;ThruLen&gt;,&lt;ThruLoss&gt;,&lt;LossFreq&gt;\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<pre class="km-code"><code><span class="km-code-line tx">$kit_file_param,set,N_Kit_01.kit,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1000\n</span>
+<span class="km-code-line rx">$start,kit_file_param,set,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+
+<p>If the command, option, or parameters cannot be parsed, the instrument may return error frames such as <code>err_cmd</code>, <code>err_opt</code>, <code>err_par1</code>, and <code>err_par2</code>. Example:</p>
+<pre class="km-code"><code><span class="km-code-line rx">$start,err_cmd\n</span>
+<span class="km-code-line rx">$error:Command input error!\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+</section>
