@@ -65,6 +65,10 @@ python -m http.server 8000 --bind 127.0.0.1
 
 将 `index.html` 和整个 `assets/` 目录上传到静态网站托管服务，保持它们的相对位置。运行网页无需 Python 或后端服务。`content/`、`templates/` 和构建脚本用于维护，保留在源码仓库中即可。
 
+### GitHub Pages
+
+仓库已配置 GitHub Actions：推送到 `main` 分支时会自动发布 `index.html` 和 `assets/`；也可以在仓库的 Actions 页面手动运行 `Deploy to GitHub Pages`。首次使用时，在仓库 **Settings → Pages → Build and deployment → Source** 中选择 **GitHub Actions**。部署完成后，页面地址为 `https://bg8npk.github.io/kc901-programming-manual/`。
+
 例如部署到网站的 `/manual/kc901/` 后，可使用以下代码嵌入：
 
 ```html
