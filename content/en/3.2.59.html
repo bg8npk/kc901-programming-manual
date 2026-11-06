@@ -1,0 +1,25 @@
+<section class="km-section" id="kc901-sec-3-2-59" aria-labelledby="kc901-sec-3-2-59-heading"><h4 id="kc901-sec-3-2-59-heading">3.2.59 Remote Mode Setting (Fourth-Generation KC901X)</h4>
+<p>This command queries or sets the dedicated remote interface, corresponding to the instrument Remote Mode setting.</p>
+<p><strong>Note: remote_mode on/off only switches the instrument display and saves that interface setting. It does not disconnect the current remote connection or release host control. Even when set to off, the host can continue sending commands over the existing connection.</strong></p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.59 Remote Mode Setting (Fourth-Generation KC901X)"><table><caption>3.2.59 Remote Mode Setting (Fourth-Generation KC901X)</caption><tbody>
+<tr><th scope="col">Command</th><th scope="col">Option</th><th scope="col">Parameter</th><th scope="col">Description</th></tr>
+<tr><td><code>remote_mode</code></td><td>get</td><td>—</td><td>Query the remote mode setting; returns $on or $off. This is not the connection state. A newly set value is reported even if the page transition is still pending.</td></tr>
+<tr><td><code>remote_mode</code></td><td>set</td><td>on</td><td>Enable remote mode and immediately save the setting to Flash.</td></tr>
+<tr><td><code>remote_mode</code></td><td>set</td><td>off</td><td>Disable remote mode and immediately save the setting to Flash.</td></tr>
+</tbody></table></div>
+
+<p>Query (enabled in this example)</p>
+<pre class="km-code"><code><span class="km-code-line tx">$remote_mode,get\n</span>
+<span class="km-code-line rx">$start,remote,get,success\n</span>
+<span class="km-code-line rx">$on\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+<p>Enable</p>
+<pre class="km-code"><code><span class="km-code-line tx">$remote_mode,set,on\n</span>
+<span class="km-code-line rx">$start,remote,set,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+<p>Disable</p>
+<pre class="km-code"><code><span class="km-code-line tx">$remote_mode,set,off\n</span>
+<span class="km-code-line rx">$start,remote,set,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+<p>When <code>remote_mode,set,off</code> is sent from the dedicated remote interface, the remote connection remains active. The instrument clears the screen and displays the “Operation by host computer” dialog instead of immediately returning to the previous measurement mode. Press <strong>SHIFT+HOME</strong> to disconnect the remote connection and release host control, then return to the previous measurement mode.</p>
+</section>

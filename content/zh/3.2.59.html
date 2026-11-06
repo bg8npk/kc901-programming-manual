@@ -1,0 +1,25 @@
+<section class="km-section" id="kc901-sec-3-2-59-zh" aria-labelledby="kc901-sec-3-2-59-heading-zh"><h4 id="kc901-sec-3-2-59-heading-zh">3.2.59 远程模式开关（第四代 KC901X）</h4>
+<p>本指令用于查询或设置远程专用界面开关，与仪器菜单中的“远程模式”设置对应。</p>
+<p><strong>注意：remote_mode 的 on/off 只切换仪器显示界面，并保存该界面设置；不会断开当前远程连接，也不会释放上位机控制权。即使设为 off，上位机仍可通过原连接继续发送指令。</strong></p>
+<div class="km-table-wrap" tabindex="0" role="region" aria-label="3.2.59 远程模式开关（第四代 KC901X）"><table><caption>3.2.59 远程模式开关（第四代 KC901X）</caption><tbody>
+<tr><th scope="col">发送命令</th><th scope="col">选项</th><th scope="col">参数</th><th scope="col">说明</th></tr>
+<tr><td><code>remote_mode</code></td><td>get</td><td>—</td><td>查询远程模式设置，返回 $on 或 $off。该值不是当前连接状态；若页面切换尚未完成，仍返回已设置的新值。</td></tr>
+<tr><td><code>remote_mode</code></td><td>set</td><td>on</td><td>开启远程模式，并立即保存设置到 Flash。</td></tr>
+<tr><td><code>remote_mode</code></td><td>set</td><td>off</td><td>关闭远程模式，并立即保存设置到 Flash。</td></tr>
+</tbody></table></div>
+
+<p>查询（示例为已开启）</p>
+<pre class="km-code"><code><span class="km-code-line tx">$remote_mode,get\n</span>
+<span class="km-code-line rx">$start,remote,get,success\n</span>
+<span class="km-code-line rx">$on\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+<p>开启</p>
+<pre class="km-code"><code><span class="km-code-line tx">$remote_mode,set,on\n</span>
+<span class="km-code-line rx">$start,remote,set,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+<p>关闭</p>
+<pre class="km-code"><code><span class="km-code-line tx">$remote_mode,set,off\n</span>
+<span class="km-code-line rx">$start,remote,set,success\n</span>
+<span class="km-code-line rx">$end\n</span></code></pre>
+<p>从远程专用界面发送 <code>remote_mode,set,off</code> 后，由于当前远程连接仍保持，仪器只会清屏并显示“上位机控制中”弹窗，不会立即返回原来的测量模式。按下 <strong>SHIFT+HOME</strong> 断开远程连接、退出上位机控制后，才会返回原来的测量模式。</p>
+</section>
